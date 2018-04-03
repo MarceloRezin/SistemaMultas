@@ -1,0 +1,45 @@
+REGISTRO DE MULTAS
+
+
+->Login
+	+Usuario
+	+Senha
+	+Admin
+
+->Proprietario
+	+Nome
+	+CPF
+	+Endereco
+	+Cod. habilitacao
+
+->Veiculo
+	+Marca
+	+Modelo
+	+Ano
+	+UF
+	+Cidade
+	+Renavam
+	+Cor predominante
+	+Proprietario
+
+->Orgao
+	+Nome
+	+Endereco
+	+Cidade
+	+UF
+
+->Infração
+	+Descricao
+	+Tipo(Grave, Gravissima, etc)
+	+Valor
+	+Pontos na Carterira
+
+->Multa
+	+Veiculo
+	+Infracao
+	+Orgao
+	+Data emissao
+	+Data vencimento
+	+Local(Detalhar)
+
+
