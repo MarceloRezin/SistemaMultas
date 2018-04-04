@@ -34,6 +34,8 @@ REGISTRO DE MULTAS
 	+Valor
 	+Pontos na Carterira
 
+	-> Tipos e fator multiplicador para regras de negocio: https://doutormultas.com.br/gravidade-multas-transito-valor/
+
 ->Multa
 	+Veiculo
 	+Infracao
