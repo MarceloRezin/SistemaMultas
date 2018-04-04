@@ -1,4 +1,4 @@
-package commons.enuns;
+package infracao;
 
 import java.math.BigDecimal;
 

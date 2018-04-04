@@ -43,5 +43,6 @@ REGISTRO DE MULTAS
 	+Data emissao
 	+Data vencimento
 	+Local(Detalhar)
+	+Fator multiplicador
 
 
