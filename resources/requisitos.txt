@@ -44,5 +44,6 @@ REGISTRO DE MULTAS
 	+Data vencimento
 	+Local(Detalhar)
 	+Fator multiplicador
+	+Condutor(Proprietario ou nao)
 
 
