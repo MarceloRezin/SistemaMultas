@@ -31,9 +31,9 @@ public class TelaVeiculo extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Marca:");
-		lblNewLabel.setBounds(10, 11, 33, 14);
-		contentPane.add(lblNewLabel);
+		JLabel lblMarca = new JLabel("Marca:");
+		lblMarca.setBounds(10, 11, 33, 14);
+		contentPane.add(lblMarca);
 
 		textField = new JTextField();
 		textField.setBounds(100, 8, 130, 20);
@@ -49,9 +49,9 @@ public class TelaVeiculo extends JFrame {
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 
-		JLabel lblNewLabel_1 = new JLabel("Ano:");
-		lblNewLabel_1.setBounds(10, 73, 46, 14);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblAno = new JLabel("Ano:");
+		lblAno.setBounds(10, 73, 46, 14);
+		contentPane.add(lblAno);
 
 		textField_2 = new JTextField();
 		textField_2.setBounds(100, 70, 130, 20);
