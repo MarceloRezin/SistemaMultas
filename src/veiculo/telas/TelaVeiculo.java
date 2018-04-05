@@ -1,4 +1,4 @@
-package veiculo;
+package veiculo.telas;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
-public class telaVeiculo extends JFrame {
+public class TelaVeiculo extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -22,7 +22,7 @@ public class telaVeiculo extends JFrame {
 	private JTextField textField_5;
 	private JTextField textField_6;
 
-	public telaVeiculo() {
+	public TelaVeiculo() {
 		setTitle("Cadastro de Veiculo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 256, 300);
