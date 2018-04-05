@@ -1,17 +1,17 @@
-package commons.enuns.telas;
+package commons.telas;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public abstract class CrudJFrame implements ActionListener {
+public abstract class CrudListenner implements ActionListener {
 
     private JButton listar;
     private JButton novo;
     private JButton salvar;
     private JButton excluir;
 
-    public CrudJFrame(JButton listar, JButton novo, JButton salvar, JButton excluir) {
+    public CrudListenner(JButton listar, JButton novo, JButton salvar, JButton excluir) {
         this.listar = listar;
         this.novo = novo;
         this.salvar = salvar;

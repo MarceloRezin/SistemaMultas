@@ -1,12 +1,10 @@
 package infracao.listenner;
 
-import commons.enuns.telas.CrudJFrame;
+import commons.telas.CrudListenner;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class InfracaoListenner extends CrudJFrame{
+public class InfracaoListenner extends CrudListenner {
     public InfracaoListenner(JButton listar, JButton novo, JButton salvar, JButton excluir) {
         super(listar, novo, salvar, excluir);
     }
