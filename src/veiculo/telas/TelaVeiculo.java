@@ -1,5 +1,7 @@
 package veiculo.telas;
 
+import veiculo.listenner.VeiculoListenner;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -22,7 +24,7 @@ public class TelaVeiculo extends JFrame {
 	private JTextField textField_5;
 	private JTextField textField_6;
 
-	public TelaVeiculo() {
+	public TelaVeiculo(JButton btnSalvar, JButton btnExcluir) {
 		setTitle("Cadastro de Veiculo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 256, 300);
@@ -102,11 +104,11 @@ public class TelaVeiculo extends JFrame {
 		contentPane.add(textField_6);
 		textField_6.setColumns(10);
 
-		JButton btnSalvar = new JButton("Salvar");
+        btnSalvar = new JButton("Salvar");
 		btnSalvar.setBounds(10, 226, 96, 23);
 		contentPane.add(btnSalvar);
 
-		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir = new JButton("Excluir");
 		btnExcluir.setBounds(134, 226, 96, 23);
 		contentPane.add(btnExcluir);
 	}
