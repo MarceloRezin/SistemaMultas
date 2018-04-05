@@ -1,22 +1,22 @@
 package veiculo.listenner;
 
-import commons.telas.CrudListenner;
+import commons.listenners.ListagemListenner;
 
 import javax.swing.*;
 
-public class VeiculoListenner extends CrudListenner{
+public class VeiculoListagemListenner extends ListagemListenner {
 
-    public VeiculoListenner(JButton listar, JButton novo, JButton salvar, JButton excluir) {
+    public VeiculoListagemListenner(JButton listar, JButton novo, JButton salvar, JButton excluir) {
         super(listar, novo, salvar, excluir);
     }
 
     @Override
-    public void executarListar() {
+    public void eventoListar() {
         System.out.println("Veículo -> Listar");
     }
 
     @Override
-    public void executaNovo() {
+    public void eventoNovo() {
         System.out.println("Veículo -> Novo");
     }
 
