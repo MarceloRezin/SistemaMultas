@@ -1,5 +1,7 @@
 package proprietario.telas;
 
+import proprietario.listenner.ProprietarioListagemListenner;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -12,9 +14,8 @@ public class TelaConsultaProprietario extends JInternalFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 
-	public TelaConsultaProprietario() {
-		super("Consulta De Proprietario", false, true, true, false);
-
+	public TelaConsultaProprietario(JDesktopPane jDesktopPane) {
+		super("Consulta De Proprietario", false, true, false, false);
 		setBounds(100, 100, 256, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -30,19 +31,7 @@ public class TelaConsultaProprietario extends JInternalFrame {
 		textField.setBounds(10, 8, 131, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
-		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(10, 226, 68, 23);
-		contentPane.add(btnSalvar);
-		
-		JButton btnExcluir = new JButton("Excluir");
-		btnExcluir.setBounds(85, 226, 68, 23);
-		contentPane.add(btnExcluir);
-		
-		JButton btnNewButton = new JButton("Sair");
-		btnNewButton.setBounds(163, 226, 68, 23);
-		contentPane.add(btnNewButton);
-		
+
 		JButton btnP = new JButton("p");
 		btnP.setBounds(151, 7, 40, 23);
 		contentPane.add(btnP);
@@ -50,5 +39,7 @@ public class TelaConsultaProprietario extends JInternalFrame {
 		JButton button = new JButton("+");
 		button.setBounds(191, 7, 40, 23);
 		contentPane.add(button);
+
+		new ProprietarioListagemListenner(btnP, button, jDesktopPane, this);
 	}
 }
