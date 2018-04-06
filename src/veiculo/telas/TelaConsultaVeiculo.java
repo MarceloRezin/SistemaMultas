@@ -38,18 +38,6 @@ public class TelaConsultaVeiculo extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(10, 226, 68, 23);
-		contentPane.add(btnSalvar);
-		
-		JButton btnExcluir = new JButton("Excluir");
-		btnExcluir.setBounds(85, 226, 68, 23);
-		contentPane.add(btnExcluir);
-		
-		JButton btnNewButton = new JButton("Sair");
-		btnNewButton.setBounds(163, 226, 68, 23);
-		contentPane.add(btnNewButton);
-		
 		JButton btnP = new JButton("p");
 		btnP.setBounds(151, 7, 40, 23);
 		contentPane.add(btnP);
