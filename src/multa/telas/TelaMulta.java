@@ -3,16 +3,10 @@ package multa.telas;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 
-public class TelaMulta extends JFrame {
+public class TelaMulta extends JInternalFrame {
 
     private JPanel contentPane;
     private JTextField txtVeiculo;
@@ -25,8 +19,7 @@ public class TelaMulta extends JFrame {
 
 
     public TelaMulta() {
-        setTitle("Cadastro de Multa");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        super("Cadastro de Mult", false, true, true, false);
         setBounds(100, 100, 256, 398);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
