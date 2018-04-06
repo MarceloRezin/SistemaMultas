@@ -3,15 +3,10 @@ package orgao.telas;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JButton;
 
-public class TelaOrgao extends JFrame {
+public class TelaOrgao extends JInternalFrame {
 
     private JPanel contentPane;
     private JTextField txtNome;
@@ -20,8 +15,7 @@ public class TelaOrgao extends JFrame {
 
 
     public TelaOrgao() {
-        setTitle("Cadastro de Orgao");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        super("Cadastro de Orgão", false, true, true, false);
         setBounds(100, 100, 256, 300);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

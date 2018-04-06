@@ -3,15 +3,10 @@ package veiculo.telas;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JButton;
 
-public class TelaVeiculo extends JFrame {
+public class TelaVeiculo extends JInternalFrame {
 
 	private JPanel contentPane;
 	private JTextField txtMarca;
@@ -23,8 +18,7 @@ public class TelaVeiculo extends JFrame {
 	private JTextField txtProprietario;
 
 	public TelaVeiculo(JButton btnSalvar, JButton btnExcluir) {
-		setTitle("Cadastro de Veiculo");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		super("Cadastro De Veiculo", false, true, true, false);
 		setBounds(100, 100, 256, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

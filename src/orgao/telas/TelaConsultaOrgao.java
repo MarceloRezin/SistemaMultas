@@ -4,24 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JList;
 
-public class TelaConsultaOrgao extends JFrame {
+public class TelaConsultaOrgao extends JInternalFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 
 	public TelaConsultaOrgao() {
-		setTitle("Consulta De Orgão");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		super("Consulta De Orgão", false, true, true, false);
 		setBounds(100, 100, 256, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
