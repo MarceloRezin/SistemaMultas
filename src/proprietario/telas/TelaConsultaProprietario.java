@@ -4,24 +4,17 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JList;
 
-public class TelaConsultaProprietario extends JFrame {
+public class TelaConsultaProprietario extends JInternalFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 
 	public TelaConsultaProprietario() {
-		setTitle("Consulta De Proprietario");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		super("Consulta De Proprietario", false, true, true, false);
+
 		setBounds(100, 100, 256, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

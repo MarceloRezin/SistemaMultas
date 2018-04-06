@@ -16,6 +16,9 @@ public abstract class ListagemListenner implements ActionListener {
     public ListagemListenner(JButton listar, JButton novo) {
         this.listar = listar;
         this.novo = novo;
+
+        listar.addActionListener(this);
+        novo.addActionListener(this);
     }
 
     @Override

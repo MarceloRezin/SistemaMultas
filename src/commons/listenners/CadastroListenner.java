@@ -17,6 +17,10 @@ public abstract class CadastroListenner implements ActionListener {
         this.salvar = salvar;
         this.excluir = excluir;
         this.voltar = voltar;
+
+        salvar.addActionListener(this);
+        excluir.addActionListener(this);
+        voltar.addActionListener(this);
     }
 
     @Override

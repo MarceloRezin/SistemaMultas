@@ -1,24 +1,23 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+package principal;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import proprietario.Proprietario;
+import proprietario.telas.TelaConsultaProprietario;
+import proprietario.telas.TelaProprietario;
+
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JInternalFrame;
 
-public class principal extends JFrame {
+public class PrincipalTela extends JFrame {
 
 	private JPanel contentPane;
+	private JDesktopPane desktopPane;
 
-	public principal() {
+	public PrincipalTela() {
 		setTitle("Sistema de Multas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		setResizable(false);
-		
+		setBounds(100, 100, 700, 500);
+
+		desktopPane = new JDesktopPane();
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -26,10 +25,15 @@ public class principal extends JFrame {
 		JMenu mnCadastro = new JMenu("Cadastro");
 		menuBar.add(mnCadastro);
 
-		JMenu mnConsulta = new JMenu("Consulta");
-		menuBar.add(mnConsulta);
-		
+
+		TelaProprietario telaProprietario = new TelaProprietario();
+		TelaConsultaProprietario telaConsultaProprietario = new TelaConsultaProprietario();
+		desktopPane.add(telaConsultaProprietario);
 		JMenuItem mntmProprietario = new JMenuItem("Proprietario");
+		mntmProprietario.addActionListener( e -> {
+			System.out.println("oi");
+			telaConsultaProprietario.setVisible(true);
+		});
 		mnCadastro.add(mntmProprietario);
 		
 		JMenuItem mntmVeiculo = new JMenuItem("Veiculo");
@@ -50,12 +54,9 @@ public class principal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JInternalFrame internalFrame = new JInternalFrame("New JInternalFrame");
-		internalFrame.setBounds(59, 0, 375, 241);
-		contentPane.add(internalFrame);
-		internalFrame.setUI(null);
-		internalFrame.setBorder(null);
-		internalFrame.setVisible(true);
+
+		setContentPane(desktopPane);
+
+
 	}
 }
