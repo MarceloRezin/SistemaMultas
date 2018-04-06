@@ -9,7 +9,6 @@ import javax.swing.border.EmptyBorder;
 
 public class PrincipalTela extends JFrame {
 
-	private JPanel contentPane;
 	private JDesktopPane desktopPane;
 
 	public PrincipalTela() {
@@ -27,12 +26,12 @@ public class PrincipalTela extends JFrame {
 
 
 		TelaProprietario telaProprietario = new TelaProprietario();
-		TelaConsultaProprietario telaConsultaProprietario = new TelaConsultaProprietario();
-		desktopPane.add(telaConsultaProprietario);
+		TelaConsultaProprietario telaConsultaProprietario = new TelaConsultaProprietario(desktopPane);
+
 		JMenuItem mntmProprietario = new JMenuItem("Proprietario");
 		mntmProprietario.addActionListener( e -> {
-			System.out.println("oi");
 			telaConsultaProprietario.setVisible(true);
+			desktopPane.add(telaConsultaProprietario);
 		});
 		mnCadastro.add(mntmProprietario);
 		
@@ -50,13 +49,7 @@ public class PrincipalTela extends JFrame {
 		
 		JMenu mnConfiguraes = new JMenu("Configura\u00E7\u00F5es");
 		menuBar.add(mnConfiguraes);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
 
 		setContentPane(desktopPane);
-
-
 	}
 }

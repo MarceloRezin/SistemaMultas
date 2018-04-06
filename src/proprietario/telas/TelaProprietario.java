@@ -1,5 +1,7 @@
 package proprietario.telas;
 
+import proprietario.listenner.ProprietarioCadastroListenner;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -85,8 +87,10 @@ public class TelaProprietario extends JInternalFrame {
         btnExcluir.setBounds(88, 226, 68, 23);
         contentPane.add(btnExcluir);
 
-        JButton btnSair = new JButton("Sair");
-        btnSair.setBounds(166, 226, 68, 23);
-        contentPane.add(btnSair);
+        JButton btnVoltar = new JButton("Voltar");
+        btnVoltar.setBounds(166, 226, 68, 23);
+        contentPane.add(btnVoltar);
+
+        new ProprietarioCadastroListenner(btnSalvar, btnExcluir, btnVoltar);
     }
 }
