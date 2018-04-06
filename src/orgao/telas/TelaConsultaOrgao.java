@@ -38,18 +38,6 @@ public class TelaConsultaOrgao extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(10, 226, 68, 23);
-		contentPane.add(btnSalvar);
-		
-		JButton btnExcluir = new JButton("Excluir");
-		btnExcluir.setBounds(85, 226, 68, 23);
-		contentPane.add(btnExcluir);
-		
-		JButton btnSair = new JButton("Sair");
-		btnSair.setBounds(163, 226, 68, 23);
-		contentPane.add(btnSair);
-		
 		JButton btnP = new JButton("p");
 		btnP.setBounds(151, 7, 40, 23);
 		contentPane.add(btnP);
