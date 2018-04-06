@@ -1,4 +1,4 @@
-package infracao;
+package infracao.telas;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -11,14 +11,13 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
-public class telaInfracao extends JFrame {
+public class TelaInfracao extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_2;
 
-	public telaInfracao() {
-		setTitle("Cadastro de Veiculo");
+	public TelaInfracao() {
+		setTitle("Cadastro de Infração");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 256, 300);
 		contentPane = new JPanel();
@@ -26,8 +25,8 @@ public class telaInfracao extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Descri\u00E7\u00E3o:");
-		lblNewLabel.setBounds(10, 11, 33, 14);
+		JLabel lblNewLabel = new JLabel("Descrição:");
+		lblNewLabel.setBounds(10, 11, 50, 14);
 		contentPane.add(lblNewLabel);
 		
 		textField = new JTextField();
@@ -35,7 +34,7 @@ public class telaInfracao extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblMdelo = new JLabel("Tipo:");
+		JLabel lblMdelo = new JLabel("Gravidade:");
 		lblMdelo.setBounds(10, 42, 38, 14);
 		contentPane.add(lblMdelo);
 		
@@ -47,21 +46,16 @@ public class telaInfracao extends JFrame {
 		comboBox.addItem("Gravissima(7 pontos)");		
 		contentPane.add(comboBox);
 		
-		JLabel lblNewLabel_1 = new JLabel("Valor:");
-		lblNewLabel_1.setBounds(10, 73, 46, 14);
-		contentPane.add(lblNewLabel_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(110, 70, 120, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
-		
 		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(10, 226, 96, 23);
+		btnSalvar.setBounds(10, 226, 68, 23);
 		contentPane.add(btnSalvar);
 		
 		JButton btnExcluir = new JButton("Excluir");
-		btnExcluir.setBounds(134, 226, 96, 23);
+		btnExcluir.setBounds(85, 226, 68, 23);
 		contentPane.add(btnExcluir);
+		
+		JButton btnSair = new JButton("Sair");
+		btnSair.setBounds(163, 226, 68, 23);
+		contentPane.add(btnSair);
 	}
 }

@@ -1,7 +1,5 @@
 package veiculo.telas;
 
-import veiculo.listenner.VeiculoListenner;
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -16,13 +14,13 @@ import javax.swing.JButton;
 public class TelaVeiculo extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
+	private JTextField txtMarca;
+	private JTextField txtModelo;
+	private JTextField txtAno;
+	private JTextField txtCidade;
+	private JTextField txtCorPredominante;
+	private JTextField txtRenavam;
+	private JTextField txtProprietario;
 
 	public TelaVeiculo(JButton btnSalvar, JButton btnExcluir) {
 		setTitle("Cadastro de Veiculo");
@@ -37,32 +35,32 @@ public class TelaVeiculo extends JFrame {
 		lblMarca.setBounds(10, 11, 33, 14);
 		contentPane.add(lblMarca);
 
-		textField = new JTextField();
-		textField.setBounds(100, 8, 130, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtMarca = new JTextField();
+		txtMarca.setBounds(100, 8, 130, 20);
+		contentPane.add(txtMarca);
+		txtMarca.setColumns(10);
 
 		JLabel lblMdelo = new JLabel("Modelo:");
 		lblMdelo.setBounds(10, 42, 38, 14);
 		contentPane.add(lblMdelo);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(100, 39, 130, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		txtModelo = new JTextField();
+		txtModelo.setBounds(100, 39, 130, 20);
+		contentPane.add(txtModelo);
+		txtModelo.setColumns(10);
 
 		JLabel lblAno = new JLabel("Ano:");
 		lblAno.setBounds(10, 73, 46, 14);
 		contentPane.add(lblAno);
 
-		textField_2 = new JTextField();
-		textField_2.setBounds(100, 70, 130, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		txtAno = new JTextField();
+		txtAno.setBounds(100, 70, 130, 20);
+		contentPane.add(txtAno);
+		txtAno.setColumns(10);
 
-		JLabel lblUf = new JLabel("UF:");
-		lblUf.setBounds(10, 101, 46, 14);
-		contentPane.add(lblUf);
+		JLabel lblEstado = new JLabel("Estado:");
+		lblEstado.setBounds(10, 101, 46, 14);
+		contentPane.add(lblEstado);
 
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(99, 98, 131, 20);
@@ -72,44 +70,48 @@ public class TelaVeiculo extends JFrame {
 		lblCidade.setBounds(10, 126, 38, 14);
 		contentPane.add(lblCidade);
 
-		textField_3 = new JTextField();
-		textField_3.setBounds(100, 123, 130, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		txtCidade = new JTextField();
+		txtCidade.setBounds(100, 123, 130, 20);
+		contentPane.add(txtCidade);
+		txtCidade.setColumns(10);
 
 		JLabel lblRenavam = new JLabel("Renavam:");
 		lblRenavam.setBounds(10, 151, 54, 14);
 		contentPane.add(lblRenavam);
 
+		txtRenavam = new JTextField();
+		txtRenavam.setBounds(100, 148, 130, 20);
+		contentPane.add(txtRenavam);
+		txtRenavam.setColumns(10);
+
 		JLabel lblCorPredominante = new JLabel("Cor Predominante:");
 		lblCorPredominante.setBounds(10, 176, 96, 14);
 		contentPane.add(lblCorPredominante);
+
+		txtCorPredominante = new JTextField();
+		txtCorPredominante.setBounds(100, 173, 130, 20);
+		contentPane.add(txtCorPredominante);
+		txtCorPredominante.setColumns(10);
 
 		JLabel lblProprietario = new JLabel("Proprietario:");
 		lblProprietario.setBounds(10, 201, 60, 14);
 		contentPane.add(lblProprietario);
 
-		textField_4 = new JTextField();
-		textField_4.setBounds(100, 173, 130, 20);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
+		txtProprietario = new JTextField();
+		txtProprietario.setBounds(100, 198, 130, 20);
+		contentPane.add(txtProprietario);
+		txtProprietario.setColumns(10);
 
-		textField_5 = new JTextField();
-		textField_5.setBounds(100, 148, 130, 20);
-		contentPane.add(textField_5);
-		textField_5.setColumns(10);
-
-		textField_6 = new JTextField();
-		textField_6.setBounds(100, 198, 130, 20);
-		contentPane.add(textField_6);
-		textField_6.setColumns(10);
-
-        btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(10, 226, 96, 23);
+		btnSalvar = new JButton("Salvar");
+		btnSalvar.setBounds(10, 226, 68, 23);
 		contentPane.add(btnSalvar);
 
 		btnExcluir = new JButton("Excluir");
-		btnExcluir.setBounds(134, 226, 96, 23);
+		btnExcluir.setBounds(88, 226, 68, 23);
 		contentPane.add(btnExcluir);
+
+		JButton btnSair = new JButton("Sair");
+		btnSair.setBounds(166, 226, 68, 23);
+		contentPane.add(btnSair);
 	}
 }
