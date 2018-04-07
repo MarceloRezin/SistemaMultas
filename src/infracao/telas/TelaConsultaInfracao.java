@@ -1,5 +1,7 @@
 package infracao.telas;
 
+import infracao.listenner.InfracaoListagemListenner;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -37,5 +39,7 @@ public class TelaConsultaInfracao extends JInternalFrame {
 		JButton button = new JButton("+");
 		button.setBounds(191, 7, 40, 23);
 		contentPane.add(button);
+
+		new InfracaoListagemListenner(btnP, button, jDesktopPane, this);
 	}
 }

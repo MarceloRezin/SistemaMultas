@@ -1,5 +1,7 @@
 package infracao.telas;
 
+import infracao.listenner.InfracaoCadastroListenner;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -48,8 +50,10 @@ public class TelaInfracao extends JInternalFrame {
 		btnExcluir.setBounds(85, 226, 68, 23);
 		contentPane.add(btnExcluir);
 		
-		JButton btnSair = new JButton("Sair");
-		btnSair.setBounds(163, 226, 68, 23);
-		contentPane.add(btnSair);
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setBounds(163, 226, 68, 23);
+		contentPane.add(btnVoltar);
+
+		new InfracaoCadastroListenner(btnSalvar, btnExcluir, btnVoltar);
 	}
 }
