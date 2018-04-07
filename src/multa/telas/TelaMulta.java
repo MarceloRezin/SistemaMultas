@@ -19,7 +19,7 @@ public class TelaMulta extends JInternalFrame {
 
 
     public TelaMulta() {
-        super("Cadastro de Mult", false, true, true, false);
+        super("Cadastro de Multa", false, true, true, false);
         setBounds(100, 100, 256, 398);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

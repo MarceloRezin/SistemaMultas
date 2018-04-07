@@ -12,7 +12,8 @@ public class TelaConsultaVeiculo extends JInternalFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 
-	public TelaConsultaVeiculo() {
+	public TelaConsultaVeiculo(JDesktopPane jDesktopPane) {
+		super("Consulta De Veiculo", false, true, true, false);
 		setBounds(100, 100, 256, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

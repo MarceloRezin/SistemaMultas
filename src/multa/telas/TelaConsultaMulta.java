@@ -12,7 +12,7 @@ public class TelaConsultaMulta extends JInternalFrame {
     private JPanel contentPane;
     private JTextField textField;
 
-    public TelaConsultaMulta() {
+    public TelaConsultaMulta(JDesktopPane jDesktopPane) {
         super("Consulta De Multa", false, true, true, false);
         setBounds(100, 100, 256, 300);
         contentPane = new JPanel();
