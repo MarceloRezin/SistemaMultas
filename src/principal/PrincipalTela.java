@@ -54,6 +54,10 @@ public class PrincipalTela extends JFrame {
 
 		TelaConsultaMulta telaConsultaMulta = new TelaConsultaMulta(desktopPane);
 		JMenuItem mntmMulta = new JMenuItem("Multa");
+		mntmMulta.addActionListener(e -> {
+		    telaConsultaMulta.setVisible(true);
+		    desktopPane.add(telaConsultaMulta);
+        });
 		mnCadastro.add(mntmMulta);
 
 

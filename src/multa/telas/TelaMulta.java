@@ -1,5 +1,7 @@
 package multa.telas;
 
+import multa.listenner.MultaCadastroListenner;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -121,8 +123,10 @@ public class TelaMulta extends JInternalFrame {
         contentPane.add(textField);
         textField.setColumns(10);
 
-        JButton btnSair = new JButton("Sair");
-        btnSair.setBounds(166, 324, 68, 23);
-        contentPane.add(btnSair);
+        JButton btnVoltar = new JButton("Sair");
+        btnVoltar.setBounds(166, 324, 68, 23);
+        contentPane.add(btnVoltar);
+
+        new MultaCadastroListenner(btnSalvar, btnExcluir, btnVoltar);
     }
 }

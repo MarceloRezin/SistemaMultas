@@ -1,5 +1,7 @@
 package multa.telas;
 
+import multa.listenner.MultaListagemListenner;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -37,5 +39,7 @@ public class TelaConsultaMulta extends JInternalFrame {
         JButton button = new JButton("+");
         button.setBounds(191, 7, 40, 23);
         contentPane.add(button);
+
+        new MultaListagemListenner(btnP, button, jDesktopPane, this);
     }
 }
