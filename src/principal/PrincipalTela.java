@@ -58,9 +58,12 @@ public class PrincipalTela extends JFrame {
 
 
 		JMenu mnSobre = new JMenu("Sobre");
+		JMenuItem mntSobre = new JMenuItem("Sobre o Software");
+		mnSobre.add(mntSobre);
 		menuBar.add(mnSobre);
-		mnSobre.addActionListener(e->{
-			JOptionPane.showMessageDialog(null,"Lucas Claro \n Marcelo Rezin \n .1","Sobre",JOptionPane.INFORMATION_MESSAGE);
+
+		mntSobre.addActionListener(e->{
+			JOptionPane.showMessageDialog(null,"Desenvolvedores: Lucas Claro e Marcelo Rezin \n Versão: 0.1","Sobre",JOptionPane.INFORMATION_MESSAGE);
 		});
 
 		setContentPane(desktopPane);
