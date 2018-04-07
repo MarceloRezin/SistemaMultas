@@ -1,9 +1,12 @@
 package principal;
 
 import infracao.telas.TelaConsultaInfracao;
+import multa.telas.TelaConsultaMulta;
+import orgao.telas.TelaConsultaOrgao;
 import proprietario.Proprietario;
 import proprietario.telas.TelaConsultaProprietario;
 import proprietario.telas.TelaProprietario;
+import veiculo.telas.TelaConsultaVeiculo;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -33,9 +36,11 @@ public class PrincipalTela extends JFrame {
 		});
 		mnCadastro.add(mntmProprietario);
 
+		TelaConsultaVeiculo telaConsultaVeiculo = new TelaConsultaVeiculo(desktopPane);
 		JMenuItem mntmVeiculo = new JMenuItem("Veiculo");
 		mnCadastro.add(mntmVeiculo);
-		
+
+		TelaConsultaOrgao telaConsultaOrgao = new TelaConsultaOrgao(desktopPane);
 		JMenuItem mntmOrgo = new JMenuItem("Org\u00E3o");
 		mnCadastro.add(mntmOrgo);
 
@@ -46,12 +51,17 @@ public class PrincipalTela extends JFrame {
 			desktopPane.add(telaConsultaInfracao);
 		});
 		mnCadastro.add(mntmInfrao);
-		
+
+		TelaConsultaMulta telaConsultaMulta = new TelaConsultaMulta(desktopPane);
 		JMenuItem mntmMulta = new JMenuItem("Multa");
 		mnCadastro.add(mntmMulta);
-		
-		JMenu mnConfiguraes = new JMenu("Configura\u00E7\u00F5es");
-		menuBar.add(mnConfiguraes);
+
+
+		JMenu mnSobre = new JMenu("Sobre");
+		menuBar.add(mnSobre);
+		mnSobre.addActionListener(e->{
+			JOptionPane.showMessageDialog(null,"Lucas Claro \n Marcelo Rezin \n .1","Sobre",JOptionPane.INFORMATION_MESSAGE);
+		});
 
 		setContentPane(desktopPane);
 	}
