@@ -12,7 +12,7 @@ public class TelaConsultaOrgao extends JInternalFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 
-	public TelaConsultaOrgao() {
+	public TelaConsultaOrgao(JDesktopPane jDesktopPane) {
 		super("Consulta De Orgão", false, true, true, false);
 		setBounds(100, 100, 256, 300);
 		contentPane = new JPanel();
