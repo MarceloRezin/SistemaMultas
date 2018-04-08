@@ -1,7 +1,5 @@
 package multa;
 
-import java.math.BigDecimal;
-
 public enum FatorMultiplicador {
 
     X0(0),

@@ -1,12 +1,10 @@
 package veiculo.telas;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class TelaVeiculo extends JInternalFrame {
+@SuppressWarnings("serial")
+public class VeiculoTelaCadastro extends JInternalFrame {
 
 	private JPanel contentPane;
 	private JTextField txtMarca;
@@ -17,7 +15,7 @@ public class TelaVeiculo extends JInternalFrame {
 	private JTextField txtRenavam;
 	private JTextField txtProprietario;
 
-	public TelaVeiculo(JButton btnSalvar, JButton btnExcluir) {
+	public VeiculoTelaCadastro() {
 		super("Cadastro De Veiculo", false, true, true, false);
 		setBounds(100, 100, 256, 300);
 		contentPane = new JPanel();
@@ -96,11 +94,11 @@ public class TelaVeiculo extends JInternalFrame {
 		contentPane.add(txtProprietario);
 		txtProprietario.setColumns(10);
 
-		btnSalvar = new JButton("Salvar");
+		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.setBounds(10, 226, 68, 23);
 		contentPane.add(btnSalvar);
 
-		btnExcluir = new JButton("Excluir");
+		JButton btnExcluir = new JButton("Excluir");
 		btnExcluir.setBounds(88, 226, 68, 23);
 		contentPane.add(btnExcluir);
 

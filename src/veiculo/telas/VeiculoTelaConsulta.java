@@ -1,18 +1,17 @@
 package veiculo.telas;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.EventQueue;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class TelaConsultaVeiculo extends JInternalFrame {
+import veiculo.listenner.VeiculoConsultaListenner;
+
+@SuppressWarnings("serial")
+public class VeiculoTelaConsulta extends JInternalFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 
-	public TelaConsultaVeiculo(JDesktopPane jDesktopPane) {
+	public VeiculoTelaConsulta(JDesktopPane jDesktopPane) {
 		super("Consulta De Veiculo", false, true, true, false);
 		setBounds(100, 100, 256, 300);
 		contentPane = new JPanel();
@@ -20,7 +19,7 @@ public class TelaConsultaVeiculo extends JInternalFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JList list = new JList();
+		JList<Object> list = new JList<Object>();
 		list.setBounds(10, 39, 220, 179);
 		list.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 		contentPane.add(list);
@@ -37,5 +36,7 @@ public class TelaConsultaVeiculo extends JInternalFrame {
 		JButton button = new JButton("+");
 		button.setBounds(191, 7, 40, 23);
 		contentPane.add(button);
+		
+		new VeiculoConsultaListenner(jDesktopPane, this, new VeiculoTelaCadastro(), btnP, button, list);
 	}
 }

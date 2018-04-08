@@ -1,14 +1,11 @@
 package multa.telas;
 
 import multa.listenner.MultaCadastroListenner;
-
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class TelaMulta extends JInternalFrame {
+@SuppressWarnings("serial")
+public class MultaTelaCadastro extends JInternalFrame {
 
     private JPanel contentPane;
     private JTextField txtVeiculo;
@@ -20,7 +17,7 @@ public class TelaMulta extends JInternalFrame {
     private JTextField textField;
 
 
-    public TelaMulta() {
+    public MultaTelaCadastro() {
         super("Cadastro de Multa", false, true, true, false);
         setBounds(100, 100, 256, 398);
         contentPane = new JPanel();
@@ -50,7 +47,7 @@ public class TelaMulta extends JInternalFrame {
         contentPane.add(txtOrgao);
         txtOrgao.setColumns(10);
 
-        JComboBox boxCidade = new JComboBox();
+        JComboBox<Object> boxCidade = new JComboBox<Object>();
         boxCidade.setBounds(100, 225, 131, 20);
         contentPane.add(boxCidade);
 
@@ -102,7 +99,7 @@ public class TelaMulta extends JInternalFrame {
         lblCidade.setBounds(10, 197, 46, 14);
         contentPane.add(lblCidade);
 
-        JComboBox boxInfracao = new JComboBox();
+        JComboBox<Object> boxInfracao = new JComboBox<Object>();
         boxInfracao.setBounds(100, 39, 130, 20);
         contentPane.add(boxInfracao);
 
@@ -110,7 +107,7 @@ public class TelaMulta extends JInternalFrame {
         lblFatorMultiplicador.setBounds(10, 259, 96, 14);
         contentPane.add(lblFatorMultiplicador);
 
-        JComboBox comboBox = new JComboBox();
+        JComboBox<Object> comboBox = new JComboBox<Object>();
         comboBox.setBounds(100, 256, 130, 20);
         contentPane.add(comboBox);
 

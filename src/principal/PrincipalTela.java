@@ -1,12 +1,12 @@
 package principal;
 
 import infracao.telas.TelaConsultaInfracao;
-import multa.telas.TelaConsultaMulta;
-import orgao.telas.TelaConsultaOrgao;
+import multa.telas.MultaTelaConsulta;
+import orgao.telas.OrgaoTelaConsulta;
 import proprietario.Proprietario;
-import proprietario.telas.TelaConsultaProprietario;
-import proprietario.telas.TelaProprietario;
-import veiculo.telas.TelaConsultaVeiculo;
+import proprietario.telas.ProprietarioTelaConsulta;
+import proprietario.telas.ProprietarioTelaCadastro;
+import veiculo.telas.VeiculoTelaConsulta;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -28,7 +28,7 @@ public class PrincipalTela extends JFrame {
 		JMenu mnCadastro = new JMenu("Cadastro");
 		menuBar.add(mnCadastro);
 
-		TelaConsultaProprietario telaConsultaProprietario = new TelaConsultaProprietario(desktopPane);
+		ProprietarioTelaConsulta telaConsultaProprietario = new ProprietarioTelaConsulta(desktopPane);
 		JMenuItem mntmProprietario = new JMenuItem("Proprietario");
 		mntmProprietario.addActionListener( e -> {
 			telaConsultaProprietario.setVisible(true);
@@ -36,11 +36,11 @@ public class PrincipalTela extends JFrame {
 		});
 		mnCadastro.add(mntmProprietario);
 
-		TelaConsultaVeiculo telaConsultaVeiculo = new TelaConsultaVeiculo(desktopPane);
+		VeiculoTelaConsulta telaConsultaVeiculo = new VeiculoTelaConsulta(desktopPane);
 		JMenuItem mntmVeiculo = new JMenuItem("Veiculo");
 		mnCadastro.add(mntmVeiculo);
 
-		TelaConsultaOrgao telaConsultaOrgao = new TelaConsultaOrgao(desktopPane);
+		OrgaoTelaConsulta telaConsultaOrgao = new OrgaoTelaConsulta(desktopPane);
 		JMenuItem mntmOrgo = new JMenuItem("Org\u00E3o");
 		mnCadastro.add(mntmOrgo);
 
@@ -52,7 +52,7 @@ public class PrincipalTela extends JFrame {
 		});
 		mnCadastro.add(mntmInfrao);
 
-		TelaConsultaMulta telaConsultaMulta = new TelaConsultaMulta(desktopPane);
+		MultaTelaConsulta telaConsultaMulta = new MultaTelaConsulta(desktopPane);
 		JMenuItem mntmMulta = new JMenuItem("Multa");
 		mntmMulta.addActionListener(e -> {
 		    telaConsultaMulta.setVisible(true);

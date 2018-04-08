@@ -1,20 +1,17 @@
 package multa.telas;
 
-import multa.listenner.MultaListagemListenner;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.EventQueue;
+import multa.listenner.MultaConsultaListenner;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class TelaConsultaMulta extends JInternalFrame {
+@SuppressWarnings("serial")
+public class MultaTelaConsulta extends JInternalFrame {
 
     private JPanel contentPane;
     private JTextField textField;
 
-    public TelaConsultaMulta(JDesktopPane jDesktopPane) {
+    public MultaTelaConsulta(JDesktopPane jDesktopPane) {
         super("Consulta De Multa", false, true, true, false);
         setBounds(100, 100, 256, 300);
         contentPane = new JPanel();
@@ -22,7 +19,7 @@ public class TelaConsultaMulta extends JInternalFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JList list = new JList();
+        JList<Object> list = new JList<Object>();
         list.setBounds(10, 39, 220, 179);
         list.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         contentPane.add(list);
@@ -32,14 +29,14 @@ public class TelaConsultaMulta extends JInternalFrame {
         contentPane.add(textField);
         textField.setColumns(10);
 
-        JButton btnP = new JButton("Listar");
-        btnP.setBounds(151, 7, 40, 23);
-        contentPane.add(btnP);
+        JButton btnConsultar = new JButton("Listar");
+        btnConsultar.setBounds(151, 7, 40, 23);
+        contentPane.add(btnConsultar);
 
-        JButton button = new JButton("+");
-        button.setBounds(191, 7, 40, 23);
-        contentPane.add(button);
+        JButton btnNovo = new JButton("+");
+        btnNovo.setBounds(191, 7, 40, 23);
+        contentPane.add(btnNovo);
 
-        new MultaListagemListenner(btnP, button, jDesktopPane, this);
+        new MultaConsultaListenner(jDesktopPane, this, new MultaTelaCadastro(), btnConsultar, btnNovo, list);
     }
 }

@@ -1,18 +1,17 @@
 package orgao.telas;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.EventQueue;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class TelaConsultaOrgao extends JInternalFrame {
+import infracao.listenner.InfracaoConsultaListenner;
+
+@SuppressWarnings("serial")
+public class OrgaoTelaConsulta extends JInternalFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 
-	public TelaConsultaOrgao(JDesktopPane jDesktopPane) {
+	public OrgaoTelaConsulta(JDesktopPane jDesktopPane) {
 		super("Consulta De Orgão", false, true, true, false);
 		setBounds(100, 100, 256, 300);
 		contentPane = new JPanel();
@@ -20,7 +19,7 @@ public class TelaConsultaOrgao extends JInternalFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JList list = new JList();
+		JList<Object> list = new JList<Object>();
 		list.setBounds(10, 39, 220, 179);
 		list.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 		contentPane.add(list);
@@ -30,12 +29,14 @@ public class TelaConsultaOrgao extends JInternalFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnP = new JButton("p");
-		btnP.setBounds(151, 7, 40, 23);
-		contentPane.add(btnP);
+		JButton btnConsultar = new JButton("p");
+		btnConsultar.setBounds(151, 7, 40, 23);
+		contentPane.add(btnConsultar);
 		
-		JButton button = new JButton("+");
-		button.setBounds(191, 7, 40, 23);
-		contentPane.add(button);
+		JButton btnNovo = new JButton("+");
+		btnNovo.setBounds(191, 7, 40, 23);
+		contentPane.add(btnNovo);
+		
+		new InfracaoConsultaListenner(jDesktopPane, this, new OrgaoTelaCadastro(), btnConsultar, btnNovo, list);
 	}
 }

@@ -1,12 +1,10 @@
 package orgao.telas;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class TelaOrgao extends JInternalFrame {
+@SuppressWarnings("serial")
+public class OrgaoTelaCadastro extends JInternalFrame {
 
     private JPanel contentPane;
     private JTextField txtNome;
@@ -14,7 +12,7 @@ public class TelaOrgao extends JInternalFrame {
     private JTextField txtEndereco;
 
 
-    public TelaOrgao() {
+    public OrgaoTelaCadastro() {
         super("Cadastro de Orgão", false, true, true, false);
         setBounds(100, 100, 256, 300);
         contentPane = new JPanel();
@@ -48,7 +46,7 @@ public class TelaOrgao extends JInternalFrame {
         lblEstado.setBounds(10, 101, 46, 14);
         contentPane.add(lblEstado);
 
-        JComboBox boxEstado = new JComboBox();
+        JComboBox<Object> boxEstado = new JComboBox<Object>();
         boxEstado.setBounds(100, 98, 131, 20);
         contentPane.add(boxEstado);
 

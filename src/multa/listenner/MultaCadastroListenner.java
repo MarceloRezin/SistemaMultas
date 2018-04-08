@@ -1,9 +1,7 @@
 package multa.listenner;
 
-import commons.listenners.CadastroListenner;
-import commons.listenners.ListagemListenner;
-
 import javax.swing.*;
+import commons.listenners.CadastroListenner;
 
 public class MultaCadastroListenner extends CadastroListenner {
 

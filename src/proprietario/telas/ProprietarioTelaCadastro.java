@@ -8,7 +8,7 @@ import java.awt.EventQueue;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class TelaProprietario extends JInternalFrame {
+public class ProprietarioTelaCadastro extends JInternalFrame {
 
     private JPanel contentPane;
     private JTextField textField;
@@ -18,7 +18,7 @@ public class TelaProprietario extends JInternalFrame {
     private JTextField textField_5;
 
 
-    public TelaProprietario() {
+    public ProprietarioTelaCadastro() {
         super("Cadastro de Prorpietário", false, true, true, false);
         setBounds(100, 100, 256, 300);
         contentPane = new JPanel();
