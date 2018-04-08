@@ -1,11 +1,11 @@
 package main;
 
-import usuario.login.LoginTela;
+import usuario.login.UsuarioLoginTela;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        new LoginTela().setVisible(true);
+        new UsuarioLoginTela().setVisible(true);
     }
 }
