@@ -1,6 +1,8 @@
 package infracao;
 
-public class Infracao {
+import commons.cadastros.Cadastro;
+
+public class Infracao extends Cadastro{
     private String descricao;
     private GravidadeMulta gravidadeMulta;
 
@@ -24,4 +26,9 @@ public class Infracao {
     public void setGravidadeMulta(GravidadeMulta gravidadeMulta) {
         this.gravidadeMulta = gravidadeMulta;
     }
+
+	@Override
+	public String toString() {
+		return getDescricao();
+	}
 }
