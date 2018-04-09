@@ -42,12 +42,18 @@ public abstract class ConsultaListenner<T extends Cadastro> implements ActionLis
 	public void valueChanged(ListSelectionEvent evento) {
 		if(evento.getSource() == list) {
 			if (evento.getValueIsAdjusting()){
-                System.out.println("Consulta ->" + model.get(list.getSelectedIndex()));
+				eventoItemSelecionado();
             }
 		}
 	}
     
+    public T getItemListSelecionado() {
+    	return model.get(list.getSelectedIndex());
+    }
+    
     public abstract void eventoNovo();
     
 	public abstract void eventoConsultar();
+	
+	public abstract void eventoItemSelecionado();
 }
