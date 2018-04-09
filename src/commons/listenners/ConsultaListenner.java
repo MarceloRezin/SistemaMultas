@@ -4,40 +4,36 @@
 
 package commons.listenners;
 
-import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
-public abstract class ConsultaListenner implements ActionListener, ListSelectionListener {
+import commons.cadastros.Cadastro;
+import commons.telas.ConsultaTela;
 
-    private JButton consultar;
-    private JButton novo;
-    private JList<Object> list;
-    private JDesktopPane jDesktopPane;
-    private JInternalFrame telaCadastro;
-    private JInternalFrame telaConsulta;
-    private DefaultListModel<Object> model = new DefaultListModel<>();
+public abstract class ConsultaListenner<T extends Cadastro> implements ActionListener, ListSelectionListener {
 
-    public ConsultaListenner(JDesktopPane jDesktopPane, JInternalFrame telaConsulta, JInternalFrame telaCadastro, JButton consultar, JButton novo, JList<Object> list) {
-        this.jDesktopPane = jDesktopPane;
-        this.telaConsulta = telaConsulta;
-        this.telaCadastro = telaCadastro;
-    	this.consultar = consultar;
-        this.novo = novo;
-        this.list = list;
+    private JButton btnConsultar;
+    private JButton btnNovo;
+    private JList<T> list;
+    private DefaultListModel<T> model;
 
-        consultar.addActionListener(this);
-        novo.addActionListener(this);
-        list.addListSelectionListener(this);
+    public ConsultaListenner(ConsultaTela<T> consultaTela) {
+    	this.btnConsultar = consultaTela.getBtnConsulta();
+        this.btnNovo = consultaTela.getBtnNovo();
+        this.list = consultaTela.getList();
+        this.model = consultaTela.getModel();
     }
 
     @Override
     public void actionPerformed(ActionEvent evento) {
-        if(evento.getSource() == consultar){
+        if(evento.getSource() == btnConsultar){
             eventoConsultar();
-        }else if(evento.getSource() == novo){
+        }else if(evento.getSource() == btnNovo){
             eventoNovo();
         }
     }
@@ -51,12 +47,7 @@ public abstract class ConsultaListenner implements ActionListener, ListSelection
 		}
 	}
     
-    private void eventoNovo() {
-    	telaConsulta.dispose();
-        System.out.println("Consulta -> Novo");
-        jDesktopPane.add(telaCadastro);
-        telaCadastro.setVisible(true);
-    }
+    public abstract void eventoNovo();
     
 	public abstract void eventoConsultar();
 }
