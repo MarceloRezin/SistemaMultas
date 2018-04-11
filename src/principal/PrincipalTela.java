@@ -1,15 +1,20 @@
 package principal;
 
-import infracao.telas.TelaConsultaInfracao;
+import infracao.telas.InfracaoConsultaTela;
 import multa.telas.MultaTelaConsulta;
 import orgao.telas.OrgaoTelaConsulta;
 import proprietario.Proprietario;
-import proprietario.telas.ProprietarioTelaConsulta;
+import proprietario.telas.ProprietarioConsultaTela;
 import proprietario.telas.ProprietarioTelaCadastro;
 import veiculo.telas.VeiculoTelaConsulta;
 
+import java.util.Collection;
+import java.util.stream.Collectors;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
 
 public class PrincipalTela extends JFrame {
 
@@ -28,36 +33,36 @@ public class PrincipalTela extends JFrame {
 		JMenu mnCadastro = new JMenu("Cadastro");
 		menuBar.add(mnCadastro);
 
-		ProprietarioTelaConsulta telaConsultaProprietario = new ProprietarioTelaConsulta(desktopPane);
+//		ProprietarioConsultaTela telaConsultaProprietario = new ProprietarioConsultaTela(desktopPane);
 		JMenuItem mntmProprietario = new JMenuItem("Proprietario");
-		mntmProprietario.addActionListener( e -> {
-			telaConsultaProprietario.setVisible(true);
-			desktopPane.add(telaConsultaProprietario);
-		});
+//		mntmProprietario.addActionListener( e -> {
+//			telaConsultaProprietario.setVisible(true);
+//			desktopPane.add(telaConsultaProprietario);
+//		});
 		mnCadastro.add(mntmProprietario);
 
-		VeiculoTelaConsulta telaConsultaVeiculo = new VeiculoTelaConsulta(desktopPane);
+//		VeiculoTelaConsulta telaConsultaVeiculo = new VeiculoTelaConsulta(desktopPane);
 		JMenuItem mntmVeiculo = new JMenuItem("Veiculo");
 		mnCadastro.add(mntmVeiculo);
 
-		OrgaoTelaConsulta telaConsultaOrgao = new OrgaoTelaConsulta(desktopPane);
+//		OrgaoTelaConsulta telaConsultaOrgao = new OrgaoTelaConsulta(desktopPane);
 		JMenuItem mntmOrgo = new JMenuItem("Org\u00E3o");
 		mnCadastro.add(mntmOrgo);
 
-		TelaConsultaInfracao telaConsultaInfracao = new TelaConsultaInfracao(desktopPane);
-		JMenuItem mntmInfrao = new JMenuItem("Infra\u00E7\u00E3o");
-		mntmInfrao.addActionListener(e -> {
+		JMenuItem mntmInfracao = new JMenuItem("Infração");
+		mntmInfracao.addActionListener(e -> {
+			InfracaoConsultaTela telaConsultaInfracao = new InfracaoConsultaTela(desktopPane, null);
 			telaConsultaInfracao.setVisible(true);
 			desktopPane.add(telaConsultaInfracao);
 		});
-		mnCadastro.add(mntmInfrao);
+		mnCadastro.add(mntmInfracao);
 
-		MultaTelaConsulta telaConsultaMulta = new MultaTelaConsulta(desktopPane);
+//		MultaTelaConsulta telaConsultaMulta = new MultaTelaConsulta(desktopPane);
 		JMenuItem mntmMulta = new JMenuItem("Multa");
-		mntmMulta.addActionListener(e -> {
-		    telaConsultaMulta.setVisible(true);
-		    desktopPane.add(telaConsultaMulta);
-        });
+//		mntmMulta.addActionListener(e -> {
+//		    telaConsultaMulta.setVisible(true);
+//		    desktopPane.add(telaConsultaMulta);
+//        });
 		mnCadastro.add(mntmMulta);
 
 
