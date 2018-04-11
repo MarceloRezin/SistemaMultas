@@ -1,8 +1,9 @@
 package proprietario;
 
+import commons.cadastros.Cadastro;
 import commons.enuns.Estado;
 
-public class Proprietario {
+public class Proprietario extends Cadastro{
 
     private String nome;
     private String cpf;
@@ -67,4 +68,9 @@ public class Proprietario {
     public void setCodigoHabilitacao(String codigoHabilitacao) {
         this.codigoHabilitacao = codigoHabilitacao;
     }
+
+	@Override
+	public String toString() {
+		return getNome();
+	}
 }

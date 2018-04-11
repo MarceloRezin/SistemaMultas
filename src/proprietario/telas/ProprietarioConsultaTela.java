@@ -1,16 +1,18 @@
 package proprietario.telas;
 
 import proprietario.listenner.ProprietarioConsultaListenner;
+import usuario.Usuario;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
-public class ProprietarioTelaConsulta extends JInternalFrame {
+public class ProprietarioConsultaTela extends JInternalFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 
-	public ProprietarioTelaConsulta(JDesktopPane jDesktopPane) {
+	public ProprietarioConsultaTela(JDesktopPane jDesktopPane) {
 		super("Consulta De Proprietario", false, true, false, false);
 		setBounds(100, 100, 256, 300);
 		contentPane = new JPanel();
@@ -18,7 +20,8 @@ public class ProprietarioTelaConsulta extends JInternalFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JList<Object> list = new JList<Object>();
+		JList<Usuario> list = new JList<Usuario>();
+
 		list.setBounds(10, 39, 220, 179);
 		list.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 		contentPane.add(list);
