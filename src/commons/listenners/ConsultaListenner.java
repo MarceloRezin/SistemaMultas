@@ -14,6 +14,7 @@ import javax.swing.event.ListSelectionListener;
 
 import commons.cadastros.Cadastro;
 import commons.telas.ConsultaTela;
+import infracao.telas.TelaCadastroInfracao;
 
 public abstract class ConsultaListenner<T extends Cadastro> implements ActionListener, ListSelectionListener {
 
@@ -21,12 +22,18 @@ public abstract class ConsultaListenner<T extends Cadastro> implements ActionLis
     private JButton btnNovo;
     private JList<T> list;
     private DefaultListModel<T> model;
+    private ConsultaTela<T> consultaTela;
 
     public ConsultaListenner(ConsultaTela<T> consultaTela) {
     	this.btnConsultar = consultaTela.getBtnConsulta();
         this.btnNovo = consultaTela.getBtnNovo();
         this.list = consultaTela.getList();
         this.model = consultaTela.getModel();
+        this.consultaTela = consultaTela;
+        
+        btnConsultar.addActionListener(this);
+        btnNovo.addActionListener(this);
+        list.addListSelectionListener(this);
     }
 
     @Override
@@ -51,9 +58,23 @@ public abstract class ConsultaListenner<T extends Cadastro> implements ActionLis
     	return model.get(list.getSelectedIndex());
     }
     
-    public abstract void eventoNovo();
+    public void eventoNovo() {
+    	System.out.println("Listenner -> Novo");
+		
+		getTela().dispose();
+		
+		TelaCadastroInfracao telaCadastroInfracao = new TelaCadastroInfracao(null);
+		
+		consultaTela.getjDesktopPane().add(telaCadastroInfracao);
+		
+		telaCadastroInfracao.setVisible(true);
+    }
     
 	public abstract void eventoConsultar();
 	
 	public abstract void eventoItemSelecionado();
+	
+	public ConsultaTela<T> getTela(){
+		return consultaTela;
+	}
 }

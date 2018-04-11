@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import java.awt.GridLayout;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JDesktopPane;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JList;
@@ -21,9 +22,12 @@ public class ConsultaTela<T extends Cadastro> extends JInternalFrame {
 	private JButton btnNovo;
 	private JList<T> list;
 	private JTextField campoPesquisa;
+	private JDesktopPane jDesktopPane;
 	
-	public ConsultaTela(String titulo, List<T> itens) {
+	public ConsultaTela(JDesktopPane jDesktopPane, String titulo, List<T> itens) {
+		setClosable(true);
 		this.itens = itens;
+		this.jDesktopPane = jDesktopPane;
 		setTitle(titulo);
 		setResizable(true);
 		setBounds(100, 100, 392, 423);
@@ -57,9 +61,11 @@ public class ConsultaTela<T extends Cadastro> extends JInternalFrame {
 	}
 	
 	private void adicionarItens() {
-		itens.forEach( i -> {
-			model.add(model.getSize(), i);
-		});
+		if(itens != null) {
+			itens.forEach( i -> {
+				model.add(model.getSize(), i);
+			});
+		}
 	}
 
 	public List<T> getItens() {
@@ -85,4 +91,8 @@ public class ConsultaTela<T extends Cadastro> extends JInternalFrame {
 	public JTextField getCampoPesquisa() {
 		return campoPesquisa;
 	}
+
+	public JDesktopPane getjDesktopPane() {
+		return jDesktopPane;
+	}	
 }
