@@ -1,9 +1,7 @@
 package infracao.listenner;
 
 import javax.swing.*;
-
 import commons.listenners.CadastroListenner;
-import commons.listenners.ConsultaListenner;
 
 public class InfracaoCadastroListenner extends CadastroListenner {
 

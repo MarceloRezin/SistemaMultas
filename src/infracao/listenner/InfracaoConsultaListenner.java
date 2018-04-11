@@ -1,17 +1,23 @@
 package infracao.listenner;
 
-import javax.swing.*;
 import commons.listenners.ConsultaListenner;
+import commons.telas.ConsultaTela;
+import infracao.Infracao;
 
-public class InfracaoConsultaListenner extends ConsultaListenner {
+public class InfracaoConsultaListenner extends ConsultaListenner<Infracao> {
+	
    
-    public InfracaoConsultaListenner(JDesktopPane jDesktopPane, JInternalFrame telaConsulta,
-			JInternalFrame telaCadastro, JButton consultar, JButton novo, JList<Object> list) {
-		super(jDesktopPane, telaConsulta, telaCadastro, consultar, novo, list);
+	public InfracaoConsultaListenner(ConsultaTela<Infracao> consultaTela) {
+		super(consultaTela);
 	}
 
 	@Override
     public void eventoConsultar() {
         System.out.println("Infracao -> Listar");
     }
+
+	@Override
+	public void eventoItemSelecionado() {
+		System.out.println("Infracao -> Item Selecionado:" + getItemListSelecionado());
+	}
 }

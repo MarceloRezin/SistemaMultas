@@ -1,8 +1,15 @@
 package infracao.telas;
 
-import infracao.listenner.InfracaoCadastroListenner;
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import infracao.Infracao;
+import infracao.listenner.InfracaoCadastroListenner;
 
 @SuppressWarnings("serial")
 public class TelaCadastroInfracao extends JInternalFrame {
@@ -10,7 +17,7 @@ public class TelaCadastroInfracao extends JInternalFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 
-	public TelaCadastroInfracao() {
+	public TelaCadastroInfracao(Infracao infracao) {
 		super("Cadastro de Infração", false, true, true, false);
 		setBounds(100, 100, 256, 300);
 		contentPane = new JPanel();
