@@ -1,11 +1,12 @@
 package multa.telas;
 
+import multa.Multa;
 import multa.listenner.MultaCadastroListenner;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
-public class MultaTelaCadastro extends JInternalFrame {
+public class MultaCadastroTela extends JInternalFrame {
 
     private JPanel contentPane;
     private JTextField txtVeiculo;
@@ -17,7 +18,7 @@ public class MultaTelaCadastro extends JInternalFrame {
     private JTextField textField;
 
 
-    public MultaTelaCadastro() {
+    public MultaCadastroTela(Multa intem) {
         super("Cadastro de Multa", false, true, true, false);
         setBounds(100, 100, 256, 398);
         contentPane = new JPanel();

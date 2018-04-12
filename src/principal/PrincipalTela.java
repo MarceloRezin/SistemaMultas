@@ -1,7 +1,7 @@
 package principal;
 
 import infracao.telas.InfracaoConsultaTela;
-import multa.telas.MultaTelaConsulta;
+import multa.telas.MultaConsultaTela;
 import orgao.telas.OrgaoTelaConsulta;
 import proprietario.Proprietario;
 import proprietario.telas.ProprietarioConsultaTela;
@@ -57,12 +57,12 @@ public class PrincipalTela extends JFrame {
 		});
 		mnCadastro.add(mntmInfracao);
 
-//		MultaTelaConsulta telaConsultaMulta = new MultaTelaConsulta(desktopPane);
 		JMenuItem mntmMulta = new JMenuItem("Multa");
-//		mntmMulta.addActionListener(e -> {
-//		    telaConsultaMulta.setVisible(true);
-//		    desktopPane.add(telaConsultaMulta);
-//        });
+		mntmMulta.addActionListener(e -> {
+			MultaConsultaTela telaConsultaMulta = new MultaConsultaTela(desktopPane, null);
+		    telaConsultaMulta.setVisible(true);
+		    desktopPane.add(telaConsultaMulta);
+        });
 		mnCadastro.add(mntmMulta);
 
 

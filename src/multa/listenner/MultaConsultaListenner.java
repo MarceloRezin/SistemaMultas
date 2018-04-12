@@ -1,13 +1,14 @@
 package multa.listenner;
 
-import javax.swing.*;
 import commons.listenners.ConsultaListenner;
+import commons.telas.ConsultaTela;
+import multa.Multa;
+import multa.telas.MultaCadastroTela;
 
-public class MultaConsultaListenner extends ConsultaListenner {
+public class MultaConsultaListenner extends ConsultaListenner<Multa> {
 
-    public MultaConsultaListenner(JDesktopPane jDesktopPane, JInternalFrame telaConsulta, JInternalFrame telaCadastro,
-			JButton consultar, JButton novo, JList<Object> list) {
-		super(jDesktopPane, telaConsulta, telaCadastro, consultar, novo, list);
+	public MultaConsultaListenner(ConsultaTela<Multa> consultaTela) {
+		super(consultaTela);
 	}
 
 	@Override
@@ -15,4 +16,18 @@ public class MultaConsultaListenner extends ConsultaListenner {
         System.out.println("Multa -> Listar");
     }
 
+	@Override
+	public void eventoItemSelecionado() {
+		System.out.println("Multa -> Item Selecionado:" + getItemListSelecionado());
+	}
+
+	@Override
+	public void eventoNovo() {
+		System.out.println("Multa -> Novo");
+		getTela().dispose();
+		MultaCadastroTela multaCadastroTela = new MultaCadastroTela(null);
+		getConsultaTela().getjDesktopPane().add(multaCadastroTela);
+		
+		multaCadastroTela.setVisible(true);
+	}
 }

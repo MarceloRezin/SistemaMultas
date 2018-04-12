@@ -1,5 +1,6 @@
 package multa;
 
+import commons.cadastros.Cadastro;
 import commons.enuns.Estado;
 import infracao.Infracao;
 import orgao.Orgao;
@@ -9,7 +10,7 @@ import veiculo.Veiculo;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Multa {
+public class Multa extends Cadastro{
     private Veiculo veiculo;
     private Infracao infracao;
     private Orgao orgao;
@@ -113,4 +114,9 @@ public class Multa {
     public void setCondutor(Proprietario condutor) {
         this.condutor = condutor;
     }
+
+	@Override
+	public String toString() {
+		return "Multa";
+	}
 }
