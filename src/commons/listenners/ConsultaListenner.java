@@ -11,10 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
 import commons.cadastros.Cadastro;
 import commons.telas.ConsultaTela;
-import infracao.telas.TelaCadastroInfracao;
 
 public abstract class ConsultaListenner<T extends Cadastro> implements ActionListener, ListSelectionListener {
 
