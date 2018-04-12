@@ -58,17 +58,11 @@ public abstract class ConsultaListenner<T extends Cadastro> implements ActionLis
     	return model.get(list.getSelectedIndex());
     }
     
-    public void eventoNovo() {
-    	System.out.println("Listenner -> Novo");
-		
-		getTela().dispose();
-		
-		TelaCadastroInfracao telaCadastroInfracao = new TelaCadastroInfracao(null);
-		
-		consultaTela.getjDesktopPane().add(telaCadastroInfracao);
-		
-		telaCadastroInfracao.setVisible(true);
-    }
+    public ConsultaTela<T> getConsultaTela() {
+		return consultaTela;
+	}
+
+	public abstract void eventoNovo();
     
 	public abstract void eventoConsultar();
 	
