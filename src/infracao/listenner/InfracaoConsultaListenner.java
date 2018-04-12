@@ -25,7 +25,7 @@ public class InfracaoConsultaListenner extends ConsultaListenner<Infracao> {
 
 	@Override
 	public void eventoNovo() {
-		System.out.println("Listenner -> Novo");
+		System.out.println("Infracao -> Novo");
 		
 		getTela().dispose();
 		
