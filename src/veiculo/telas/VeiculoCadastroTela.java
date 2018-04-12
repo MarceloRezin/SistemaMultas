@@ -1,10 +1,17 @@
 package veiculo.telas;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import veiculo.Veiculo;
+
 @SuppressWarnings("serial")
-public class VeiculoTelaCadastro extends JInternalFrame {
+public class VeiculoCadastroTela extends JInternalFrame {
 
 	private JPanel contentPane;
 	private JTextField txtMarca;
@@ -15,7 +22,7 @@ public class VeiculoTelaCadastro extends JInternalFrame {
 	private JTextField txtRenavam;
 	private JTextField txtProprietario;
 
-	public VeiculoTelaCadastro() {
+	public VeiculoCadastroTela(Veiculo item) {
 		super("Cadastro De Veiculo", false, true, true, false);
 		setBounds(100, 100, 256, 300);
 		contentPane = new JPanel();

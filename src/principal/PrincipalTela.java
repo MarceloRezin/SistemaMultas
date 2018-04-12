@@ -4,16 +4,10 @@ import infracao.telas.InfracaoConsultaTela;
 import multa.telas.MultaConsultaTela;
 import orgao.telas.OrgaoConsultaTela;
 import proprietario.telas.ProprietarioConsultaTela;
-import veiculo.telas.VeiculoTelaConsulta;
-
-import java.util.Collection;
-import java.util.stream.Collectors;
-
+import veiculo.telas.VeiculoConsultaTela;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
-
+@SuppressWarnings("serial")
 public class PrincipalTela extends JFrame {
 
 	private JDesktopPane desktopPane;
@@ -39,8 +33,12 @@ public class PrincipalTela extends JFrame {
 		});
 		mnCadastro.add(mntmProprietario);
 
-//		VeiculoTelaConsulta telaConsultaVeiculo = new VeiculoTelaConsulta(desktopPane);
 		JMenuItem mntmVeiculo = new JMenuItem("Veiculo");
+		mntmVeiculo.addActionListener( e -> {
+			VeiculoConsultaTela veiculoConsultaTela = new VeiculoConsultaTela(desktopPane, null);
+			veiculoConsultaTela.setVisible(true);
+			desktopPane.add(veiculoConsultaTela);
+		});
 		mnCadastro.add(mntmVeiculo);
 
 		JMenuItem mntmOrgo = new JMenuItem("Org\u00E3o");

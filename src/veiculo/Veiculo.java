@@ -1,9 +1,10 @@
 package veiculo;
 
+import commons.cadastros.Cadastro;
 import commons.enuns.Estado;
 import proprietario.Proprietario;
 
-public class Veiculo {
+public class Veiculo extends Cadastro{
     private String marca;
     private String modelo;
     private int ano;
@@ -87,4 +88,9 @@ public class Veiculo {
     public void setProprietario(Proprietario proprietario) {
         this.proprietario = proprietario;
     }
+
+	@Override
+	public String toString() {
+		return getMarca();
+	}
 }
