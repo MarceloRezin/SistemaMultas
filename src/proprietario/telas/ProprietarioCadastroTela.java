@@ -1,14 +1,17 @@
 package proprietario.telas;
 
-import proprietario.listenner.ProprietarioCadastroListenner;
-
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class ProprietarioTelaCadastro extends JInternalFrame {
+import proprietario.Proprietario;
+import proprietario.listenner.ProprietarioCadastroListenner;
+
+public class ProprietarioCadastroTela extends JInternalFrame {
 
     private JPanel contentPane;
     private JTextField textField;
@@ -18,7 +21,7 @@ public class ProprietarioTelaCadastro extends JInternalFrame {
     private JTextField textField_5;
 
 
-    public ProprietarioTelaCadastro() {
+    public ProprietarioCadastroTela(Proprietario item) {
         super("Cadastro de Prorpietário", false, true, true, false);
         setBounds(100, 100, 256, 300);
         contentPane = new JPanel();

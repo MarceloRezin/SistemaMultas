@@ -24,7 +24,6 @@ public class OrgaoConsultaListenner extends ConsultaListenner<Orgao> {
 		getConsultaTela().getjDesktopPane().add(orgaoCadastroTela);
 		
 		orgaoCadastroTela.setVisible(true);
-		
 	}
 
 	@Override
