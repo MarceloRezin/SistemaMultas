@@ -1,10 +1,17 @@
 package orgao.telas;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import orgao.Orgao;
+
 @SuppressWarnings("serial")
-public class OrgaoTelaCadastro extends JInternalFrame {
+public class OrgaoCadastroTela extends JInternalFrame {
 
     private JPanel contentPane;
     private JTextField txtNome;
@@ -12,7 +19,7 @@ public class OrgaoTelaCadastro extends JInternalFrame {
     private JTextField txtEndereco;
 
 
-    public OrgaoTelaCadastro() {
+    public OrgaoCadastroTela(Orgao item) {
         super("Cadastro de Orgão", false, true, true, false);
         setBounds(100, 100, 256, 300);
         contentPane = new JPanel();

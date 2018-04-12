@@ -1,8 +1,9 @@
 package orgao;
 
+import commons.cadastros.Cadastro;
 import commons.enuns.Estado;
 
-public class Orgao {
+public class Orgao extends Cadastro	{
 
     private String nome;
     private String endereco;
@@ -47,4 +48,9 @@ public class Orgao {
     public void setEstado(Estado estado) {
         this.estado = estado;
     }
+
+	@Override
+	public String toString() {
+		return getNome();
+	}
 }

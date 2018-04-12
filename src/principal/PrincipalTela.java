@@ -2,7 +2,7 @@ package principal;
 
 import infracao.telas.InfracaoConsultaTela;
 import multa.telas.MultaConsultaTela;
-import orgao.telas.OrgaoTelaConsulta;
+import orgao.telas.OrgaoConsultaTela;
 import proprietario.Proprietario;
 import proprietario.telas.ProprietarioConsultaTela;
 import proprietario.telas.ProprietarioTelaCadastro;
@@ -45,8 +45,12 @@ public class PrincipalTela extends JFrame {
 		JMenuItem mntmVeiculo = new JMenuItem("Veiculo");
 		mnCadastro.add(mntmVeiculo);
 
-//		OrgaoTelaConsulta telaConsultaOrgao = new OrgaoTelaConsulta(desktopPane);
 		JMenuItem mntmOrgo = new JMenuItem("Org\u00E3o");
+		mntmOrgo.addActionListener( e -> {
+			OrgaoConsultaTela orgaoConsultaTela = new OrgaoConsultaTela(desktopPane, null);
+			orgaoConsultaTela.setVisible(true);
+			desktopPane.add(orgaoConsultaTela);
+		});
 		mnCadastro.add(mntmOrgo);
 
 		JMenuItem mntmInfracao = new JMenuItem("Infração");
