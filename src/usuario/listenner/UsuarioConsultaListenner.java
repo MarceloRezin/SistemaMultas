@@ -1,18 +1,33 @@
 package usuario.listenner;
 
-import javax.swing.*;
-
 import commons.listenners.ConsultaListenner;
+import commons.telas.ConsultaTela;
+import usuario.Usuario;
+import usuario.telas.UsuarioCadastroTela;
 
-public class UsuarioConsultaListenner extends ConsultaListenner {
+public class UsuarioConsultaListenner extends ConsultaListenner<Usuario> {
 
-    public UsuarioConsultaListenner(JDesktopPane jDesktopPane, JInternalFrame telaConsulta, JInternalFrame telaCadastro,
-			JButton consultar, JButton novo, JList<Object> list) {
-		super(jDesktopPane, telaConsulta, telaCadastro, consultar, novo, list);
+   
+	public UsuarioConsultaListenner(ConsultaTela<Usuario> consultaTela) {
+		super(consultaTela);
 	}
 
 	@Override
     public void eventoConsultar() {
         System.out.println("Usuário -> Listar");
     }
+
+	@Override
+	public void eventoNovo() {
+		System.out.println("Usuario -> Novo");
+		getTela().dispose();
+		UsuarioCadastroTela usuarioCadastroTela = new UsuarioCadastroTela(null);
+		getConsultaTela().getjDesktopPane().add(usuarioCadastroTela);
+		usuarioCadastroTela.setVisible(true);
+	}
+
+	@Override
+	public void eventoItemSelecionado() {
+		System.out.println("Usuario -> Item Selecionado:" + getItemListSelecionado());
+	}
 }

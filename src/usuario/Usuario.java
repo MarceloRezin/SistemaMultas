@@ -1,6 +1,8 @@
 package usuario;
 
-public class Usuario {
+import commons.cadastros.Cadastro;
+
+public class Usuario extends Cadastro{
 
     private String usuario;
     private String senha;
@@ -35,4 +37,9 @@ public class Usuario {
     public void setAdmin(boolean admin) {
         this.admin = admin;
     }
+
+	@Override
+	public String toString() {
+		return getUsuario();
+	}
 }

@@ -12,12 +12,12 @@ import infracao.Infracao;
 import infracao.listenner.InfracaoCadastroListenner;
 
 @SuppressWarnings("serial")
-public class TelaCadastroInfracao extends JInternalFrame {
+public class InfracaoCadastroTela extends JInternalFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 
-	public TelaCadastroInfracao(Infracao infracao) {
+	public InfracaoCadastroTela(Infracao infracao) {
 		super("Cadastro de Infração", false, true, true, false);
 		setBounds(100, 100, 256, 300);
 		contentPane = new JPanel();

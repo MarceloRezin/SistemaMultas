@@ -1,13 +1,11 @@
 package usuario.listenner;
 
 import javax.swing.*;
-
 import commons.listenners.CadastroListenner;
-import commons.listenners.ConsultaListenner;
 
 public class UsuarioCadastroListenner extends CadastroListenner {
 
-    public UsuarioCadastroListenner(JButton listar, JButton salvar, JButton excluir, JButton voltar) {
+    public UsuarioCadastroListenner(JButton salvar, JButton excluir, JButton voltar) {
         super(salvar, excluir, voltar);
     }
 

@@ -4,6 +4,7 @@ import infracao.telas.InfracaoConsultaTela;
 import multa.telas.MultaConsultaTela;
 import orgao.telas.OrgaoConsultaTela;
 import proprietario.telas.ProprietarioConsultaTela;
+import usuario.telas.UsuarioConsultaTela;
 import veiculo.telas.VeiculoConsultaTela;
 import javax.swing.*;
 
@@ -41,7 +42,7 @@ public class PrincipalTela extends JFrame {
 		});
 		mnCadastro.add(mntmVeiculo);
 
-		JMenuItem mntmOrgo = new JMenuItem("Org\u00E3o");
+		JMenuItem mntmOrgo = new JMenuItem("Orgão");
 		mntmOrgo.addActionListener( e -> {
 			OrgaoConsultaTela orgaoConsultaTela = new OrgaoConsultaTela(desktopPane, null);
 			orgaoConsultaTela.setVisible(true);
@@ -64,13 +65,22 @@ public class PrincipalTela extends JFrame {
 		    desktopPane.add(telaConsultaMulta);
         });
 		mnCadastro.add(mntmMulta);
+		
+		JMenu mnUsuario = new JMenu("Usuarios");
+		JMenuItem gerenciarUsuarios = new JMenuItem("Gerenciar Usuários");
+		gerenciarUsuarios.addActionListener( e -> {
+			UsuarioConsultaTela usuarioConsultaTela = new UsuarioConsultaTela(desktopPane, null);
+			usuarioConsultaTela.setVisible(true);
+			desktopPane.add(usuarioConsultaTela);
+		});
+		mnUsuario.add(gerenciarUsuarios);
+		menuBar.add(mnUsuario);
 
 
 		JMenu mnSobre = new JMenu("Sobre");
 		JMenuItem mntSobre = new JMenuItem("Sobre o Software");
 		mnSobre.add(mntSobre);
 		menuBar.add(mnSobre);
-
 		mntSobre.addActionListener(e->{
 			JOptionPane.showMessageDialog(null,"Desenvolvedores: Lucas Claro e Marcelo Rezin \n Versão: 0.1","Sobre",JOptionPane.INFORMATION_MESSAGE);
 		});

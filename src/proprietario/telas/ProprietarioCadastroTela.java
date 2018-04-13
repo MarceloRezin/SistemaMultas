@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import proprietario.Proprietario;
 import proprietario.listenner.ProprietarioCadastroListenner;
 
+@SuppressWarnings("serial")
 public class ProprietarioCadastroTela extends JInternalFrame {
 
     private JPanel contentPane;

@@ -3,7 +3,7 @@ package infracao.listenner;
 import commons.listenners.ConsultaListenner;
 import commons.telas.ConsultaTela;
 import infracao.Infracao;
-import infracao.telas.TelaCadastroInfracao;
+import infracao.telas.InfracaoCadastroTela;
 
 public class InfracaoConsultaListenner extends ConsultaListenner<Infracao> {
 	
@@ -29,7 +29,7 @@ public class InfracaoConsultaListenner extends ConsultaListenner<Infracao> {
 		
 		getTela().dispose();
 		
-		TelaCadastroInfracao telaCadastroInfracao = new TelaCadastroInfracao(null);
+		InfracaoCadastroTela telaCadastroInfracao = new InfracaoCadastroTela(null);
 		
 		getConsultaTela().getjDesktopPane().add(telaCadastroInfracao);
 		

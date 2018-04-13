@@ -3,7 +3,6 @@ package proprietario.listenner;
 import javax.swing.*;
 
 import commons.listenners.CadastroListenner;
-import commons.listenners.ConsultaListenner;
 
 public class ProprietarioCadastroListenner extends CadastroListenner {
 
