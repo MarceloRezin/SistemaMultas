@@ -5,12 +5,37 @@ REGISTRO DE MULTAS
 	+Usuario
 	+Senha
 	+Admin
+	
+->Pessoa Física
+	+CPF
+	+Nome
+	+rg
+	+endereco
+	+cidade
+	+estado
+	+cep
+	+telefone
+	+email
+	
+->Pessoa juridica
+	+CNPJ
+	+razao social
+	+inscricao estadual
+	+endereco
+	+cidade
+	+estado
+	+cep
+	+telefone
+	+email
+	
+->Condutor
+	+pessoa fisica
+	+cod habilitacao
 
 ->Proprietario
-	+Nome
-	+CPF
-	+Endereco
-	+Cod. habilitacao
+	+ pessoa juridica
+	+ pessoa fisica
+	+condutor
 
 ->Veiculo
 	+Marca
