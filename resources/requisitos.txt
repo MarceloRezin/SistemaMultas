@@ -33,8 +33,7 @@ REGISTRO DE MULTAS
 	+cod habilitacao
 
 ->Proprietario
-	+ pessoa juridica
-	+ pessoa fisica
+	+id_pessoa
 	+condutor
 
 ->Veiculo
