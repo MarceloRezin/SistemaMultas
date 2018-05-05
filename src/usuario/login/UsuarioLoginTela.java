@@ -58,7 +58,7 @@ public class UsuarioLoginTela extends JFrame {
 		panelPrincipal.add(campoUsuario);
 		campoUsuario.setColumns(10);
 		
-		JLabel lblSenha = new JLabel("Senha");
+		JLabel lblSenha = new JLabel("Senha:");
 		panelPrincipal.add(lblSenha);
 		
 		campoSenha = new JPasswordField();
