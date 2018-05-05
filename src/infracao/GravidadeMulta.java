@@ -1,33 +1,48 @@
 package infracao;
 
+import commons.cadastros.Cadastro;
+
 import java.math.BigDecimal;
 
-public enum GravidadeMulta {
-    LEVE("Leve", new BigDecimal(88.38), 3),
-    MEDIA("Média", new BigDecimal(130.16), 4),
-    GRAVE("Grave", new BigDecimal(195.23), 5),
-    GRAVISSIMA("Gravíssima", new BigDecimal(293.47), 7);
+/**
+ * Leve: 88.38, 3
+ * Média: 130.16, 4
+ * Grave: 195.23, 5
+ * Gravíssima, 293.47, 7
 
+ */
 
-    private String descricao;
+public class GravidadeMulta extends Cadastro{
+    private TipoMulta tipoMulta;
     private BigDecimal valor;
-    private int numeroPontos;
+    private int pontos;
 
-    GravidadeMulta(String descricao, BigDecimal valor, int numeroPontos) {
-        this.descricao = descricao;
-        this.valor = valor;
-        this.numeroPontos = numeroPontos;
+    public TipoMulta getTipoMulta() {
+        return tipoMulta;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public void setTipoMulta(TipoMulta tipoMulta) {
+        this.tipoMulta = tipoMulta;
     }
 
     public BigDecimal getValor() {
         return valor;
     }
 
-    public int getNumeroPontos() {
-        return numeroPontos;
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
+    public int getPontos() {
+        return pontos;
+    }
+
+    public void setPontos(int pontos) {
+        this.pontos = pontos;
+    }
+
+    @Override
+    public String toString() {
+        return getTipoMulta().getDescricao();
     }
 }

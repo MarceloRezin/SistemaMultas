@@ -4,11 +4,11 @@ import commons.cadastros.Cadastro;
 
 public class Infracao extends Cadastro{
     private String descricao;
-    private GravidadeMulta gravidadeMulta;
+    private TipoMulta tipoMulta;
 
-    public Infracao(String descricao, GravidadeMulta gravidadeMulta) {
+    public Infracao(String descricao, TipoMulta tipoMulta) {
         this.descricao = descricao;
-        this.gravidadeMulta = gravidadeMulta;
+        this.tipoMulta = tipoMulta;
     }
 
     public String getDescricao() {
@@ -19,12 +19,12 @@ public class Infracao extends Cadastro{
         this.descricao = descricao;
     }
 
-    public GravidadeMulta getGravidadeMulta() {
-        return gravidadeMulta;
+    public TipoMulta getTipoMulta() {
+        return tipoMulta;
     }
 
-    public void setGravidadeMulta(GravidadeMulta gravidadeMulta) {
-        this.gravidadeMulta = gravidadeMulta;
+    public void setTipoMulta(TipoMulta tipoMulta) {
+        this.tipoMulta = tipoMulta;
     }
 
 	@Override

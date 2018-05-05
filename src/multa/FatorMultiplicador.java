@@ -7,7 +7,7 @@ public enum FatorMultiplicador {
     X3(3),
     X5(5),
     X10(10),
-    X20(10),
+    X20(20),
     X60(60);
 
     private int valor;

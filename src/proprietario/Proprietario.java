@@ -2,75 +2,32 @@ package proprietario;
 
 import commons.cadastros.Cadastro;
 import commons.enuns.Estado;
+import condutor.Condutor;
+import pessoa.Pessoa;
 
 public class Proprietario extends Cadastro{
 
-    private String nome;
-    private String cpf;
-    private String endereco;
-    private String cidade;
-    private Estado estado;
-    private String codigoHabilitacao;
+    private Pessoa pessoa;
+    private Condutor condutor;
 
-    public Proprietario(String nome, String cpf, String endereco, String cidade, Estado estado, String codigoHabilitacao) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.endereco = endereco;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.codigoHabilitacao = codigoHabilitacao;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public String getNome() {
-        return nome;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public Condutor getCondutor() {
+        return condutor;
     }
 
-    public String getCpf() {
-        return cpf;
+    public void setCondutor(Condutor condutor) {
+        this.condutor = condutor;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
-
-    public String getCodigoHabilitacao() {
-        return codigoHabilitacao;
-    }
-
-    public void setCodigoHabilitacao(String codigoHabilitacao) {
-        this.codigoHabilitacao = codigoHabilitacao;
-    }
-
-	@Override
+    @Override
 	public String toString() {
-		return getNome();
+		return getPessoa().getNomeRazaoSocial() + " / " + getPessoa().getCpfCnpj();
 	}
 }
