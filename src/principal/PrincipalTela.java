@@ -8,15 +8,13 @@ import usuario.telas.UsuarioConsultaTela;
 import veiculo.telas.VeiculoConsultaTela;
 import javax.swing.*;
 
-@SuppressWarnings("serial")
 public class PrincipalTela extends JFrame {
-
 	private JDesktopPane desktopPane;
 
 	public PrincipalTela() {
 		setTitle("Sistema de Multas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 700, 500);
+		setBounds(100, 100, 1000, 600);
 
 		desktopPane = new JDesktopPane();
 		
