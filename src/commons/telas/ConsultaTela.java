@@ -53,6 +53,7 @@ public class ConsultaTela<T extends Cadastro> extends JInternalFrame {
 		
 		JPanel panelCentro = new JPanel();
 		getContentPane().add(panelCentro, BorderLayout.CENTER);
+		panelCentro.setLayout(new BorderLayout(0, 0));
 		
 		list = new JList<T>(model);
 		panelCentro.add(list);
