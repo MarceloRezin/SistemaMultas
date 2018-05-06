@@ -1,7 +1,6 @@
-package infracao;
+package gravidademulta;
 
 public enum TipoMulta {
-
     LEVE("Leve"),
     MEDIA("Média"),
     GRAVE("Grave"),
