@@ -28,6 +28,10 @@ public class UsuarioConsultaListenner extends ConsultaListenner<Usuario> {
 
 	@Override
 	public void eventoItemSelecionado() {
-		System.out.println("Usuario -> Item Selecionado:" + getItemListSelecionado());
+		getTela().dispose();
+		UsuarioCadastroTela usuarioCadastroTela = new UsuarioCadastroTela(getItemListSelecionado());
+		getConsultaTela().getjDesktopPane().add(usuarioCadastroTela);
+		usuarioCadastroTela.setVisible(true);
+//		System.out.println("Usuario -> Item Selecionado:" + getItemListSelecionado());
 	}
 }

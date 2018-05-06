@@ -7,8 +7,13 @@ import orgao.Orgao;
 import proprietario.Proprietario;
 import veiculo.Veiculo;
 
+import java.math.BigDecimal;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Multa extends Cadastro{
     private Veiculo veiculo;
@@ -21,8 +26,9 @@ public class Multa extends Cadastro{
     private Estado estado;
     private FatorMultiplicador fatorMultiplicador;
     private Proprietario condutor;
+    private BigDecimal valorFinal;
 
-    public Multa(Veiculo veiculo, Infracao infracao, Orgao orgao, LocalDateTime dataHoraEmissao, LocalDate dataVencimento, String endereco, String cidade, Estado estado, FatorMultiplicador fatorMultiplicador, Proprietario condutor) {
+    public Multa(Veiculo veiculo, Infracao infracao, Orgao orgao, LocalDateTime dataHoraEmissao, LocalDate dataVencimento, String endereco, String cidade, Estado estado, FatorMultiplicador fatorMultiplicador, Proprietario condutor, BigDecimal valorFinal) {
         this.veiculo = veiculo;
         this.infracao = infracao;
         this.orgao = orgao;
@@ -33,6 +39,7 @@ public class Multa extends Cadastro{
         this.estado = estado;
         this.fatorMultiplicador = fatorMultiplicador;
         this.condutor = condutor;
+        this.valorFinal = valorFinal;
     }
 
     public Veiculo getVeiculo() {
@@ -115,8 +122,36 @@ public class Multa extends Cadastro{
         this.condutor = condutor;
     }
 
-	@Override
+    public BigDecimal getValorFinal() {
+        return valorFinal;
+    }
+
+    public void setValorFinal(BigDecimal valorFinal) {
+        this.valorFinal = valorFinal;
+    }
+
+    @Override
 	public String toString() {
 		return "Multa";
 	}
+
+    @Override
+    public String getNomeTabela() {
+        return null;
+    }
+
+    @Override
+    public String getColunas() {
+        return null;
+    }
+
+    @Override
+    public void setStatements(PreparedStatement stmt) throws SQLException {
+
+    }
+
+    @Override
+    public List<Cadastro> resultSetToList(ResultSet rs) throws SQLException {
+        return null;
+    }
 }

@@ -3,6 +3,11 @@ package orgao;
 import commons.cadastros.Cadastro;
 import commons.enuns.Estado;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
 public class Orgao extends Cadastro	{
 
     private String nome;
@@ -53,4 +58,24 @@ public class Orgao extends Cadastro	{
 	public String toString() {
 		return getNome();
 	}
+
+    @Override
+    public String getNomeTabela() {
+        return null;
+    }
+
+    @Override
+    public String getColunas() {
+        return null;
+    }
+
+    @Override
+    public void setStatements(PreparedStatement stmt) throws SQLException {
+
+    }
+
+    @Override
+    public List<Cadastro> resultSetToList(ResultSet rs) throws SQLException {
+        return null;
+    }
 }

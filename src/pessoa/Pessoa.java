@@ -3,6 +3,11 @@ package pessoa;
 import commons.cadastros.Cadastro;
 import commons.enuns.Estado;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
 public class Pessoa extends Cadastro{
 
     private String cpfCnpj;
@@ -98,6 +103,25 @@ public class Pessoa extends Cadastro{
 
     @Override
     public String toString() {
-        return "";
+        return getNomeRazaoSocial() +  "/" + getCpfCnpj();
+    }
+
+    @Override
+    public String getNomeTabela() {
+        return "pessoas";
+    }
+
+    @Override
+    public String getColunas() {
+        return "cpf_cnpj,nome_razao_social,rg_inscricao_estadual,endereco,cidade,estado,cep,telefone,email,tipo_pessoa";
+    }
+
+    @Override
+    public void setStatements(PreparedStatement stmt) throws SQLException {
+    }
+
+    @Override
+    public List<Cadastro> resultSetToList(ResultSet rs) throws SQLException {
+        return null;
     }
 }

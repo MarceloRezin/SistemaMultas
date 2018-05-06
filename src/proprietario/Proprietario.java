@@ -5,6 +5,11 @@ import commons.enuns.Estado;
 import condutor.Condutor;
 import pessoa.Pessoa;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
 public class Proprietario extends Cadastro{
 
     private Pessoa pessoa;
@@ -30,4 +35,24 @@ public class Proprietario extends Cadastro{
 	public String toString() {
 		return getPessoa().getNomeRazaoSocial() + " / " + getPessoa().getCpfCnpj();
 	}
+
+    @Override
+    public String getNomeTabela() {
+        return null;
+    }
+
+    @Override
+    public String getColunas() {
+        return null;
+    }
+
+    @Override
+    public void setStatements(PreparedStatement stmt) throws SQLException {
+
+    }
+
+    @Override
+    public List<Cadastro> resultSetToList(ResultSet rs) throws SQLException {
+        return null;
+    }
 }
