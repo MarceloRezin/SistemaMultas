@@ -1,73 +1,71 @@
 REGISTRO DE MULTAS
 
+Todas as tabelas possuem o campo ID
 
 ->Login
-	+Usuario
-	+Senha
-	+Admin
+	+usuario
+	+senha
+	+admin
 	
-->Pessoa Física
-	+CPF
-	+Nome
-	+rg
+->Pessoa
+	+cpfCnpj
+	+nomeRazaoSocial
+	+rgInscricaoEstadual
 	+endereco
 	+cidade
 	+estado
 	+cep
 	+telefone
 	+email
-	
-->Pessoa juridica
-	+CNPJ
-	+razao social
-	+inscricao estadual
-	+endereco
-	+cidade
-	+estado
-	+cep
-	+telefone
-	+email
-	
+	+tipoPessoa
+
 ->Condutor
-	+pessoa fisica
-	+cod habilitacao
+	+Pessoa (apenas fisica)
+	+codHabilitacao
 
 ->Proprietario
 	+id_pessoa
-	+condutor
+	+condutor (id, pois pode ser nulo)
 
 ->Veiculo
-	+Marca
-	+Modelo
-	+Ano
-	+UF
-	+Cidade
-	+Renavam
-	+Cor predominante
+	+marca
+	+modelo
+	+ano
+	+placa
+	+uf
+	+cidade
+	+renavam
+	+corPredominante
 	+Proprietario
 
 ->Orgao
-	+Nome
-	+Endereco
-	+Cidade
-	+UF
+	+nome
+	+endereco
+	+cidade
+	+uf
+
+->GravidadeMulta
+    +TipoMulta
+    +valor
+    +numeroPontos
 
 ->Infração
-	+Descricao
-	+Tipo(Grave, Gravissima, etc)
-	+Valor
-	+Pontos na Carterira
+	+descricao
+	+GravidadeMulta
 
 	-> Tipos e fator multiplicador para regras de negocio: https://doutormultas.com.br/gravidade-multas-transito-valor/
 
 ->Multa
-	+Veiculo
-	+Infracao
-	+Orgao
-	+Data emissao
-	+Data vencimento
-	+Local(Detalhar)
-	+Fator multiplicador
-	+Condutor(Proprietario ou nao)
+	+veiculo
+	+infracao
+	+orgao
+	+data emissao
+	+data vencimento
+	+endereco
+	+cidade
+	+uf
+	+fatorMultiplicador
+	+valorFinal
+	+condutor(id, pois pode ser nulo)
 
 
