@@ -1,5 +1,6 @@
 package principal;
 
+import banco.Banco;
 import infracao.telas.InfracaoConsultaTela;
 import multa.telas.MultaConsultaTela;
 import orgao.telas.OrgaoConsultaTela;
@@ -7,6 +8,8 @@ import proprietario.telas.ProprietarioConsultaTela;
 import usuario.telas.UsuarioConsultaTela;
 import veiculo.telas.VeiculoConsultaTela;
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class PrincipalTela extends JFrame {
 	private JDesktopPane desktopPane;
@@ -82,6 +85,14 @@ public class PrincipalTela extends JFrame {
 		mntSobre.addActionListener(e->{
 			JOptionPane.showMessageDialog(null,"Desenvolvedores: Lucas Claro e Marcelo Rezin \n Versão: 0.1","Sobre",JOptionPane.INFORMATION_MESSAGE);
 		});
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                Banco.fecharConexao();
+                super.windowClosing(e);
+            }
+        });
 
 		setContentPane(desktopPane);
 	}

@@ -1,5 +1,7 @@
 package usuario.login;
 
+import banco.Banco;
+
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,6 +12,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import java.awt.Component;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.Box;
 
 @SuppressWarnings("serial")
@@ -82,8 +86,15 @@ public class UsuarioLoginTela extends JFrame {
 		
 		Component espaco5 = Box.createHorizontalStrut(20);
 		contentPane.add(espaco5, BorderLayout.EAST);
+
+		addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                Banco.fecharConexao();
+                super.windowClosing(e);
+            }
+        });
 		
 		new UsuarioLoginListenner(btnEntrar, this);
-	
 	}
 }
