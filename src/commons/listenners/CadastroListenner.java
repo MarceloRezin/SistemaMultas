@@ -3,20 +3,26 @@
 * */
 package commons.listenners;
 
+import banco.Banco;
+import commons.cadastros.Cadastro;
+import commons.telas.CadastroTela;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public abstract class CadastroListenner implements ActionListener {
+public abstract class CadastroListenner<T extends Cadastro> implements ActionListener {
 
     private JButton salvar;
     private JButton excluir;
     private JButton voltar;
+    private CadastroTela<T> cadastroTela;
 
-    public CadastroListenner(JButton salvar, JButton excluir, JButton voltar) {
-        this.salvar = salvar;
-        this.excluir = excluir;
-        this.voltar = voltar;
+    public CadastroListenner(CadastroTela<T> cadastroTela){
+        this.cadastroTela = cadastroTela;
+        this.salvar = cadastroTela.getBtnSalvar();
+        this.excluir = cadastroTela.getBtnExcluir();
+        this.voltar = cadastroTela.getBtnVoltar();
 
         salvar.addActionListener(this);
         excluir.addActionListener(this);
@@ -34,7 +40,10 @@ public abstract class CadastroListenner implements ActionListener {
         }
     }
 
-    public abstract void eventoSalvar();
+    public void eventoSalvar(){
+        Banco.save(cadastroTela.telaToObjeto());
+    }
+
     public abstract void eventoExcluir();
     public abstract void eventoVoltar();
 }
