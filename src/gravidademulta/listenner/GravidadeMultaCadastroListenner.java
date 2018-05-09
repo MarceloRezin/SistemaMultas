@@ -16,9 +16,4 @@ public class GravidadeMultaCadastroListenner extends CadastroListenner {
     public void eventoExcluir() {
         System.out.println("Gravidade Multa -> Excluir");
     }
-
-    @Override
-    public void eventoVoltar() {
-        System.out.println("Gravidade Multa -> Voltar");
-    }
 }

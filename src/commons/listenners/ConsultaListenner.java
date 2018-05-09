@@ -72,7 +72,7 @@ public abstract class ConsultaListenner<T extends Cadastro> implements ActionLis
 	}
 
 	public void abrirCadastro(CadastroTela cadastroTela){
-        getTela().dispose();
+        getTela().setVisible(false);
 
         getConsultaTela().getjDesktopPane().add(cadastroTela);
 

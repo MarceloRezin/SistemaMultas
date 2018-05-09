@@ -45,5 +45,9 @@ public abstract class CadastroListenner<T extends Cadastro> implements ActionLis
     }
 
     public abstract void eventoExcluir();
-    public abstract void eventoVoltar();
+
+    public void eventoVoltar(){
+        cadastroTela.getConsultaTela().setVisible(true);
+        cadastroTela.dispose();
+    }
 }
