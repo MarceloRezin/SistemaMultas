@@ -13,7 +13,7 @@ public abstract class CadastroTela<T extends Cadastro> extends JInternalFrame{
         this.objeto = objeto;
         this.consultaTela = consultaTela;
 
-        initComponenets();
+        initComponentes();
 
         objetoToTela();
     }
@@ -36,7 +36,7 @@ public abstract class CadastroTela<T extends Cadastro> extends JInternalFrame{
      */
     public abstract void objetoToTela();
 
-    public abstract void initComponenets();
+    public abstract void initComponentes();
 
     public abstract  JButton getBtnSalvar();
     public abstract  JButton getBtnExcluir();
