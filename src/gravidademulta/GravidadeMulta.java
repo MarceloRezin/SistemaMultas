@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,6 +22,14 @@ public class GravidadeMulta extends Cadastro{
     private BigDecimal valor;
     private int pontos;
 
+    public GravidadeMulta() {}
+
+    public GravidadeMulta(TipoMulta tipoMulta, BigDecimal valor, int pontos) {
+        this.tipoMulta = tipoMulta;
+        this.valor = valor;
+        this.pontos = pontos;
+    }
+
     public TipoMulta getTipoMulta() {
         return tipoMulta;
     }
@@ -30,7 +39,7 @@ public class GravidadeMulta extends Cadastro{
     }
 
     public BigDecimal getValor() {
-        return valor;
+        return valor == null ? BigDecimal.ZERO : valor;
     }
 
     public void setValor(BigDecimal valor) {
@@ -52,21 +61,35 @@ public class GravidadeMulta extends Cadastro{
 
     @Override
     public String getNomeTabela() {
-        return null;
+        return "gravidade_multas";
     }
 
     @Override
     public String getColunas() {
-        return null;
+        return "tipo,valor,num_pontos";
     }
 
     @Override
     public void setStatements(PreparedStatement stmt) throws SQLException {
-
+        stmt.setString(1,getTipoMulta().toString());
+        stmt.setBigDecimal(2, getValor());
+        stmt.setInt(3, getPontos());
     }
 
     @Override
-    public List<Cadastro> resultSetToList(ResultSet rs) throws SQLException {
-        return null;
+    public List resultSetToList(ResultSet rs) throws SQLException {
+        List<Cadastro> gravidadeMultas = new ArrayList<>();
+
+        while (rs.next()){
+            GravidadeMulta gravidadeMulta = new GravidadeMulta();
+
+            gravidadeMulta.setId(rs.getInt("id"));
+            gravidadeMulta.setTipoMulta(TipoMulta.valueOf(rs.getString("tipo")));
+            gravidadeMulta.setValor(rs.getBigDecimal("valor"));
+            gravidadeMulta.setPontos(rs.getInt("num_pontos"));
+
+            gravidadeMultas.add(gravidadeMulta);
+        }
+        return gravidadeMultas;
     }
 }
