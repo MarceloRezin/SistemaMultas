@@ -1,6 +1,7 @@
 package principal;
 
 import banco.Banco;
+import gravidademulta.telas.GravidadeMultaConsultaTela;
 import infracao.telas.InfracaoConsultaTela;
 import multa.telas.MultaConsultaTela;
 import orgao.telas.OrgaoConsultaTela;
@@ -50,6 +51,14 @@ public class PrincipalTela extends JFrame {
 			desktopPane.add(orgaoConsultaTela);
 		});
 		mnCadastro.add(mntmOrgo);
+
+		JMenuItem mntmGravidadeMulta = new JMenuItem("Gravidade das Multas");
+        mntmGravidadeMulta.addActionListener(e -> {
+            GravidadeMultaConsultaTela gravidadeMultaConsultaTela = new GravidadeMultaConsultaTela(desktopPane);
+            gravidadeMultaConsultaTela.setVisible(true);
+			desktopPane.add(gravidadeMultaConsultaTela);
+		});
+		mnCadastro.add(mntmGravidadeMulta);
 
 		JMenuItem mntmInfracao = new JMenuItem("Infração");
 		mntmInfracao.addActionListener(e -> {
