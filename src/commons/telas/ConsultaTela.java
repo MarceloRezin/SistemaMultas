@@ -69,6 +69,14 @@ public class ConsultaTela<T extends Cadastro> extends JInternalFrame {
 		}
 	}
 
+	public void adicionarItens(List<T> novosItens){
+	    this.itens = novosItens;
+
+	    model.removeAllElements();
+
+	    adicionarItens();
+    }
+
 	public List<T> getItens() {
 		return itens;
 	}
