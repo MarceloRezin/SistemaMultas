@@ -1,5 +1,6 @@
 package banco;
 
+import commons.Utils;
 import commons.cadastros.Cadastro;
 
 import java.sql.*;
@@ -70,7 +71,11 @@ public class Banco{
     }
 
     public static List select(Cadastro cadastro){
-        String  sql = "SELECT * FROM " + cadastro.getNomeTabela();
+        return selectComWhere(cadastro, "");
+    }
+
+    public static List selectComWhere(Cadastro cadastro, String where){
+        String  sql = "SELECT * FROM " + cadastro.getNomeTabela() + (Utils.isNulaOuVazia(where) ? "" : " " + where);
 
         try{
             Statement st = conexao.createStatement();
