@@ -12,6 +12,7 @@ import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import commons.cadastros.Cadastro;
+import commons.telas.CadastroTela;
 import commons.telas.ConsultaTela;
 
 public abstract class ConsultaListenner<T extends Cadastro> implements ActionListener, ListSelectionListener {
@@ -69,4 +70,12 @@ public abstract class ConsultaListenner<T extends Cadastro> implements ActionLis
 	public ConsultaTela<T> getTela(){
 		return consultaTela;
 	}
+
+	public void openCadastro(CadastroTela cadastroTela){
+        getTela().dispose();
+
+        getConsultaTela().getjDesktopPane().add(cadastroTela);
+
+        cadastroTela.setVisible(true);
+    }
 }
