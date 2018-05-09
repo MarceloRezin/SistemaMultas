@@ -8,9 +8,12 @@ public abstract class CadastroTela<T extends Cadastro> extends JInternalFrame{
     private T objeto;
     private ConsultaTela<T> consultaTela;
 
-    public CadastroTela(T objeto, ConsultaTela<T> consultaTela){
+    public CadastroTela(String titulo, T objeto, ConsultaTela<T> consultaTela){
+        super(titulo, false, true, true, false);
         this.objeto = objeto;
         this.consultaTela = consultaTela;
+
+        initComponenets();
 
         objetoToTela();
     }
@@ -32,6 +35,8 @@ public abstract class CadastroTela<T extends Cadastro> extends JInternalFrame{
      * Transforma o objeto nos campos da tela
      */
     public abstract void objetoToTela();
+
+    public abstract void initComponenets();
 
     public abstract  JButton getBtnSalvar();
     public abstract  JButton getBtnExcluir();
