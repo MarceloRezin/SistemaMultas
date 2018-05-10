@@ -80,7 +80,8 @@ public class Banco{
     }
 
     public static List select(Cadastro cadastro){
-        return selectComWhere(cadastro, "");
+        //TODO: melhorar a maneira de ordenção
+        return selectComWhere(cadastro, "ORDER BY tipo ASC");
     }
 
     public static List selectComWhere(Cadastro cadastro, String where){
