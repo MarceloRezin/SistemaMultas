@@ -29,7 +29,7 @@ public class GravidadeMultaConsultaListenner extends ConsultaListenner<Gravidade
             gravidadeMultas = Banco.select(new GravidadeMulta());
         }
 
-        getConsultaTela().adicionarItens(gravidadeMultas);
+        getConsultaTela().listarTodosItens(gravidadeMultas);
     }
 
 	@Override

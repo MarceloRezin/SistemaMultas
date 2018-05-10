@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JList;
 
 @SuppressWarnings("serial")
-public class ConsultaTela<T extends Cadastro> extends JInternalFrame {
+public abstract class ConsultaTela<T extends Cadastro> extends JInternalFrame {
 	
 	private List<T> itens;
 	private DefaultListModel<T> model = new DefaultListModel<>();
@@ -24,9 +24,8 @@ public class ConsultaTela<T extends Cadastro> extends JInternalFrame {
 	private JTextField campoPesquisa;
 	private JDesktopPane jDesktopPane;
 	
-	public ConsultaTela(JDesktopPane jDesktopPane, String titulo, List<T> itens) {
+	public ConsultaTela(JDesktopPane jDesktopPane, String titulo) {
 		setClosable(true);
-		this.itens = itens;
 		this.jDesktopPane = jDesktopPane;
 		setTitle(titulo);
 		setResizable(true);
@@ -57,24 +56,28 @@ public class ConsultaTela<T extends Cadastro> extends JInternalFrame {
 		
 		list = new JList<T>(model);
 		panelCentro.add(list);
-		
-		adicionarItens();
+
+        listarTodosItens();
 	}
 	
-	private void adicionarItens() {
-		if(itens != null) {
+	private void adiconarItens() {
+	    if(itens != null) {
+            model.removeAllElements();
+
 			itens.forEach( i -> {
 				model.add(model.getSize(), i);
 			});
 		}
 	}
 
-	public void adicionarItens(List<T> novosItens){
+	public void listarTodosItens(List<T> novosItens){
 	    this.itens = novosItens;
+        adiconarItens();
+    }
 
-	    model.removeAllElements();
-
-	    adicionarItens();
+    public void listarTodosItens(){
+	    this.itens = getItensBanco();
+	    adiconarItens();
     }
 
 	public List<T> getItens() {
@@ -103,5 +106,7 @@ public class ConsultaTela<T extends Cadastro> extends JInternalFrame {
 
 	public JDesktopPane getjDesktopPane() {
 		return jDesktopPane;
-	}	
+	}
+
+    public abstract List<T> getItensBanco();
 }

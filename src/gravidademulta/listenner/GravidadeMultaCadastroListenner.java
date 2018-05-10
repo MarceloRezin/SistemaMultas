@@ -11,5 +11,4 @@ public class GravidadeMultaCadastroListenner extends CadastroListenner {
     public GravidadeMultaCadastroListenner(CadastroTela cadastroTela) {
         super(cadastroTela);
     }
-
 }
