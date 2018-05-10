@@ -3,6 +3,7 @@ package main;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import banco.Banco;
+import principal.PrincipalTela;
 import usuario.login.UsuarioLoginTela;
 
 
@@ -19,6 +20,6 @@ public class Main {
 
         Banco.iniciarConexao();
 
-        new UsuarioLoginTela().setVisible(true);
+		new PrincipalTela().setVisible(true);
     }
 }
