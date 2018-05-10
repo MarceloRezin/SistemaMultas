@@ -9,8 +9,13 @@ import commons.telas.ConsultaTela;
 @SuppressWarnings("serial")
 public class MultaConsultaTela extends ConsultaTela<Multa> {
 
-	public MultaConsultaTela(JDesktopPane jDesktopPane, List<Multa> itens) {
-		super(jDesktopPane, "Listagem multas", itens);
+	public MultaConsultaTela(JDesktopPane jDesktopPane) {
+		super(jDesktopPane, "Listagem multas");
 		new MultaConsultaListenner(this);
+	}
+
+	@Override
+	public List<Multa> getItensBanco() {
+		return null;
 	}
 }

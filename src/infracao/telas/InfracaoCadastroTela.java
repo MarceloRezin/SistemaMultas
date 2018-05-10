@@ -58,6 +58,6 @@ public class InfracaoCadastroTela extends JInternalFrame {
 		btnVoltar.setBounds(163, 226, 68, 23);
 		contentPane.add(btnVoltar);
 
-		new InfracaoCadastroListenner(btnSalvar, btnExcluir, btnVoltar);
+		new InfracaoCadastroListenner(null);
 	}
 }

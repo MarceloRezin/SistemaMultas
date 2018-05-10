@@ -9,8 +9,13 @@ import commons.telas.ConsultaTela;
 @SuppressWarnings("serial")
 public class InfracaoConsultaTela extends ConsultaTela<Infracao>{
 	
-	public InfracaoConsultaTela(JDesktopPane jDesktopPane, List<Infracao> itens) {
-		super(jDesktopPane, "Consulta de Infrações", itens);
+	public InfracaoConsultaTela(JDesktopPane jDesktopPane) {
+		super(jDesktopPane, "Consulta de Infrações");
 		new InfracaoConsultaListenner(this);
+	}
+
+	@Override
+	public List<Infracao> getItensBanco() {
+		return null;
 	}
 }

@@ -3,11 +3,12 @@ package proprietario.listenner;
 import javax.swing.*;
 
 import commons.listenners.CadastroListenner;
+import commons.telas.CadastroTela;
 
 public class ProprietarioCadastroListenner extends CadastroListenner {
 
-    public ProprietarioCadastroListenner(JButton salvar, JButton excluir, JButton voltar) {
-        super(salvar, excluir, voltar);
+    public ProprietarioCadastroListenner(CadastroTela cadastroTela) {
+        super(cadastroTela);
     }
 
     @Override

@@ -11,10 +11,13 @@ import proprietario.listenner.ProprietarioConsultaListenner;
 @SuppressWarnings("serial")
 public class ProprietarioConsultaTela extends ConsultaTela<Proprietario> {
 
-	public ProprietarioConsultaTela(JDesktopPane jDesktopPane, List<Proprietario> itens) {
-		super(jDesktopPane, "Listagem proprietario", itens);
+	public ProprietarioConsultaTela(JDesktopPane jDesktopPane) {
+		super(jDesktopPane, "Listagem proprietario");
 		new ProprietarioConsultaListenner(this);
 	}
 
-	
+	@Override
+	public List<Proprietario> getItensBanco() {
+		return null;
+	}
 }

@@ -2,11 +2,12 @@ package usuario.listenner;
 
 import javax.swing.*;
 import commons.listenners.CadastroListenner;
+import commons.telas.CadastroTela;
 
 public class UsuarioCadastroListenner extends CadastroListenner {
 
-    public UsuarioCadastroListenner(JButton salvar, JButton excluir, JButton voltar) {
-        super(salvar, excluir, voltar);
+    public UsuarioCadastroListenner(CadastroTela cadastroTela) {
+        super(cadastroTela);
     }
 
     @Override

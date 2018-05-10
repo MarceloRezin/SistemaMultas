@@ -2,11 +2,13 @@ package multa.listenner;
 
 import javax.swing.*;
 import commons.listenners.CadastroListenner;
+import commons.telas.CadastroTela;
 
 public class MultaCadastroListenner extends CadastroListenner {
 
-    public MultaCadastroListenner(JButton salvar, JButton excluir, JButton voltar) {
-        super(salvar, excluir, voltar);
+
+    public MultaCadastroListenner(CadastroTela cadastroTela) {
+        super(cadastroTela);
     }
 
     @Override

@@ -95,6 +95,6 @@ public class ProprietarioCadastroTela extends JInternalFrame {
         btnVoltar.setBounds(166, 226, 68, 23);
         contentPane.add(btnVoltar);
 
-        new ProprietarioCadastroListenner(btnSalvar, btnExcluir, btnVoltar);
+        new ProprietarioCadastroListenner(null);
     }
 }

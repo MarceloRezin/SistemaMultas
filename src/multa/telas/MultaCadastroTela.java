@@ -125,6 +125,6 @@ public class MultaCadastroTela extends JInternalFrame {
         btnVoltar.setBounds(166, 324, 68, 23);
         contentPane.add(btnVoltar);
 
-        new MultaCadastroListenner(btnSalvar, btnExcluir, btnVoltar);
+        new MultaCadastroListenner(null);
     }
 }

@@ -78,7 +78,7 @@ public class UsuarioCadastroTela extends JInternalFrame {
 		JButton btnVoltar = new JButton("Voltar");
 		painelSul.add(btnVoltar);
 		
-		new UsuarioCadastroListenner(btnSalvar, btnExcluir, btnVoltar);
+		new UsuarioCadastroListenner(null);
 	}
 
 }

@@ -4,11 +4,12 @@ import javax.swing.*;
 
 import commons.listenners.CadastroListenner;
 import commons.listenners.ConsultaListenner;
+import commons.telas.CadastroTela;
 
 public class VeiculoCadastroListenner extends CadastroListenner {
 
-    public VeiculoCadastroListenner(JButton listar, JButton salvar, JButton excluir, JButton voltar) {
-        super(salvar, excluir, voltar);
+    public VeiculoCadastroListenner(CadastroTela cadastroTela) {
+        super(cadastroTela);
     }
 
     @Override

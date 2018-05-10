@@ -30,7 +30,7 @@ public class PrincipalTela extends JFrame {
 
 		JMenuItem mntmProprietario = new JMenuItem("Proprietario");
 		mntmProprietario.addActionListener( e -> {
-			ProprietarioConsultaTela proprietarioConsultaTela = new ProprietarioConsultaTela(desktopPane, null);
+			ProprietarioConsultaTela proprietarioConsultaTela = new ProprietarioConsultaTela(desktopPane);
 			proprietarioConsultaTela.setVisible(true);
 			desktopPane.add(proprietarioConsultaTela);
 		});
@@ -38,7 +38,7 @@ public class PrincipalTela extends JFrame {
 
 		JMenuItem mntmVeiculo = new JMenuItem("Veiculo");
 		mntmVeiculo.addActionListener( e -> {
-			VeiculoConsultaTela veiculoConsultaTela = new VeiculoConsultaTela(desktopPane, null);
+			VeiculoConsultaTela veiculoConsultaTela = new VeiculoConsultaTela(desktopPane);
 			veiculoConsultaTela.setVisible(true);
 			desktopPane.add(veiculoConsultaTela);
 		});
@@ -46,7 +46,7 @@ public class PrincipalTela extends JFrame {
 
 		JMenuItem mntmOrgo = new JMenuItem("Orgão");
 		mntmOrgo.addActionListener( e -> {
-			OrgaoConsultaTela orgaoConsultaTela = new OrgaoConsultaTela(desktopPane, null);
+			OrgaoConsultaTela orgaoConsultaTela = new OrgaoConsultaTela(desktopPane);
 			orgaoConsultaTela.setVisible(true);
 			desktopPane.add(orgaoConsultaTela);
 		});
@@ -62,7 +62,7 @@ public class PrincipalTela extends JFrame {
 
 		JMenuItem mntmInfracao = new JMenuItem("Infração");
 		mntmInfracao.addActionListener(e -> {
-			InfracaoConsultaTela telaConsultaInfracao = new InfracaoConsultaTela(desktopPane, null);
+			InfracaoConsultaTela telaConsultaInfracao = new InfracaoConsultaTela(desktopPane);
 			telaConsultaInfracao.setVisible(true);
 			desktopPane.add(telaConsultaInfracao);
 		});
@@ -70,7 +70,7 @@ public class PrincipalTela extends JFrame {
 
 		JMenuItem mntmMulta = new JMenuItem("Multa");
 		mntmMulta.addActionListener(e -> {
-			MultaConsultaTela telaConsultaMulta = new MultaConsultaTela(desktopPane, null);
+			MultaConsultaTela telaConsultaMulta = new MultaConsultaTela(desktopPane);
 		    telaConsultaMulta.setVisible(true);
 		    desktopPane.add(telaConsultaMulta);
         });
@@ -79,7 +79,7 @@ public class PrincipalTela extends JFrame {
 		JMenu mnUsuario = new JMenu("Usuarios");
 		JMenuItem gerenciarUsuarios = new JMenuItem("Gerenciar Usuários");
 		gerenciarUsuarios.addActionListener( e -> {
-			UsuarioConsultaTela usuarioConsultaTela = new UsuarioConsultaTela(desktopPane, null);
+			UsuarioConsultaTela usuarioConsultaTela = new UsuarioConsultaTela(desktopPane);
 			usuarioConsultaTela.setVisible(true);
 			desktopPane.add(usuarioConsultaTela);
 		});

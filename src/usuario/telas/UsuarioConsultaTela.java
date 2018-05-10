@@ -10,10 +10,13 @@ import usuario.listenner.UsuarioConsultaListenner;
 @SuppressWarnings("serial")
 public class UsuarioConsultaTela extends ConsultaTela<Usuario> {
 
-	public UsuarioConsultaTela(JDesktopPane jDesktopPane, List<Usuario> itens) {
-		super(jDesktopPane, "Consulta Usuários", itens);
+	public UsuarioConsultaTela(JDesktopPane jDesktopPane) {
+		super(jDesktopPane, "Consulta Usuários");
 		new UsuarioConsultaListenner(this);
 	}
 
-	
+	@Override
+	public List<Usuario> getItensBanco() {
+		return null;
+	}
 }

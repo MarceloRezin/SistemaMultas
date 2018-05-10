@@ -3,11 +3,12 @@ package orgao.listenner;
 import javax.swing.*;
 
 import commons.listenners.CadastroListenner;
+import commons.telas.CadastroTela;
 
 public class OrgaoCadastroListenner extends CadastroListenner{
 
-    public OrgaoCadastroListenner(JButton salvar, JButton excluir, JButton voltar) {
-        super(salvar, excluir, voltar);
+    public OrgaoCadastroListenner(CadastroTela cadastroTela) {
+        super(cadastroTela);
     }
 
     @Override

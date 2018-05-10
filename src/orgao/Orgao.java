@@ -15,6 +15,8 @@ public class Orgao extends Cadastro	{
     private String cidade;
     private Estado estado;
 
+    public Orgao(){}
+
     public Orgao(String nome, String endereco, String cidade, Estado estado) {
         this.nome = nome;
         this.endereco = endereco;

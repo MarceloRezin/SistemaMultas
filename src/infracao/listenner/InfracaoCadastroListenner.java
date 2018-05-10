@@ -2,11 +2,12 @@ package infracao.listenner;
 
 import javax.swing.*;
 import commons.listenners.CadastroListenner;
+import commons.telas.CadastroTela;
 
 public class InfracaoCadastroListenner extends CadastroListenner {
 
-    public InfracaoCadastroListenner(JButton salvar, JButton excluir, JButton voltar) {
-        super(salvar, excluir, voltar);
+    public InfracaoCadastroListenner(CadastroTela cadastroTela) {
+        super(cadastroTela);
     }
 
     @Override
