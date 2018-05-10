@@ -17,6 +17,7 @@ public class CadastroListenner<T extends Cadastro> implements ActionListener {
     private JButton excluir;
     private JButton voltar;
     private CadastroTela<T> cadastroTela;
+    private boolean necessarioAtualizar = false;
 
     public CadastroListenner(CadastroTela<T> cadastroTela){
         this.cadastroTela = cadastroTela;
@@ -40,17 +41,37 @@ public class CadastroListenner<T extends Cadastro> implements ActionListener {
         }
     }
 
+    public CadastroTela<T> getCadastroTela() {
+        return cadastroTela;
+    }
+
+    public boolean isNecessarioAtualizar() {
+        return necessarioAtualizar;
+    }
+
     public void eventoSalvar(){
-        Banco.save(cadastroTela.telaToObjeto());
+
+        Cadastro c = cadastroTela.telaToObjeto();
+
+        Banco.save(c);
+
+        if (c.isNovo()){
+            necessarioAtualizar = true;
+        }
     }
 
     public void eventoExcluir(){
         Banco.delete(cadastroTela.telaToObjeto());
 
         cadastroTela.resetCampos();
+
+        necessarioAtualizar = true;
     }
 
     public void eventoVoltar(){
+        if(isNecessarioAtualizar()){
+            getCadastroTela().getConsultaTela().listarTodosItens();
+        }
         cadastroTela.getConsultaTela().setVisible(true);
         cadastroTela.dispose();
     }
