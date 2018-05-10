@@ -115,7 +115,14 @@ public class GravidadeMultaCadastroTela extends CadastroTela<GravidadeMulta> {
 		new GravidadeMultaCadastroListenner(this);
 	}
 
-	@Override
+    @Override
+    public void resetCampos() {
+        comboGravidade.setSelectedIndex(0);
+        campoValor.setText("");
+        campoNumPontos.setText("");
+    }
+
+    @Override
 	public JButton getBtnSalvar() {
 		return btnSalvar;
 	}

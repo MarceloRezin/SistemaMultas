@@ -36,7 +36,15 @@ public abstract class CadastroTela<T extends Cadastro> extends JInternalFrame{
      */
     public abstract void objetoToTela();
 
+    /**
+     * Aqui devem ser criados os componentes da tela
+     */
     public abstract void initComponentes();
+
+    /**
+     * Zera componentes em tela para iniciar um novo cadastro
+     */
+    public abstract void resetCampos();
 
     public abstract  JButton getBtnSalvar();
     public abstract  JButton getBtnExcluir();

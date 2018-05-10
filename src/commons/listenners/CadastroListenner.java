@@ -11,7 +11,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public abstract class CadastroListenner<T extends Cadastro> implements ActionListener {
+public class CadastroListenner<T extends Cadastro> implements ActionListener {
 
     private JButton salvar;
     private JButton excluir;
@@ -44,7 +44,11 @@ public abstract class CadastroListenner<T extends Cadastro> implements ActionLis
         Banco.save(cadastroTela.telaToObjeto());
     }
 
-    public abstract void eventoExcluir();
+    public void eventoExcluir(){
+        Banco.delete(cadastroTela.telaToObjeto());
+
+        cadastroTela.resetCampos();
+    }
 
     public void eventoVoltar(){
         cadastroTela.getConsultaTela().setVisible(true);
