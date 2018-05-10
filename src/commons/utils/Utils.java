@@ -1,4 +1,4 @@
-package commons;
+package commons.utils;
 
 public class Utils {
 

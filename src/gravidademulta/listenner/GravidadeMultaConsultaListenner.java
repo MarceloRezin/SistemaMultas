@@ -1,7 +1,7 @@
 package gravidademulta.listenner;
 
 import banco.Banco;
-import commons.Utils;
+import commons.utils.Utils;
 import commons.listenners.ConsultaListenner;
 import commons.telas.ConsultaTela;
 import gravidademulta.GravidadeMulta;
