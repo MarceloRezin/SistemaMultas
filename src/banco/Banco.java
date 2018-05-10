@@ -1,6 +1,6 @@
 package banco;
 
-import commons.Utils;
+import commons.utils.Utils;
 import commons.cadastros.Cadastro;
 
 import java.sql.*;

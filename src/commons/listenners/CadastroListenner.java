@@ -6,6 +6,7 @@ package commons.listenners;
 import banco.Banco;
 import commons.cadastros.Cadastro;
 import commons.telas.CadastroTela;
+import commons.utils.Utils;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +18,6 @@ public class CadastroListenner<T extends Cadastro> implements ActionListener {
     private JButton excluir;
     private JButton voltar;
     private CadastroTela<T> cadastroTela;
-    private boolean necessarioAtualizar = false;
 
     public CadastroListenner(CadastroTela<T> cadastroTela){
         this.cadastroTela = cadastroTela;
@@ -45,33 +45,30 @@ public class CadastroListenner<T extends Cadastro> implements ActionListener {
         return cadastroTela;
     }
 
-    public boolean isNecessarioAtualizar() {
-        return necessarioAtualizar;
-    }
-
     public void eventoSalvar(){
 
         Cadastro c = cadastroTela.telaToObjeto();
 
-        Banco.save(c);
-
-        if (c.isNovo()){
-            necessarioAtualizar = true;
+        if(c != null){
+            Banco.save(c);
+            Utils.mensagem("Salvo", "Item salvo com sucesso!");
         }
+
     }
 
     public void eventoExcluir(){
-        Banco.delete(cadastroTela.telaToObjeto());
+        if(Utils.mensagemConfirmacao("Confirmação", "Tem certeza que você deseja excluir o item?")){
+            Banco.delete(cadastroTela.telaToObjeto());
 
-        cadastroTela.resetCampos();
+            cadastroTela.resetCampos();
 
-        necessarioAtualizar = true;
+            Utils.mensagem("Salvo", "Item excluído com sucesso!");
+        }
     }
 
     public void eventoVoltar(){
-        if(isNecessarioAtualizar()){
-            getCadastroTela().getConsultaTela().listarTodosItens();
-        }
+        getCadastroTela().getConsultaTela().listarTodosItens();
+
         cadastroTela.getConsultaTela().setVisible(true);
         cadastroTela.dispose();
     }

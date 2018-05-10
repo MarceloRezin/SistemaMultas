@@ -2,6 +2,8 @@ package commons.telas;
 
 import javax.swing.JInternalFrame;
 import commons.cadastros.Cadastro;
+import commons.utils.Utils;
+
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
@@ -61,6 +63,10 @@ public abstract class ConsultaTela<T extends Cadastro> extends JInternalFrame {
 	}
 	
 	private void adiconarItens() {
+	    if(itens == null || itens.isEmpty()){
+            Utils.mensagem("Nada encontrado", "Não foram encontrados itens!");
+        }
+
 	    if(itens != null) {
             model.removeAllElements();
 

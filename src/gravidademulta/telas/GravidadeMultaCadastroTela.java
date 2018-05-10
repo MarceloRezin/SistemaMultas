@@ -3,6 +3,7 @@ package gravidademulta.telas;
 
 import commons.telas.CadastroTela;
 import commons.telas.ConsultaTela;
+import commons.utils.Utils;
 import gravidademulta.GravidadeMulta;
 import gravidademulta.TipoMulta;
 import gravidademulta.listenner.GravidadeMultaCadastroListenner;
@@ -32,17 +33,26 @@ public class GravidadeMultaCadastroTela extends CadastroTela<GravidadeMulta> {
 
 	@Override
 	public GravidadeMulta telaToObjeto() {
+
         GravidadeMulta gravidadeMulta = getObjeto();
 
         if(gravidadeMulta == null){
             gravidadeMulta = new GravidadeMulta();
         }
 
-        gravidadeMulta.setTipoMulta(TipoMulta.values()[comboGravidade.getSelectedIndex()]);
-        gravidadeMulta.setValor(new BigDecimal(campoValor.getText()));
-        gravidadeMulta.setPontos(Integer.parseInt(campoNumPontos.getText()));
+        try {
+            gravidadeMulta.setValor(new BigDecimal(campoValor.getText().replaceAll(",", ".")));
+            gravidadeMulta.setPontos(Integer.parseInt(campoNumPontos.getText()));
+            gravidadeMulta.setTipoMulta(TipoMulta.values()[comboGravidade.getSelectedIndex()]);
 
-		return gravidadeMulta;
+            return gravidadeMulta;
+        }catch (NumberFormatException er) {
+            Utils.mensagemErro("Erro", "Você não informou números válidos");
+        }catch (Exception e3) {
+            Utils.mensagemErro("Erro", "Ocorreu um erro!");
+        }
+
+        return null;
 	}
 
 	@Override
@@ -55,7 +65,7 @@ public class GravidadeMultaCadastroTela extends CadastroTela<GravidadeMulta> {
 
 			campoNumPontos.setText(gravidadeMulta.getPontos() + "");
 
-			campoValor.setText(gravidadeMulta.getValor().toString());
+			campoValor.setText(gravidadeMulta.getValor().toString().replaceAll("\\.", ","));
 		}
 	}
 
@@ -83,7 +93,7 @@ public class GravidadeMultaCadastroTela extends CadastroTela<GravidadeMulta> {
 		}
 		panelCentro.add(comboGravidade);
 
-		JLabel lblValor = new JLabel("Valor:");
+		JLabel lblValor = new JLabel("Valor(Reais):");
 		lblValor.setHorizontalAlignment(SwingConstants.CENTER);
 		panelCentro.add(lblValor);
 
