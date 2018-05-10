@@ -22,6 +22,10 @@ public abstract class CadastroTela<T extends Cadastro> extends JInternalFrame{
         return objeto;
     }
 
+    public void setObjeto(T objeto){
+        this.objeto = objeto;
+    }
+
     public ConsultaTela<T> getConsultaTela() {
         return consultaTela;
     }

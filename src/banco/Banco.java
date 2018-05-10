@@ -54,16 +54,25 @@ public class Banco{
     public static void save(Cadastro cadastro){
         String sql;
 
-        if(cadastro.isNovo()){
+        boolean isNovo = cadastro.isNovo();
+
+        if(isNovo){
             sql = "INSERT INTO " + cadastro.getNomeTabela() + "(" + cadastro.getColunas() + ") VALUES(" + cadastro.getColunasSubstituicao() + ")";
         }else{
             sql = "UPDATE " + cadastro.getNomeTabela() + " SET " +  cadastro.getColunas().replaceAll(",", " = ?, ") + " = ? WHERE id = " + cadastro.getId();
         }
 
         try{
-            PreparedStatement stmt = conexao.prepareStatement(sql);
+            PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             cadastro.setStatements(stmt);
             stmt.execute();
+
+            if (cadastro.isNovo()   ){
+                ResultSet resultSet = stmt.executeQuery("SELECT LAST_INSERT_ID()");
+                if (resultSet.next()) {
+                    cadastro.setId(resultSet.getInt("LAST_INSERT_ID()"));
+                }
+            }
             stmt.close();
         }catch(Exception e){
             e.printStackTrace();
