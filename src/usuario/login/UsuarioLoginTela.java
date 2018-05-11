@@ -6,11 +6,16 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import log.LogUsuario;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.GridLayout;
+import java.awt.TextField;
+import java.io.IOException;
 import java.awt.Component;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -23,6 +28,7 @@ public class UsuarioLoginTela extends JFrame {
 	private JTextField campoUsuario;
 	private JPasswordField campoSenha;
 	private JButton btnEntrar;
+	private LogUsuario log = new LogUsuario();
 
 
 	public UsuarioLoginTela() {
@@ -61,8 +67,17 @@ public class UsuarioLoginTela extends JFrame {
 		campoUsuario = new JTextField();
 		panelPrincipal.add(campoUsuario);
 		campoUsuario.setColumns(10);
+		try {
+			campoUsuario.setText(log.LerUsuario());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		JLabel lblSenha = new JLabel("Senha");
+		JLabel lblSenha = new JLabel("Senha:");
 		panelPrincipal.add(lblSenha);
 		
 		campoSenha = new JPasswordField();
@@ -96,5 +111,15 @@ public class UsuarioLoginTela extends JFrame {
         });
 		
 		new UsuarioLoginListenner(btnEntrar, this);
+	}
+	
+	public JTextField getCampoUsuario() {
+		
+		return campoUsuario;
+	}
+	
+	public void setCampoUsuario(JTextField campoUsuario){
+	
+		this.campoUsuario = campoUsuario;
 	}
 }

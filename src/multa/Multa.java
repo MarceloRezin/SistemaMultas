@@ -6,7 +6,6 @@ import infracao.Infracao;
 import orgao.Orgao;
 import proprietario.Proprietario;
 import veiculo.Veiculo;
-
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
