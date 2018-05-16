@@ -1,6 +1,7 @@
 package principal;
 
 import infracao.telas.InfracaoConsultaTela;
+import log.Logger;
 import multa.telas.MultaConsultaTela;
 import orgao.telas.OrgaoConsultaTela;
 import proprietario.telas.ProprietarioConsultaTela;
@@ -83,6 +84,7 @@ public class PrincipalTela extends JFrame {
 		menuBar.add(mnSobre);
 		mntSobre.addActionListener(e->{
 			JOptionPane.showMessageDialog(null,"Desenvolvedores: Lucas Claro e Marcelo Rezin \n Versão: 0.1","Sobre",JOptionPane.INFORMATION_MESSAGE);
+			Logger.log("Menu Sobre");
 		});
 
 		setContentPane(desktopPane);

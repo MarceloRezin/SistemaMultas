@@ -106,9 +106,8 @@ public class UsuarioLoginTela extends JFrame {
 		
 		return campoUsuario;
 	}
-	
-	public void setCampoUsuario(JTextField campoUsuario){
-	
-		this.campoUsuario = campoUsuario;
+
+	public JPasswordField getCampoSenha() {
+		return campoSenha;
 	}
 }
