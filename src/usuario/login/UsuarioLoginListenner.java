@@ -36,7 +36,8 @@ public class UsuarioLoginListenner implements ActionListener{
                 Logger.log("Usuário Logou");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				 e.printStackTrace();
+				 Logger.log(e.getStackTrace().toString());
 			}
             new PrincipalTela().setVisible(true);
 
