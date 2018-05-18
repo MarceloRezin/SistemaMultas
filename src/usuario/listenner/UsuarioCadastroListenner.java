@@ -2,6 +2,7 @@ package usuario.listenner;
 
 import javax.swing.*;
 import commons.listenners.CadastroListenner;
+import log.Logger;
 
 public class UsuarioCadastroListenner extends CadastroListenner {
 
@@ -12,11 +13,13 @@ public class UsuarioCadastroListenner extends CadastroListenner {
     @Override
     public void eventoSalvar() {
         System.out.println("Usuário -> Salvar");
+        Logger.log("Usuario, Salvou");
     }
 
     @Override
     public void eventoExcluir() {
         System.out.println("Usuário -> Excluir");
+        Logger.log("Usuario, Excluiu");
     }
 
     @Override
