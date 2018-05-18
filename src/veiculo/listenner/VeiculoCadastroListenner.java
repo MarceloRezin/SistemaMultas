@@ -3,7 +3,7 @@ package veiculo.listenner;
 import javax.swing.*;
 
 import commons.listenners.CadastroListenner;
-import commons.listenners.ConsultaListenner;
+import log.Logger;
 
 public class VeiculoCadastroListenner extends CadastroListenner {
 
@@ -13,12 +13,16 @@ public class VeiculoCadastroListenner extends CadastroListenner {
 
     @Override
     public void eventoSalvar() {
+
         System.out.println("Veículo -> Salvar");
+        Logger.log("Veiculo, Salvou");
     }
 
     @Override
     public void eventoExcluir() {
+
         System.out.println("Veículo -> Excluir");
+        Logger.log("Veiculo, Excluiu");
     }
 
     @Override
