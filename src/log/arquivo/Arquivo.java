@@ -1,5 +1,7 @@
 package log.arquivo;
 
+import log.Logger;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
@@ -20,6 +22,7 @@ public class Arquivo{
                     gravar();
                 } catch (Exception e) {
                     e.printStackTrace();
+                    Logger.log(e.getStackTrace().toString());
                 }
             }
         }.start();
