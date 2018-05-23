@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import commons.cadastros.Cadastro;
 import commons.utils.Utils;
+import exception.SistemaMultasException;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -71,6 +72,8 @@ public abstract class ConsultaTela<T extends Cadastro> extends JInternalFrame {
         list = new JList<T>(model);
         panelCentro.add(list);
 
+        getRootPane().setDefaultButton(btnConsulta);
+
         listarTodosItens();
     }
 
@@ -94,8 +97,12 @@ public abstract class ConsultaTela<T extends Cadastro> extends JInternalFrame {
     }
 
     public void listarTodosItens(){
-        this.itens = getItensBanco();
-        adiconarItens();
+        try {
+            this.itens = getItensBanco();
+            adiconarItens();
+        } catch (SistemaMultasException e) {
+            Utils.mensagemErro(e.getMessage());
+        }
     }
 
     public List<T> getItens() {
@@ -146,5 +153,5 @@ public abstract class ConsultaTela<T extends Cadastro> extends JInternalFrame {
         this.campoRetorno = campoRetorno;
     }
 
-    public abstract List<T> getItensBanco();
+    public abstract List<T> getItensBanco() throws SistemaMultasException;
 }

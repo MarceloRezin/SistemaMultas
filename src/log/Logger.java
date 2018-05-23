@@ -10,4 +10,8 @@ public class Logger {
         conteudo = UsuarioContexto.getNomeUsuarioLogado() + "\t\t\t" + LocalDateTime.now() +  "\t\t\t" + conteudo;
         new Arquivo(conteudo).gerarLog();
     }
+
+    public static void logErro(String conteudo){
+        log("ERRO: " + conteudo);
+    }
 }

@@ -67,13 +67,16 @@ public class CadastroListenner<T extends Cadastro> implements ActionListener {
         if(cadastroTela.getObjeto() == null || cadastroTela.getObjeto().isNovo()){
             cadastroTela.resetCampos();
         }else if(Utils.mensagemConfirmacao("Confirmação", "Tem certeza que você deseja excluir o item?")){
-            Banco.delete(cadastroTela.telaToObjeto());
 
-            cadastroTela.resetCampos();
+            try {
+                Banco.delete(cadastroTela.telaToObjeto());
+                cadastroTela.resetCampos();
+                cadastroTela.setObjeto(null);
 
-            cadastroTela.setObjeto(null);
-
-            Utils.mensagem("Excluído", "Item excluído com sucesso!");
+                Utils.mensagem("Excluído", "Item excluído com sucesso!");
+            }catch (SistemaMultasException e){
+                Utils.mensagemErro(e.getMessage());
+            }
         }
     }
 

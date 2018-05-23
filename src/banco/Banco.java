@@ -27,7 +27,8 @@ public class Banco{
                 conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
                 System.out.println("======== CONEXÃO INICIADA ========");
             }catch (Exception e1){
-                e1.printStackTrace();
+                Utils.mensagemErro("Não foi possível se conectar a base de dados");
+                Logger.logErro(e1.getMessage());
             }
         }
 
@@ -48,7 +49,8 @@ public class Banco{
                 conexao.close();
                 System.out.println("======== CONEXÃO FECHADA ========");
             }catch (Exception e1){
-                e1.printStackTrace();
+                Utils.mensagemErro("Não foi possível ao fechar a conexão com a base de dados");
+                Logger.logErro(e1.getMessage());
             }
         }
     }
@@ -85,13 +87,16 @@ public class Banco{
         }
     }
 
-    public static List select(Cadastro cadastro){
-        //TODO: melhorar a maneira de ordenção
-        return selectComWhere(cadastro, "ORDER BY tipo ASC");
+    public static List select(Cadastro cadastro) throws SistemaMultasException{
+        return selectComWhere(cadastro, "");
     }
 
-    public static List selectComWhere(Cadastro cadastro, String where){
-        String  sql = "SELECT * FROM " + cadastro.getNomeTabela() + (Utils.isNulaOuVazia(where) ? "" : " " + where);
+    public static List selectComPesquisa(Cadastro cadastro, String pesquisa) throws SistemaMultasException{
+        return selectComWhere(cadastro, "WHERE upper(" + cadastro.getColunaPesquisa() + ") LIKE '%" + pesquisa.toUpperCase() + "%'");
+    }
+
+    public static List selectComWhere(Cadastro cadastro, String where) throws SistemaMultasException{
+        String  sql = "SELECT * FROM " + cadastro.getNomeTabela() + (Utils.isNulaOuVazia(where) ? "" : " " + where) + " ORDER BY " + cadastro.getColunaOrdenacao() + " ASC";
 
         try{
             Statement st = conexao.createStatement();
@@ -101,13 +106,12 @@ public class Banco{
             return cadastro.resultSetToList(rs);
 
         }catch(Exception e){
-            e.printStackTrace();
+            Logger.log(e.getMessage());
+            throw new SistemaMultasException();
         }
-
-        return Collections.emptyList();
     }
 
-    public static void delete(Cadastro cadastro){
+    public static void delete(Cadastro cadastro) throws SistemaMultasException{
         String  sql = "DELETE FROM " + cadastro.getNomeTabela() + " WHERE id = " + cadastro.getId();
 
         try{
@@ -115,7 +119,8 @@ public class Banco{
             stmt.execute();
             stmt.close();
         }catch(Exception e){
-            e.printStackTrace();
+            Logger.log(e.getMessage());
+            throw new SistemaMultasException();
         }
     }
 }
