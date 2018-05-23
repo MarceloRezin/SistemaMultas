@@ -1,5 +1,6 @@
 package multa.telas;
 
+import commons.telas.TipoConsulta;
 import multa.Multa;
 import multa.listenner.MultaConsultaListenner;
 import java.util.List;
@@ -10,7 +11,7 @@ import commons.telas.ConsultaTela;
 public class MultaConsultaTela extends ConsultaTela<Multa> {
 
 	public MultaConsultaTela(JDesktopPane jDesktopPane) {
-		super(jDesktopPane, "Listagem multas");
+		super(jDesktopPane, "Listagem multas", TipoConsulta.CONSULTA_PARA_CADASTRO);
 		new MultaConsultaListenner(this);
 	}
 

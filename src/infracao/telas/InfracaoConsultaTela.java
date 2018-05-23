@@ -1,5 +1,6 @@
 package infracao.telas;
 
+import commons.telas.TipoConsulta;
 import infracao.Infracao;
 import infracao.listenner.InfracaoConsultaListenner;
 import java.util.List;
@@ -10,7 +11,7 @@ import commons.telas.ConsultaTela;
 public class InfracaoConsultaTela extends ConsultaTela<Infracao>{
 	
 	public InfracaoConsultaTela(JDesktopPane jDesktopPane) {
-		super(jDesktopPane, "Consulta de Infrações");
+		super(jDesktopPane, "Consulta de Infrações", TipoConsulta.CONSULTA_PARA_CADASTRO);
 		new InfracaoConsultaListenner(this);
 	}
 

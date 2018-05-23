@@ -14,6 +14,7 @@ import javax.swing.event.ListSelectionListener;
 import commons.cadastros.Cadastro;
 import commons.telas.CadastroTela;
 import commons.telas.ConsultaTela;
+import commons.telas.TipoConsulta;
 
 public abstract class ConsultaListenner<T extends Cadastro> implements ActionListener, ListSelectionListener {
 
@@ -77,5 +78,14 @@ public abstract class ConsultaListenner<T extends Cadastro> implements ActionLis
         getConsultaTela().getjDesktopPane().add(cadastroTela);
 
         cadastroTela.setVisible(true);
+    }
+
+    public void eventoConsulta(){
+	    if(consultaTela.getTipoConsulta() == TipoConsulta.CONSULTA_PARA_CADASTRO){
+	        eventoConsultar();
+        }else{
+	        consultaTela.setObjetoRetorno(getItemListSelecionado());
+	        consultaTela.getCampoRetorno().setText(consultaTela.getObjetoRetorno().toString());
+        }
     }
 }

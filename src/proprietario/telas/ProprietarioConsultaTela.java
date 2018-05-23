@@ -5,6 +5,7 @@ import java.util.List;
 import javax.swing.JDesktopPane;
 
 import commons.telas.ConsultaTela;
+import commons.telas.TipoConsulta;
 import proprietario.Proprietario;
 import proprietario.listenner.ProprietarioConsultaListenner;
 
@@ -12,7 +13,7 @@ import proprietario.listenner.ProprietarioConsultaListenner;
 public class ProprietarioConsultaTela extends ConsultaTela<Proprietario> {
 
 	public ProprietarioConsultaTela(JDesktopPane jDesktopPane) {
-		super(jDesktopPane, "Listagem proprietario");
+		super(jDesktopPane, "Listagem proprietario", TipoConsulta.CONSULTA_PARA_CADASTRO);
 		new ProprietarioConsultaListenner(this);
 	}
 

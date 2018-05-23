@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.swing.JDesktopPane;
 import commons.telas.ConsultaTela;
+import commons.telas.TipoConsulta;
 import usuario.Usuario;
 import usuario.listenner.UsuarioConsultaListenner;
 
@@ -11,7 +12,7 @@ import usuario.listenner.UsuarioConsultaListenner;
 public class UsuarioConsultaTela extends ConsultaTela<Usuario> {
 
 	public UsuarioConsultaTela(JDesktopPane jDesktopPane) {
-		super(jDesktopPane, "Consulta Usuários");
+		super(jDesktopPane, "Consulta Usuários", TipoConsulta.CONSULTA_PARA_CADASTRO);
 		new UsuarioConsultaListenner(this);
 	}
 
