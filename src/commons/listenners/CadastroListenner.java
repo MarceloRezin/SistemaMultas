@@ -7,6 +7,7 @@ import banco.Banco;
 import commons.cadastros.Cadastro;
 import commons.telas.CadastroTela;
 import commons.utils.Utils;
+import exception.SistemaMultasException;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -50,10 +51,14 @@ public class CadastroListenner<T extends Cadastro> implements ActionListener {
         T objeto = cadastroTela.telaToObjeto();
 
         if(objeto != null){
-            Banco.save(objeto);
-            Utils.mensagem("Salvo", "Item salvo com sucesso!");
+            try {
+                Banco.save(objeto);
+                Utils.mensagem("Salvo", "Item salvo com sucesso!");
 
-            cadastroTela.setObjeto(objeto);
+                cadastroTela.setObjeto(objeto);
+            } catch (SistemaMultasException e) {
+                Utils.mensagemErro(e.getMessage());
+            }
         }
 
     }
