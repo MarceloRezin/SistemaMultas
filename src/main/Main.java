@@ -22,6 +22,6 @@ public class Main {
 
         Banco.iniciarConexao();
 
-		new PrincipalTela().setVisible(true);
+		new UsuarioLoginTela().setVisible(true);
     }
 }
