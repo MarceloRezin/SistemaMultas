@@ -8,10 +8,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class LogUsuario {
-	
+
+	private static final String diretorio = "usuario.dat";
+
 	public void SalvarUsuario(String usuario) throws IOException {
 		
-		FileOutputStream fos = new FileOutputStream("src/log/Usuario.dat");
+		FileOutputStream fos = new FileOutputStream(diretorio);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(usuario);       
         oos.flush();
@@ -19,16 +21,16 @@ public class LogUsuario {
 	}
 	
 	public String LerUsuario() throws IOException, ClassNotFoundException {
-		File file = new File("src/log/Usuario.dat");
+		File file = new File(diretorio);
 		String usuario;
 				if(!file.exists()){
-					new File("src/log/Usuario.dat").createNewFile();
+					new File(diretorio).createNewFile();
 					usuario = new String();
 					SalvarUsuario(usuario); //Garante que o arquivo em disco é legivel
 					return usuario;
 	        }
 		
-		FileInputStream fis = new FileInputStream("src/log/Usuario.dat");
+		FileInputStream fis = new FileInputStream(diretorio);
 		ObjectInputStream ois = new ObjectInputStream(fis);
 		Object objeto = ois.readObject();
 		fis.close();
