@@ -2,7 +2,7 @@ package commons.utils;
 
 import javax.swing.*;
 
-public class Utils {
+public final class Utils {
 
     public static boolean isNulaOuVazia(String string){
         if(string == null){
@@ -26,5 +26,9 @@ public class Utils {
 
     public static void mensagemErro(String titulo, String mensagem){
         JOptionPane.showMessageDialog(null, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
+    }
+
+    public static void mensagemErro(String mensagem){
+        mensagemErro("Erro", mensagem);
     }
 }
