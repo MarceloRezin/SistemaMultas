@@ -34,12 +34,11 @@ public abstract class Cadastro {
 	public abstract String getNomeTabela();
 
 	/**
-	 * Retornar todas as colunas que serão gravadas no insert com o padrão: coluna1,coluna2,coluna3
+	 * Retorna todas as colunas que serão gravadas no insert com o padrão: coluna1,coluna2,coluna3
      * Não é necessário informar o id
 	 * @return
 	 */
 	public abstract String getColunas();
-
 
 	/**
 	 * Retorna a substituicao das colunas por ?,?,?
@@ -75,4 +74,18 @@ public abstract class Cadastro {
      * @throws SQLException
      */
 	public abstract List resultSetToList(ResultSet rs) throws SQLException;
+
+	/**
+	 * Define qual coluna será utlizada para ordenar o itens apresentados na tela
+	 * @return
+	 */
+	public abstract String getColunaOrdenacao();
+
+	/**
+	 * Retorna qual coluna da tabela deve ser utilizada para pesquisa, por padrão é a mesma coluna da ordenação
+	 * @return
+	 */
+	public String getColunaPesquisa(){
+		return getColunaOrdenacao();
+	}
 }
