@@ -1,19 +1,24 @@
 REGISTRO DE MULTAS
 
-Todas as tabelas possuem o campo ID
+Todas as tabelas possuem o campoRetorno ID
 
 ->Login
 	+usuario
 	+senha
 	+admin
+
+->Cidade
+    +UF
+    +nome
 	
 ->Pessoa
 	+cpfCnpj
 	+nomeRazaoSocial
 	+rgInscricaoEstadual
-	+endereco
+	+numero
+	+rua
+	+bairro
 	+cidade
-	+estado
 	+cep
 	+telefone
 	+email
@@ -32,7 +37,6 @@ Todas as tabelas possuem o campo ID
 	+modelo
 	+ano
 	+placa
-	+uf
 	+cidade
 	+renavam
 	+corPredominante
@@ -40,7 +44,9 @@ Todas as tabelas possuem o campo ID
 
 ->Orgao
 	+nome
-	+endereco
+	+numero
+	+rua
+	+bairro
 	+cidade
 	+uf
 
@@ -61,7 +67,9 @@ Todas as tabelas possuem o campo ID
 	+orgao
 	+data emissao
 	+data vencimento
-	+endereco
+	+numero
+	+rua
+	+bairro
 	+cidade
 	+uf
 	+fatorMultiplicador
