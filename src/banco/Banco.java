@@ -2,6 +2,8 @@ package banco;
 
 import commons.utils.Utils;
 import commons.cadastros.Cadastro;
+import exception.SistemaMultasException;
+import log.Logger;
 
 import java.sql.*;
 import java.util.Collections;
@@ -51,7 +53,7 @@ public class Banco{
         }
     }
 
-    public static void save(Cadastro cadastro){
+    public static void save(Cadastro cadastro) throws SistemaMultasException {
         String sql;
 
         boolean isNovo = cadastro.isNovo();
@@ -62,20 +64,24 @@ public class Banco{
             sql = "UPDATE " + cadastro.getNomeTabela() + " SET " +  cadastro.getColunas().replaceAll(",", " = ?, ") + " = ? WHERE id = " + cadastro.getId();
         }
 
-        try{
+        try {
             PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             cadastro.setStatements(stmt);
             stmt.execute();
 
-            if (cadastro.isNovo()   ){
+            if (cadastro.isNovo()) {
                 ResultSet resultSet = stmt.executeQuery("SELECT LAST_INSERT_ID()");
                 if (resultSet.next()) {
                     cadastro.setId(resultSet.getInt("LAST_INSERT_ID()"));
                 }
             }
             stmt.close();
-        }catch(Exception e){
-            e.printStackTrace();
+        }catch (SQLIntegrityConstraintViolationException e){
+            Logger.log(e.getMessage());
+            throw new SistemaMultasException("Já existe este item registrado!");
+        }catch(Exception e1){
+            Logger.log(e1.getMessage());
+            throw new SistemaMultasException();
         }
     }
 
