@@ -109,6 +109,8 @@ public class UsuarioLoginTela extends JFrame {
                 super.windowClosing(e);
             }
         });
+
+		getRootPane().setDefaultButton(btnEntrar);
 		
 		new UsuarioLoginListenner(btnEntrar, this);
 	}
