@@ -1,9 +1,8 @@
 package orgao.listenner;
 
-import javax.swing.*;
-
 import commons.listenners.CadastroListenner;
 import commons.telas.CadastroTela;
+import log.Logger;
 
 public class OrgaoCadastroListenner extends CadastroListenner{
 
@@ -13,12 +12,16 @@ public class OrgaoCadastroListenner extends CadastroListenner{
 
     @Override
     public void eventoSalvar() {
+
         System.out.println("Orgão -> Salvar");
+        Logger.log("Orgão, Salvou");
     }
 
     @Override
     public void eventoExcluir() {
+
         System.out.println("Orgão -> Excluir");
+        Logger.log("Orgão, Excluiu");
     }
 
     @Override

@@ -1,8 +1,8 @@
 package infracao.listenner;
 
-import javax.swing.*;
 import commons.listenners.CadastroListenner;
 import commons.telas.CadastroTela;
+import log.Logger;
 
 public class InfracaoCadastroListenner extends CadastroListenner {
 
@@ -13,11 +13,13 @@ public class InfracaoCadastroListenner extends CadastroListenner {
     @Override
     public void eventoSalvar() {
         System.out.println("Infracao -> Salvar");
+        Logger.log("Infração, Salvou");
     }
 
     @Override
     public void eventoExcluir() {
         System.out.println("Infracao -> Excluir");
+        Logger.log("Infração, Excluiu");
     }
 
     @Override

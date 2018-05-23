@@ -1,9 +1,8 @@
 package proprietario.listenner;
 
-import javax.swing.*;
-
 import commons.listenners.CadastroListenner;
 import commons.telas.CadastroTela;
+import log.Logger;
 
 public class ProprietarioCadastroListenner extends CadastroListenner {
 
@@ -13,12 +12,16 @@ public class ProprietarioCadastroListenner extends CadastroListenner {
 
     @Override
     public void eventoSalvar() {
+
         System.out.println("Proprietário -> Savar");
+        Logger.log("Proprietario, Salvou");
     }
 
     @Override
     public void eventoExcluir() {
+
         System.out.println("Proprietário -> Excluir");
+        Logger.log("Proprietario, Excluiu");
     }
 
     @Override
