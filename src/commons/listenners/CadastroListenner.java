@@ -8,6 +8,7 @@ import commons.cadastros.Cadastro;
 import commons.telas.CadastroTela;
 import commons.utils.Utils;
 import exception.SistemaMultasException;
+import log.Logger;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -53,6 +54,8 @@ public class CadastroListenner<T extends Cadastro> implements ActionListener {
         if(objeto != null){
             try {
                 Banco.save(objeto);
+                Logger.log(cadastroTela.getTitle() + " Salvar");
+
                 Utils.mensagem("Salvo", "Item salvo com sucesso!");
 
                 cadastroTela.setObjeto(objeto);
@@ -72,6 +75,7 @@ public class CadastroListenner<T extends Cadastro> implements ActionListener {
                 Banco.delete(cadastroTela.telaToObjeto());
                 cadastroTela.resetCampos();
                 cadastroTela.setObjeto(null);
+                Logger.log(cadastroTela.getTitle() + " Excluir");
 
                 Utils.mensagem("Excluído", "Item excluído com sucesso!");
             }catch (SistemaMultasException e){
@@ -81,6 +85,7 @@ public class CadastroListenner<T extends Cadastro> implements ActionListener {
     }
 
     public void eventoVoltar(){
+        Logger.log(cadastroTela.getTitle() + " Voltar");
         getCadastroTela().getConsultaTela().listarTodosItens();
 
         cadastroTela.getConsultaTela().setVisible(true);
