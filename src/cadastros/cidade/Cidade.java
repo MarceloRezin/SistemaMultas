@@ -6,6 +6,13 @@ import commons.cadastros.Cadastro;
 
 
 public class Cidade extends Cadastro {
+
+    public Cidade(String nome) {
+        this.nome = nome;
+    }
+
+    public Cidade() {}
+
     private String nome;
 
     public String getCidade() {
