@@ -9,6 +9,7 @@ public class Cidade extends Cadastro {
     private String rua;
     private int numero;
     private String cep;
+    private String bairro
     private String cidade;
 
     public String getRua() {
@@ -41,5 +42,13 @@ public class Cidade extends Cadastro {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
     }
 }
