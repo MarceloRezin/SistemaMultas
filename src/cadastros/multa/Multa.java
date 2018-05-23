@@ -1,0 +1,161 @@
+package cadastros.multa;
+
+import commons.cadastros.Cadastro;
+import commons.enuns.Estado;
+import cadastros.infracao.Infracao;
+import cadastros.orgao.Orgao;
+import cadastros.proprietario.Proprietario;
+import cadastros.veiculo.Veiculo;
+import java.math.BigDecimal;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+
+public class Multa extends Cadastro{
+    private Veiculo veiculo;
+    private Infracao infracao;
+    private Orgao orgao;
+    private LocalDateTime dataHoraEmissao;
+    private LocalDate dataVencimento;
+    private String endereco;
+    private String cidade;
+    private Estado estado;
+    private FatorMultiplicador fatorMultiplicador;
+    private Proprietario condutor;
+    private BigDecimal valorFinal;
+
+    public Multa(Veiculo veiculo, Infracao infracao, Orgao orgao, LocalDateTime dataHoraEmissao, LocalDate dataVencimento, String endereco, String cidade, Estado estado, FatorMultiplicador fatorMultiplicador, Proprietario condutor, BigDecimal valorFinal) {
+        this.veiculo = veiculo;
+        this.infracao = infracao;
+        this.orgao = orgao;
+        this.dataHoraEmissao = dataHoraEmissao;
+        this.dataVencimento = dataVencimento;
+        this.endereco = endereco;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.fatorMultiplicador = fatorMultiplicador;
+        this.condutor = condutor;
+        this.valorFinal = valorFinal;
+    }
+
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
+    }
+
+    public Infracao getInfracao() {
+        return infracao;
+    }
+
+    public void setInfracao(Infracao infracao) {
+        this.infracao = infracao;
+    }
+
+    public Orgao getOrgao() {
+        return orgao;
+    }
+
+    public void setOrgao(Orgao orgao) {
+        this.orgao = orgao;
+    }
+
+    public LocalDateTime getDataHoraEmissao() {
+        return dataHoraEmissao;
+    }
+
+    public void setDataHoraEmissao(LocalDateTime dataHoraEmissao) {
+        this.dataHoraEmissao = dataHoraEmissao;
+    }
+
+    public LocalDate getDataVencimento() {
+        return dataVencimento;
+    }
+
+    public void setDataVencimento(LocalDate dataVencimento) {
+        this.dataVencimento = dataVencimento;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public FatorMultiplicador getFatorMultiplicador() {
+        return fatorMultiplicador;
+    }
+
+    public void setFatorMultiplicador(FatorMultiplicador fatorMultiplicador) {
+        this.fatorMultiplicador = fatorMultiplicador;
+    }
+
+    public Proprietario getCondutor() {
+        return condutor;
+    }
+
+    public void setCondutor(Proprietario condutor) {
+        this.condutor = condutor;
+    }
+
+    public BigDecimal getValorFinal() {
+        return valorFinal;
+    }
+
+    public void setValorFinal(BigDecimal valorFinal) {
+        this.valorFinal = valorFinal;
+    }
+
+    @Override
+	public String toString() {
+		return "Multa";
+	}
+
+    @Override
+    public String getNomeTabela() {
+        return null;
+    }
+
+    @Override
+    public String getColunas() {
+        return null;
+    }
+
+    @Override
+    public void setStatements(PreparedStatement stmt) throws SQLException {
+
+    }
+
+    @Override
+    public List<Cadastro> resultSetToList(ResultSet rs) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public String getColunaOrdenacao() {
+        return null;
+    }
+}

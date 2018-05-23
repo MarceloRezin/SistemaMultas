@@ -3,3 +3,6 @@
 /.idea/
 /SistemaMultas/
 /out/
+/src/META-INF/
+/log.log
+/usuario.dat
