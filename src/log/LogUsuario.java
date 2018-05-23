@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
 
 public class LogUsuario {
 
-	private static final String diretorio = "usuario.dat";
+	private static final String diretorio = "cadastros.usuario.dat";
 
 	public void SalvarUsuario(String usuario) throws IOException {
 		

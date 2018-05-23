@@ -1,7 +1,7 @@
 package log;
 
 import log.arquivo.Arquivo;
-import usuario.UsuarioContexto;
+import cadastros.usuario.UsuarioContexto;
 import java.time.LocalDateTime;
 
 public class Logger {
