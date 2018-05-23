@@ -4,8 +4,10 @@ import banco.Banco;
 import commons.utils.Utils;
 import commons.listenners.ConsultaListenner;
 import commons.telas.ConsultaTela;
+import exception.SistemaMultasException;
 import gravidademulta.GravidadeMulta;
 import gravidademulta.telas.GravidadeMultaCadastroTela;
+import log.Logger;
 
 import java.util.List;
 
@@ -17,24 +19,27 @@ public class GravidadeMultaConsultaListenner extends ConsultaListenner<Gravidade
 	
 	@Override
     public void eventoConsultar() {
-        System.out.println("Gravidade Multa -> Listar");
-
+        Logger.log("Gravidade Multa Listar");
         String pesquisa = getConsultaTela().getCampoPesquisa().getText();
 
         List<GravidadeMulta> gravidadeMultas;
 
-        if(!Utils.isNulaOuVazia(pesquisa)){
-            gravidadeMultas = Banco.selectComWhere(new GravidadeMulta(), "WHERE tipo LIKE '%" + pesquisa + "%'");
-        }else{
-            gravidadeMultas = Banco.select(new GravidadeMulta());
-        }
+        try {
+			if(!Utils.isNulaOuVazia(pesquisa)){
+				gravidadeMultas = Banco.selectComPesquisa(new GravidadeMulta(), pesquisa);
+			}else{
+				gravidadeMultas = Banco.select(new GravidadeMulta());
+			}
 
-        getConsultaTela().listarTodosItens(gravidadeMultas);
+			getConsultaTela().listarTodosItens(gravidadeMultas);
+		}catch (SistemaMultasException e){
+        	Utils.mensagemErro(e.getMessage());
+		}
     }
 
 	@Override
 	public void eventoItemSelecionado() {
-		System.out.println("Gravidade Multa -> Item Selecionado:" + getItemListSelecionado());
+        Logger.log("Gravidade Multa Item Selecionado");
 
 		GravidadeMultaCadastroTela gravidadeMultaCadastroTela = new GravidadeMultaCadastroTela("Gravidade Multa", getItemListSelecionado(), getConsultaTela());
 
@@ -43,7 +48,7 @@ public class GravidadeMultaConsultaListenner extends ConsultaListenner<Gravidade
 
 	@Override
 	public void eventoNovo() {
-		System.out.println("Gravidade Multa -> Novo");
+        Logger.log("Gravidade Multa Novo");
 
 		GravidadeMultaCadastroTela gravidadeMultaCadastroTela = new GravidadeMultaCadastroTela("Gravidade Multa", null, getConsultaTela());
 		

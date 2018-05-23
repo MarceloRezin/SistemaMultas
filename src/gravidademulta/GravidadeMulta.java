@@ -92,4 +92,9 @@ public class GravidadeMulta extends Cadastro{
         }
         return gravidadeMultas;
     }
+
+    @Override
+    public String getColunaOrdenacao() {
+        return "tipo";
+    }
 }
