@@ -14,17 +14,15 @@ public class Veiculo extends Cadastro{
     private String modelo;
     private int ano;
     private String placa;
-    private Estado estado;
-    private String cidade;
+    private Cidade cidade;
     private String renavam;
     private String corPredominante;
     private Proprietario proprietario;
 
-    public Veiculo(String marca, String modelo, int ano, Estado estado, String cidade, String renavam, String corPredominante, Proprietario proprietario, String placa) {
+    public Veiculo(String marca, String modelo, int ano, Estado estado, Cidade cidade, String renavam, String corPredominante, Proprietario proprietario, String placa) {
         this.marca = marca;
         this.modelo = modelo;
         this.ano = ano;
-        this.estado = estado;
         this.cidade = cidade;
         this.renavam = renavam;
         this.corPredominante = corPredominante;
@@ -56,19 +54,11 @@ public class Veiculo extends Cadastro{
         this.ano = ano;
     }
 
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
-
-    public String getCidade() {
+    public Cidade getCidade() {
         return cidade;
     }
 
-    public void setCidade(String cidade) {
+    public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
 

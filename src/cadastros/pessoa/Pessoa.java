@@ -46,28 +46,36 @@ public class Pessoa extends Cadastro{
         this.rgInscricaoEstadual = rgInscricaoEstadual;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
-    public String getCidade() {
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public Cidade getCidade() {
         return cidade;
     }
 
-    public void setCidade(String cidade) {
+    public void setCidade(Cidade cidade) {
         this.cidade = cidade;
-    }
-
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
     }
 
     public String getCep() {
@@ -114,7 +122,7 @@ public class Pessoa extends Cadastro{
 
     @Override
     public String getColunas() {
-        return "cpf_cnpj,nome_razao_social,rg_inscricao_estadual,endereco,cidade,estado,cep,telefone,email,tipo_pessoa";
+        return "cpf_cnpj,nome_razao_social,rg_inscricao_estadual,numero,rua,bairro,cidade,cep,telefone,email,tipo_pessoa";
     }
 
     @Override

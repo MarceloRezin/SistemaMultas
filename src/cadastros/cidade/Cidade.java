@@ -7,13 +7,14 @@ import commons.cadastros.Cadastro;
 
 public class Cidade extends Cadastro {
 
+    private String nome;
+    private Estado uf;
+
     public Cidade(String nome) {
         this.nome = nome;
     }
 
     public Cidade() {}
-
-    private String nome;
 
     public String getCidade() {
         return nome;
