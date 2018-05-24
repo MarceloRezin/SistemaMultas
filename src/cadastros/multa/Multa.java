@@ -20,22 +20,25 @@ public class Multa extends Cadastro{
     private Orgao orgao;
     private LocalDateTime dataHoraEmissao;
     private LocalDate dataVencimento;
-    private String endereco;
-    private String cidade;
-    private Estado estado;
+    private String numero;
+    private String rua;
+    private String bairro
+    private Cidade cidade;
+    private String cep;
     private FatorMultiplicador fatorMultiplicador;
     private Proprietario condutor;
     private BigDecimal valorFinal;
 
-    public Multa(Veiculo veiculo, Infracao infracao, Orgao orgao, LocalDateTime dataHoraEmissao, LocalDate dataVencimento, String endereco, String cidade, Estado estado, FatorMultiplicador fatorMultiplicador, Proprietario condutor, BigDecimal valorFinal) {
+    public Multa(Veiculo veiculo, Infracao infracao, Orgao orgao, LocalDateTime dataHoraEmissao, LocalDate dataVencimento, String numero, String rua, String bairro, Cidade cidade, FatorMultiplicador fatorMultiplicador, Proprietario condutor, BigDecimal valorFinal) {
         this.veiculo = veiculo;
         this.infracao = infracao;
         this.orgao = orgao;
         this.dataHoraEmissao = dataHoraEmissao;
         this.dataVencimento = dataVencimento;
-        this.endereco = endereco;
+        this.numero = numero;
+        this.bairro = bairro;
         this.cidade = cidade;
-        this.estado = estado;
+        this.cep = cep;
         this.fatorMultiplicador = fatorMultiplicador;
         this.condutor = condutor;
         this.valorFinal = valorFinal;
@@ -81,28 +84,44 @@ public class Multa extends Cadastro{
         this.dataVencimento = dataVencimento;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
-    public String getCidade() {
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public Cidade getCidade() {
         return cidade;
     }
 
-    public void setCidade(String cidade) {
+    public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
 
-    public Estado getEstado() {
-        return estado;
+    public String getCep() {
+        return cep;
     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
     public FatorMultiplicador getFatorMultiplicador() {

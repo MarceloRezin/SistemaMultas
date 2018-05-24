@@ -11,17 +11,19 @@ import java.util.List;
 public class Orgao extends Cadastro	{
 
     private String nome;
-    private String endereco;
-    private String cidade;
-    private Estado estado;
+    private String numero;
+    private String rua;
+    private String bairro
+    private Cidade cidade;
 
     public Orgao(){}
 
-    public Orgao(String nome, String endereco, String cidade, Estado estado) {
+    public Orgao(String nome, String numero, String rua, String bairro,Cidade cidade) {
         this.nome = nome;
-        this.endereco = endereco;
+        this.nuemro = numero;
+        this.rua = rua;
+        this.bairro = bairro;
         this.cidade = cidade;
-        this.estado = estado;
     }
 
     public String getNome() {
@@ -32,31 +34,39 @@ public class Orgao extends Cadastro	{
         this.nome = nome;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
-    public String getCidade() {
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public Cidade getCidade() {
         return cidade;
     }
 
-    public void setCidade(String cidade) {
+    public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
 
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
-
-	@Override
+    @Override
 	public String toString() {
 		return getNome();
 	}
