@@ -13,9 +13,10 @@ public class Pessoa extends Cadastro{
     private String cpfCnpj;
     private String nomeRazaoSocial;
     private String rgInscricaoEstadual;
-    private String endereco;
-    private String cidade;
-    private Estado estado;
+    private String numero;
+    private String rua;
+    private String bairro;
+    private Cidade cidade;
     private String cep;
     private String telefone;
     private String email;
