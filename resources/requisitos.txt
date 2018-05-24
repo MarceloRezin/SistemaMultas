@@ -48,7 +48,6 @@ Todas as tabelas possuem o campoRetorno ID
 	+rua
 	+bairro
 	+cidade
-	+uf
 
 ->GravidadeMulta
     +TipoMulta
@@ -71,7 +70,6 @@ Todas as tabelas possuem o campoRetorno ID
 	+rua
 	+bairro
 	+cidade
-	+uf
 	+fatorMultiplicador
 	+valorFinal
 	+condutor(id, pois pode ser nulo)
