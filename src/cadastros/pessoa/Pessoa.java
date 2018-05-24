@@ -122,7 +122,7 @@ public class Pessoa extends Cadastro{
 
     @Override
     public String getColunas() {
-        return "cpf_cnpj,nome_razao_social,rg_inscricao_estadual,numero,rua,bairro,cep,telefone,email,tipo_pessoa";
+        return "cpf_cnpj,nome_razao_social,rg_inscricao_estadual,numero,rua,bairro,cidade,cep,telefone,email,tipo_pessoa";
     }
 
     @Override
