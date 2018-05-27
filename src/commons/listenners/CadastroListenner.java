@@ -49,21 +49,19 @@ public class CadastroListenner<T extends Cadastro> implements ActionListener {
 
     public void eventoSalvar(){
 
-        T objeto = cadastroTela.telaToObjeto();
+        try {
+            T objeto = cadastroTela.telaToObjeto();
+            Banco.save(objeto);
+            Logger.log(cadastroTela.getTitle() + " Salvar");
 
-        if(objeto != null){
-            try {
-                Banco.save(objeto);
-                Logger.log(cadastroTela.getTitle() + " Salvar");
+            Utils.mensagem("Salvo", "Item salvo com sucesso!");
 
-                Utils.mensagem("Salvo", "Item salvo com sucesso!");
-
-                cadastroTela.setObjeto(objeto);
-            } catch (SistemaMultasException e) {
-                Utils.mensagemErro(e.getMessage());
-            }
+            cadastroTela.setObjeto(objeto);
+        } catch (SistemaMultasException e) {
+            Utils.mensagemErro(e.getMessage());
+        } catch (Exception e2){
+            Utils.mensagemErro("Ocorreu um erro!");
         }
-
     }
 
     public void eventoExcluir(){

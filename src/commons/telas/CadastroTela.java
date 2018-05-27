@@ -1,6 +1,7 @@
 package commons.telas;
 
 import commons.cadastros.Cadastro;
+import exception.SistemaMultasException;
 
 import javax.swing.*;
 
@@ -33,7 +34,7 @@ public abstract class CadastroTela<T extends Cadastro> extends JInternalFrame{
     /**
      * Transforma os campos da tela no objeto do cadastro, aqui devem ser feita as validações
      */
-    public abstract T telaToObjeto();
+    public abstract T telaToObjeto() throws SistemaMultasException;
 
     /**
      * Transforma o objeto nos campos da tela
