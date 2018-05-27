@@ -54,4 +54,9 @@ public class CidadeConsultaListenner extends ConsultaListenner<Cidade> {
 		
 		abrirCadastro(cidadeCadastroTela);
 	}
+
+    @Override
+    public void setObjetoRetorno() {
+	    Cidade.mesclar(getItemListSelecionado(), getConsultaTela().getObjetoRetorno());
+    }
 }

@@ -3,6 +3,7 @@ package cadastros.cidade.telas;
 import banco.Banco;
 import cadastros.cidade.Cidade;
 import cadastros.cidade.listenner.CidadeConsultaListenner;
+import commons.telas.CadastroTela;
 import commons.telas.ConsultaTela;
 import commons.telas.TipoConsulta;
 import commons.utils.Utils;
@@ -19,7 +20,12 @@ public class CidadeConsultaTela extends ConsultaTela<Cidade>{
 		new CidadeConsultaListenner(this);
 	}
 
-	@Override
+    public CidadeConsultaTela(CadastroTela<Cidade> cadastroTela, Cidade objetoRetorno, JLabel campoRetorno) {
+        super("Consulta de Cidades", TipoConsulta.CADASTRO_PARA_CONSULTA, cadastroTela, objetoRetorno, campoRetorno);
+        new CidadeConsultaListenner(this);
+    }
+
+    @Override
 	public List<Cidade> getItensBanco() throws SistemaMultasException {
 	    String pesquisa = getCampoPesquisa().getText();
 

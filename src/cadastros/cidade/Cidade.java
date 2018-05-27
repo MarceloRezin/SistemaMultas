@@ -73,4 +73,11 @@ public class Cidade extends Cadastro {
     public String getColunaOrdenacao() {
         return "nome";
     }
+
+    //Copia os estados da origem para o destino
+    public static void mesclar(Cidade origem, Cidade destino){
+        destino.setId(origem.getId());
+        destino.setUf(origem.getUf());
+        destino.setNome(origem.getNome());
+    }
 }

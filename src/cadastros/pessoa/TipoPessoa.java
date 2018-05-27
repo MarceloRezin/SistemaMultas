@@ -1,16 +1,7 @@
 package cadastros.pessoa;
 
 public enum TipoPessoa {
-    PESSOA_FISICA("Pessoa Física"),
-    PESSOA_JURIDICA("Pessoa Jurídica");
+    PESSOA_FISICA,
+    PESSOA_JURIDICA;
 
-    private String descricao;
-
-    TipoPessoa(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
 }

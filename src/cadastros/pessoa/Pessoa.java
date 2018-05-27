@@ -1,11 +1,16 @@
 package cadastros.pessoa;
 
+import banco.Banco;
+import cadastros.cidade.Cidade;
 import commons.cadastros.Cadastro;
-import commons.enuns.Estado;
+import commons.utils.Utils;
+import exception.SistemaMultasException;
+import log.Logger;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pessoa extends Cadastro{
@@ -21,6 +26,7 @@ public class Pessoa extends Cadastro{
     private String telefone;
     private String email;
     private TipoPessoa tipoPessoa;
+    private Integer idCidade;
 
     public String getCpfCnpj() {
         return cpfCnpj;
@@ -70,7 +76,16 @@ public class Pessoa extends Cadastro{
         this.bairro = bairro;
     }
 
-    public Cidade getCidade() {
+    public Cidade getCidade(){
+        if(cidade == null && idCidade != null){
+            try {
+                this.cidade = (Cidade)Banco.getById(new Cidade(), idCidade);
+            }catch (SistemaMultasException e){
+                e.printStackTrace();
+                Logger.log(e.getMessage());
+                Utils.mensagemErro("Ocorreu um erro!");
+            }
+        }
         return cidade;
     }
 
@@ -110,9 +125,17 @@ public class Pessoa extends Cadastro{
         this.tipoPessoa = tipoPessoa;
     }
 
+    public Integer getIdCidade() {
+        return idCidade;
+    }
+
+    public void setIdCidade(Integer idCidade) {
+        this.idCidade = idCidade;
+    }
+
     @Override
     public String toString() {
-        return getNomeRazaoSocial() +  "/" + getCpfCnpj();
+        return getNomeRazaoSocial() +  " / " + getCpfCnpj();
     }
 
     @Override
@@ -122,20 +145,52 @@ public class Pessoa extends Cadastro{
 
     @Override
     public String getColunas() {
-        return "cpf_cnpj,nome_razao_social,rg_inscricao_estadual,numero,rua,bairro,cidade,cep,telefone,email,tipo_pessoa";
+        return "cpf_cnpj,nome_razao_social,rg_inscricao_estadual,numero,rua,bairro,cidades_id,cep,telefone,email,tipo_pessoa";
     }
 
     @Override
-    public void setStatements(PreparedStatement stmt) throws SQLException {
+    public void setStatements(PreparedStatement stmt) throws SQLException{
+        stmt.setString(1,getCpfCnpj());
+        stmt.setString(2, getNomeRazaoSocial());
+        stmt.setString(3, getRgInscricaoEstadual());
+        stmt.setString(4, getNumero());
+        stmt.setString(5, getRua());
+        stmt.setString(6, getBairro());
+        stmt.setInt(7, getCidade().getId());
+        stmt.setString(8, getCep());
+        stmt.setString(9, getTelefone());
+        stmt.setString(10, getEmail());
+        stmt.setString(11, getTipoPessoa().toString());
+
     }
 
     @Override
     public List<Cadastro> resultSetToList(ResultSet rs) throws SQLException {
-        return null;
+        List<Cadastro> pessoas = new ArrayList<>();
+
+        while (rs.next()){
+            Pessoa pessoa = new Pessoa();
+
+            pessoa.setId(rs.getInt("id"));
+            pessoa.setCpfCnpj(rs.getString("cpf_cnpj"));
+            pessoa.setNomeRazaoSocial(rs.getString("nome_razao_social"));
+            pessoa.setRgInscricaoEstadual(rs.getString("rg_inscricao_estadual"));
+            pessoa.setNumero(rs.getString("numero"));
+            pessoa.setRua(rs.getString("rua"));
+            pessoa.setBairro(rs.getString("bairro"));
+            pessoa.setIdCidade(rs.getInt("cidades_id"));
+            pessoa.setCep(rs.getString("cep"));
+            pessoa.setTelefone(rs.getString("telefone"));
+            pessoa.setEmail(rs.getString("email"));
+            pessoa.setTipoPessoa(TipoPessoa.valueOf(rs.getString("tipo_pessoa")));
+
+            pessoas.add(pessoa);
+        }
+        return pessoas;
     }
 
     @Override
     public String getColunaOrdenacao() {
-        return null;
+        return "nome_razao_social";
     }
 }
