@@ -23,6 +23,7 @@ public abstract class ConsultaTela<T extends Cadastro> extends JInternalFrame {
     private TipoConsulta tipoConsulta;
     private T objetoRetorno;
     private JLabel campoRetorno;
+    private CadastroTela<T> cadastroTela;
 
     public ConsultaTela(JDesktopPane jDesktopPane, String titulo, TipoConsulta tipoConsulta) {
         this.jDesktopPane = jDesktopPane;
@@ -31,11 +32,13 @@ public abstract class ConsultaTela<T extends Cadastro> extends JInternalFrame {
         initComponentes(titulo);
     }
 
-    public ConsultaTela(JDesktopPane jDesktopPane, String titulo, TipoConsulta tipoConsulta, T objetoRetorno, JLabel campoRetorno) {
-        this.jDesktopPane = jDesktopPane;
+    public ConsultaTela(String titulo, TipoConsulta tipoConsulta, CadastroTela<T> cadastroTela, T objetoRetorno, JLabel campoRetorno) {
         this.tipoConsulta = tipoConsulta;
         this.objetoRetorno = objetoRetorno;
         this.campoRetorno = campoRetorno;
+        this.cadastroTela = cadastroTela;
+
+        getCadastroTela().setVisible(false);
 
         initComponentes(titulo);
     }
@@ -151,6 +154,10 @@ public abstract class ConsultaTela<T extends Cadastro> extends JInternalFrame {
 
     public void setCampoRetorno(JLabel campoRetorno) {
         this.campoRetorno = campoRetorno;
+    }
+
+    public CadastroTela<T> getCadastroTela() {
+        return cadastroTela;
     }
 
     public abstract List<T> getItensBanco() throws SistemaMultasException;

@@ -79,9 +79,11 @@ public class Banco{
             }
             stmt.close();
         }catch (SQLIntegrityConstraintViolationException e){
+            e.printStackTrace();
             Logger.log(e.getMessage());
             throw new SistemaMultasException("Já existe este item registrado!");
         }catch(Exception e1){
+            e1.printStackTrace();
             Logger.log(e1.getMessage());
             throw new SistemaMultasException();
         }
@@ -107,6 +109,7 @@ public class Banco{
 
         }catch(Exception e){
             Logger.log(e.getMessage());
+            e.printStackTrace();
             throw new SistemaMultasException();
         }
     }
@@ -118,8 +121,29 @@ public class Banco{
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.execute();
             stmt.close();
-        }catch(Exception e){
+        }catch (SQLIntegrityConstraintViolationException e) {
             Logger.log(e.getMessage());
+            throw new SistemaMultasException("Este item está vinculado a outros registros e não pode ser removido!");
+        }catch(Exception e){
+            e.printStackTrace();
+            Logger.log(e.getMessage());
+            throw new SistemaMultasException();
+        }
+    }
+
+    public static Cadastro getById(Cadastro cadastro, Integer id) throws SistemaMultasException{
+        String  sql = "SELECT * FROM " + cadastro.getNomeTabela() + " WHERE id = " + id + " LIMIT 1";
+
+        try{
+            Statement st = conexao.createStatement();
+
+            ResultSet rs = st.executeQuery(sql);
+
+            return (Cadastro)cadastro.resultSetToList(rs).get(0);
+
+        }catch(Exception e1){
+            e1.printStackTrace();
+            Logger.log(e1.getMessage());
             throw new SistemaMultasException();
         }
     }

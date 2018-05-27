@@ -17,7 +17,6 @@ import commons.telas.ConsultaTela;
 import commons.telas.TipoConsulta;
 
 public abstract class ConsultaListenner<T extends Cadastro> implements ActionListener, ListSelectionListener {
-
     private JButton btnConsultar;
     private JButton btnNovo;
     private JList<T> list;
@@ -30,7 +29,7 @@ public abstract class ConsultaListenner<T extends Cadastro> implements ActionLis
         this.list = consultaTela.getList();
         this.model = consultaTela.getModel();
         this.consultaTela = consultaTela;
-        
+
         btnConsultar.addActionListener(this);
         btnNovo.addActionListener(this);
         list.addListSelectionListener(this);
@@ -49,7 +48,7 @@ public abstract class ConsultaListenner<T extends Cadastro> implements ActionLis
 	public void valueChanged(ListSelectionEvent evento) {
 		if(evento.getSource() == list) {
 			if (evento.getValueIsAdjusting()){
-				eventoItemSelecionado();
+                eventoSelecao();
             }
 		}
 	}
@@ -80,12 +79,22 @@ public abstract class ConsultaListenner<T extends Cadastro> implements ActionLis
         cadastroTela.setVisible(true);
     }
 
-    public void eventoConsulta(){
+    //Implementação não obrigatória, utilizado somente em casos especiais
+    public void setObjetoRetorno(){}
+
+    public void eventoSelecao(){
 	    if(consultaTela.getTipoConsulta() == TipoConsulta.CONSULTA_PARA_CADASTRO){
-	        eventoConsultar();
+	        eventoItemSelecionado();
         }else{
-	        consultaTela.setObjetoRetorno(getItemListSelecionado());
-	        consultaTela.getCampoRetorno().setText(consultaTela.getObjetoRetorno().toString());
+	        setObjetoRetorno();
+
+            String texto = consultaTela.getCampoRetorno().getText();
+            String[] textoSplit = texto.split(":");
+
+	        consultaTela.getCampoRetorno().setText(textoSplit[0] + ": " + consultaTela.getObjetoRetorno().toString());
+
+            consultaTela.getCadastroTela().setVisible(true);
+            consultaTela.dispose();
         }
     }
 }
