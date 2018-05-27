@@ -1,6 +1,7 @@
 package commons.utils;
 
 import javax.swing.*;
+import javax.swing.text.MaskFormatter;
 
 public final class Utils {
 
@@ -31,4 +32,16 @@ public final class Utils {
     public static void mensagemErro(String mensagem){
         mensagemErro("Erro", mensagem);
     }
+
+    public static MaskFormatter mascara(String Mascara){
+        MaskFormatter F_Mascara = new MaskFormatter();
+        try{
+            F_Mascara.setMask(Mascara);
+        }
+        catch (Exception excecao) {
+            excecao.printStackTrace();
+        }
+        return F_Mascara;
+    }
+
 }
