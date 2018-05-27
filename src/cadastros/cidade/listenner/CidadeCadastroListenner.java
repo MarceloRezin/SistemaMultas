@@ -1,4 +1,4 @@
-package cadastros.gravidademulta.listenner;
+package cadastros.cidade.listenner;
 
 import commons.listenners.CadastroListenner;
 import commons.telas.CadastroTela;

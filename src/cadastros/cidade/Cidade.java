@@ -1,8 +1,12 @@
-package cidade;
+package cadastros.cidade;
 
 import commons.cadastros.Cadastro;
 
-
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Cidade extends Cadastro {
@@ -10,17 +14,63 @@ public class Cidade extends Cadastro {
     private String nome;
     private Estado uf;
 
-    public Cidade(String nome) {
-        this.nome = nome;
-    }
-
     public Cidade() {}
 
-    public String getCidade() {
+    public String getNome() {
         return nome;
     }
 
-    public void setCidade(String cidade) {
+    public void setNome(String cidade) {
         this.nome = cidade;
+    }
+
+    public Estado getUf() {
+        return uf;
+    }
+
+    public void setUf(Estado uf) {
+        this.uf = uf;
+    }
+
+    @Override
+    public String toString() {
+        return getNome();
+    }
+
+    @Override
+    public String getNomeTabela() {
+        return "cidades";
+    }
+
+    @Override
+    public String getColunas() {
+        return "nome,uf";
+    }
+
+    @Override
+    public void setStatements(PreparedStatement stmt) throws SQLException {
+        stmt.setString(1,getNome());
+        stmt.setString(2, getUf().toString());
+    }
+
+    @Override
+    public List resultSetToList(ResultSet rs) throws SQLException {
+        List<Cadastro> cidades = new ArrayList<>();
+
+        while (rs.next()){
+            Cidade cidade = new Cidade();
+
+            cidade.setId(rs.getInt("id"));
+            cidade.setNome(rs.getString("nome"));
+            cidade.setUf(Estado.valueOf(rs.getString("uf")));
+
+            cidades.add(cidade);
+        }
+        return cidades;
+    }
+
+    @Override
+    public String getColunaOrdenacao() {
+        return "nome";
     }
 }

@@ -1,4 +1,4 @@
-package commons.enuns;
+package cadastros.cidade;
 
 public enum Estado {
     AC("Acre"),
@@ -38,5 +38,17 @@ public enum Estado {
 
     public String getDescricao() {
         return descricao;
+    }
+
+    public int getIndice(){
+        Estado[] estados = Estado.values();
+
+        for(int i=0; i<estados.length; i++){
+            if(this == estados[i]){
+                return i;
+            }
+        }
+
+        return -1;
     }
 }

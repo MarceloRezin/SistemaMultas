@@ -1,19 +1,19 @@
-package cadastros.gravidademulta.listenner;
+package cadastros.cidade.listenner;
 
 import banco.Banco;
-import cadastros.gravidademulta.telas.GravidadeMultaCadastroTela;
+import cadastros.cidade.Cidade;
+import cadastros.cidade.telas.CidadeCadastroTela;
 import commons.utils.Utils;
 import commons.listenners.ConsultaListenner;
 import commons.telas.ConsultaTela;
 import exception.SistemaMultasException;
-import cadastros.gravidademulta.GravidadeMulta;
 import log.Logger;
 
 import java.util.List;
 
-public class GravidadeMultaConsultaListenner extends ConsultaListenner<GravidadeMulta> {
+public class CidadeConsultaListenner extends ConsultaListenner<Cidade> {
 
-	public GravidadeMultaConsultaListenner(ConsultaTela<Cidade> consultaTela) {
+	public CidadeConsultaListenner(ConsultaTela<Cidade> consultaTela) {
 		super(consultaTela);
 	}
 	
@@ -41,17 +41,17 @@ public class GravidadeMultaConsultaListenner extends ConsultaListenner<Gravidade
 	public void eventoItemSelecionado() {
         Logger.log("Cidade Selecionada");
 
-		GravidadeMultaCadastroTela gravidadeMultaCadastroTela = new GravidadeMultaCadastroTela("Gravidade Multa", getItemListSelecionado(), getConsultaTela());
+		CidadeCadastroTela cidadeCadastroTela = new CidadeCadastroTela("Cidade", getItemListSelecionado(), getConsultaTela());
 
-		abrirCadastro(gravidadeMultaCadastroTela);
+		abrirCadastro(cidadeCadastroTela);
 	}
 
 	@Override
 	public void eventoNovo() {
         Logger.log("Cidade Nova");
 
-		CidadeCadastroTela cidadeaCadastroTela = new CidadeCadastroTela("Cidade", null, getConsultaTela());
+		CidadeCadastroTela cidadeCadastroTela = new CidadeCadastroTela("Cidade", null, getConsultaTela());
 		
-		abrirCadastro(cidadeaCadastroTela);
+		abrirCadastro(cidadeCadastroTela);
 	}
 }
