@@ -40,16 +40,17 @@ public class Infracao extends Cadastro{
 
     @Override
     public String getNomeTabela() {
-        return null;
+        return "infracoes";
     }
 
     @Override
     public String getColunas() {
-        return null;
+        return "descricao,gravidade_multas_id";
     }
 
     @Override
     public void setStatements(PreparedStatement stmt) throws SQLException {
+
 
     }
 
