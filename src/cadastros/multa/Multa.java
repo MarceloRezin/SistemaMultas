@@ -22,7 +22,7 @@ public class Multa extends Cadastro{
     private LocalDate dataVencimento;
     private String numero;
     private String rua;
-    private String bairro
+    private String bairro;
     private Cidade cidade;
     private String cep;
     private FatorMultiplicador fatorMultiplicador;

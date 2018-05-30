@@ -77,7 +77,7 @@ public class Condutor extends Cadastro{
 
     @Override
     public List resultSetToList(ResultSet rs) throws SQLException {
-        List<Cadastro> listcondutor = new ArrayList<>();
+        List<Cadastro> listCondutor = new ArrayList<>();
 
         while (rs.next()){
             Condutor condutor = new Condutor();
@@ -86,9 +86,9 @@ public class Condutor extends Cadastro{
             condutor.setCodHabilitacao(rs.getString("codigo_hab"));
             condutor.setIdPessoa(rs.getInt("pessoa_id"));
 
-            listcondutor.add(condutor);
+            listCondutor.add(condutor);
         }
-        return listcondutor;
+        return listCondutor;
     }
 
     @Override
