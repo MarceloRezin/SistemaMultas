@@ -30,6 +30,8 @@ public class Veiculo extends Cadastro{
         this.placa = placa;
     }
 
+    public Veiculo(){}
+
     public String getMarca() {
         return marca;
     }
