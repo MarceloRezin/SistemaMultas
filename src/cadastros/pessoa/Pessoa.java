@@ -193,4 +193,20 @@ public class Pessoa extends Cadastro{
     public String getColunaOrdenacao() {
         return "nome_razao_social";
     }
+
+    //Copia os estados da origem para o destino
+    public static void mesclar(Pessoa origem, Pessoa destino){
+        destino.setId(origem.getId());
+        destino.setCpfCnpj(origem.getCpfCnpj());
+        destino.setNomeRazaoSocial(origem.getNomeRazaoSocial());
+        destino.setRgInscricaoEstadual(origem.getRgInscricaoEstadual());
+        destino.setNumero(origem.getNumero());
+        destino.setRua(origem.getRua());
+        destino.setBairro(origem.getBairro());
+        destino.setIdCidade(origem.getIdCidade());
+        destino.setCep(origem.getCep());
+        destino.setTelefone(origem.getTelefone());
+        destino.setEmail(origem.getEmail());
+        destino.setTipoPessoa(origem.getTipoPessoa());
+    }
 }

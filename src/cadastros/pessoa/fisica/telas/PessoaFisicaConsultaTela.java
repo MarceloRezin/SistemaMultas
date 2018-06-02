@@ -4,6 +4,7 @@ import banco.Banco;
 import cadastros.pessoa.Pessoa;
 import cadastros.pessoa.TipoPessoa;
 import cadastros.pessoa.fisica.listenner.PessoaFisicaConsultaListenner;
+import commons.telas.CadastroTela;
 import commons.telas.ConsultaTela;
 import commons.telas.TipoConsulta;
 import commons.utils.Utils;
@@ -15,8 +16,15 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class PessoaFisicaConsultaTela extends ConsultaTela<Pessoa>{
 
+	public static final String TITULO = "Consulta de Pessoas Físicas";
+
 	public PessoaFisicaConsultaTela(JDesktopPane jDesktopPane) {
-		super(jDesktopPane, "Consulta de Pessoas Físicas", TipoConsulta.CONSULTA_PARA_CADASTRO);
+		super(jDesktopPane, TITULO, TipoConsulta.CONSULTA_PARA_CADASTRO);
+		new PessoaFisicaConsultaListenner(this);
+	}
+
+	public PessoaFisicaConsultaTela(CadastroTela<Pessoa> cadastroTela, Pessoa objetoRetorno, JLabel campoRetorno) {
+		super(TITULO, TipoConsulta.CADASTRO_PARA_CONSULTA, cadastroTela, objetoRetorno, campoRetorno);
 		new PessoaFisicaConsultaListenner(this);
 	}
 

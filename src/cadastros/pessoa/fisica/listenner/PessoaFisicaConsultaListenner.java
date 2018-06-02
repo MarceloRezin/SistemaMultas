@@ -55,4 +55,9 @@ public class PessoaFisicaConsultaListenner extends ConsultaListenner<Pessoa> {
 
         abrirCadastro(pessoaFisicaCadastroTela);
 	}
+
+	@Override
+	public void setObjetoRetorno() {
+		Pessoa.mesclar(getItemListSelecionado(), getConsultaTela().getObjetoRetorno());
+	}
 }
