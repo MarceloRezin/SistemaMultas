@@ -1,6 +1,8 @@
 package commons.telas;
 
 import javax.swing.*;
+import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
 
 import commons.cadastros.Cadastro;
 import commons.utils.Utils;
@@ -65,8 +67,10 @@ public abstract class ConsultaTela<T extends Cadastro> extends JInternalFrame {
         btnConsulta.setIcon(new ImageIcon(ConsultaTela.class.getResource("/imagens/pesquisar.png")));
         panelNorteLeste.add(btnConsulta);
 
-        btnNovo = new JButton("Novo");
-        panelNorteLeste.add(btnNovo);
+        if(tipoConsulta == TipoConsulta.CONSULTA_PARA_CADASTRO){
+            btnNovo = new JButton("Novo");
+            panelNorteLeste.add(btnNovo);
+        }
 
         JPanel panelCentro = new JPanel();
         getContentPane().add(panelCentro, BorderLayout.CENTER);
@@ -76,6 +80,14 @@ public abstract class ConsultaTela<T extends Cadastro> extends JInternalFrame {
         panelCentro.add(list);
 
         getRootPane().setDefaultButton(btnConsulta);
+
+        addInternalFrameListener(new InternalFrameAdapter(){
+            public void internalFrameClosing(InternalFrameEvent e) {
+                if(tipoConsulta == TipoConsulta.CADASTRO_PARA_CONSULTA){
+                    getCadastroTela().setVisible(true);
+                }
+            }
+        });
 
         listarTodosItens();
     }

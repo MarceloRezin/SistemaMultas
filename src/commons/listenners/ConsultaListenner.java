@@ -31,7 +31,9 @@ public abstract class ConsultaListenner<T extends Cadastro> implements ActionLis
         this.consultaTela = consultaTela;
 
         btnConsultar.addActionListener(this);
-        btnNovo.addActionListener(this);
+        if(btnNovo != null){
+            btnNovo.addActionListener(this);
+        }
         list.addListSelectionListener(this);
     }
 
