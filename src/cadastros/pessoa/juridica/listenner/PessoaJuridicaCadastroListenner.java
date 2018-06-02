@@ -31,7 +31,6 @@ public class PessoaJuridicaCadastroListenner extends CadastroListenner implement
 
     private void eventoSelecionarCidade(){
         JDesktopPane desktopPane = getCadastroTela().getConsultaTela().getjDesktopPane();
-        System.out.println(cadastroTela.getCidade());
         CidadeConsultaTela cidadeConsultaTela = new CidadeConsultaTela(getCadastroTela(), cadastroTela.getCidade(), cadastroTela.getLblCidade());
         desktopPane.add(cidadeConsultaTela);
         cidadeConsultaTela.setVisible(true);
