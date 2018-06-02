@@ -145,7 +145,7 @@ public class Pessoa extends Cadastro{
 
     @Override
     public String getColunas() {
-        return "cpf_cnpj,nome_razao_social,rg_inscricao_estadual,numero,rua,bairro,cidades_id,cep,telefone,email,tipo_pessoa";
+        return "cpf_cnpj,nome_razao_social,rg_inscricao_estadual,numero,rua,bairro,cidade_id,cep,telefone,email,tipo_pessoa";
     }
 
     @Override
@@ -178,7 +178,7 @@ public class Pessoa extends Cadastro{
             pessoa.setNumero(rs.getString("numero"));
             pessoa.setRua(rs.getString("rua"));
             pessoa.setBairro(rs.getString("bairro"));
-            pessoa.setIdCidade(rs.getInt("cidades_id"));
+            pessoa.setIdCidade(rs.getInt("cidade_id"));
             pessoa.setCep(rs.getString("cep"));
             pessoa.setTelefone(rs.getString("telefone"));
             pessoa.setEmail(rs.getString("email"));
