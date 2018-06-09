@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Multa extends Cadastro{
@@ -36,19 +37,6 @@ public class Multa extends Cadastro{
     private Integer idVeiculo;
     private Integer idInfracao;
 
-    public Multa(Veiculo veiculo, Infracao infracao, Orgao orgao, LocalDateTime dataHoraEmissao, LocalDate dataVencimento, String numero, String rua, String bairro, Cidade cidade, FatorMultiplicador fatorMultiplicador, Proprietario condutor, BigDecimal valorFinal) {
-        this.veiculo = veiculo;
-        this.infracao = infracao;
-        this.orgao = orgao;
-        this.dataHoraEmissao = dataHoraEmissao;
-        this.dataVencimento = dataVencimento;
-        this.numero = numero;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.fatorMultiplicador = fatorMultiplicador;
-        this.condutor = condutor;
-        this.valorFinal = valorFinal;
-    }
 
     public Veiculo getVeiculo() {
         if(veiculo == null && idVeiculo != null){
@@ -193,7 +181,7 @@ public class Multa extends Cadastro{
 
     @Override
     public String getColunas() {
-        return "veiculos_id,infracoes_id,orgaos_id,data_hora_emissao,data_vencimento,numero,rua,bairro,cidades_id,fator_multiplicador,id_condutor,valor_final";
+        return "veiculo_id,infracoes_id,orgao_id,data_hora_emissao,data_vencimento,numero,rua,bairro,cidade_id,fator_multiplicador,id_condutor,valor_final";
     }
 
     @Override
@@ -216,8 +204,19 @@ public class Multa extends Cadastro{
     }
 
     @Override
-    public List<Cadastro> resultSetToList(ResultSet rs) throws SQLException {
-        return null;
+    public List resultSetToList(ResultSet rs) throws SQLException {
+
+        List<Cadastro> listMulta = new ArrayList<>();
+
+        while (rs.next()){
+            Multa multa = new Multa();
+
+            multa.setId(rs.getInt("id"));
+            multa.setVeiculo(Veiculo.valueOf(rs.getInt("veiculo_id")));
+
+            listMulta.add(multa);
+        }
+        return listMulta;
     }
 
     @Override
