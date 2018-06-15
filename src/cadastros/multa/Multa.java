@@ -7,9 +7,7 @@ import cadastros.infracao.Infracao;
 import cadastros.orgao.Orgao;
 import cadastros.proprietario.Proprietario;
 import cadastros.veiculo.Veiculo;
-import commons.utils.Utils;
 import exception.SistemaMultasException;
-import log.Logger;
 
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
@@ -34,20 +32,10 @@ public class Multa extends Cadastro{
     private FatorMultiplicador fatorMultiplicador;
     private Proprietario condutor;
     private BigDecimal valorFinal;
-    private Integer idVeiculo;
-    private Integer idInfracao;
 
 
     public Veiculo getVeiculo() {
-        if(veiculo == null && idVeiculo != null){
-            try {
-                this.veiculo = (Veiculo)Banco.getById(new Veiculo(), idVeiculo);
-            }catch (SistemaMultasException e){
-                e.printStackTrace();
-                Logger.log(e.getMessage());
-                Utils.mensagemErro("Ocorreu um erro!");
-            }
-        }
+
         return veiculo;
     }
 
@@ -56,16 +44,6 @@ public class Multa extends Cadastro{
     }
 
     public Infracao getInfracao() {
-
-        if(infracao == null && idInfracao != null){
-            try {
-                this.infracao = (Infracao)Banco.getById(new Infracao(),idInfracao);
-            }catch (SistemaMultasException e){
-                e.printStackTrace();
-                Logger.log(e.getMessage());
-                Utils.mensagemErro("Ocorreu um erro!");
-            }
-        }
         return infracao;
     }
 
@@ -153,21 +131,6 @@ public class Multa extends Cadastro{
         this.valorFinal = valorFinal;
     }
 
-    public Integer getIdVeiculo() {
-        return idVeiculo;
-    }
-
-    public void setIdVeiculo(Integer idVeiculo) {
-        this.idVeiculo = idVeiculo;
-    }
-
-    public Integer getIdInfracao() {
-        return idInfracao;
-    }
-
-    public void setIdInfracao(Integer idInfracao) {
-        this.idInfracao = idInfracao;
-    }
 
     @Override
 	public String toString() {
@@ -222,5 +185,9 @@ public class Multa extends Cadastro{
     @Override
     public String getColunaOrdenacao() {
         return null;
+    }
+
+    public static Multa valueOf(Integer id) throws SistemaMultasException{
+        return (Multa) Banco.getById(new Multa(), id);
     }
 }
