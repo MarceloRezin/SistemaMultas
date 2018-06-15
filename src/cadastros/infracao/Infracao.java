@@ -16,7 +16,6 @@ import java.util.List;
 public class Infracao extends Cadastro{
     private String descricao;
     private GravidadeMulta gravidadeMulta;
-    private Integer idGravidadeMulta;
 
     public Infracao(){}
 
@@ -34,28 +33,11 @@ public class Infracao extends Cadastro{
     }
 
     public GravidadeMulta getGravidadeMulta() {
-        if(gravidadeMulta == null && idGravidadeMulta != null){
-            try {
-                this.gravidadeMulta = (GravidadeMulta)Banco.getById(new GravidadeMulta(), idGravidadeMulta);
-            }catch (SistemaMultasException e){
-                e.printStackTrace();
-                Logger.log(e.getMessage());
-                Utils.mensagemErro("Ocorreu um erro!");
-            }
-        }
         return gravidadeMulta;
     }
 
     public void setGravidadeMulta(GravidadeMulta gravidadeMulta) {
         this.gravidadeMulta = gravidadeMulta;
-    }
-
-    public Integer getIdGravidadeMulta() {
-        return idGravidadeMulta;
-    }
-
-    public void setIdGravidadeMulta(Integer idGravidadeMulta) {
-        this.idGravidadeMulta = idGravidadeMulta;
     }
 
     @Override
@@ -91,7 +73,7 @@ public class Infracao extends Cadastro{
 
             infracao.setId(rs.getInt("id"));
             infracao.setDescricao(rs.getString("descricao"));
-            infracao.setIdGravidadeMulta(rs.getInt("gravidade_multas_id"));
+            infracao.setGravidadeMulta(GravidadeMulta.valueOf((rs.getInt("gravidade_multas_id"))));
 
             listInfracao.add(infracao);
         }
@@ -101,5 +83,16 @@ public class Infracao extends Cadastro{
     @Override
     public String getColunaOrdenacao() {
         return  "descricao";
+    }
+
+    public static Infracao valueOf(int id){
+        try {
+            return (Infracao) Banco.getById(new Infracao(), id);
+        } catch (SistemaMultasException e) {
+            e.printStackTrace();
+            Logger.log(e.getMessage());
+            Utils.mensagemErro("Ocorreu um erro ao recuperar o veículo!");
+            return null;
+        }
     }
 }

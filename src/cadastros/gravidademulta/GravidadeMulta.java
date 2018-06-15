@@ -1,6 +1,10 @@
 package cadastros.gravidademulta;
 
+import banco.Banco;
 import commons.cadastros.Cadastro;
+import commons.utils.Utils;
+import exception.SistemaMultasException;
+import log.Logger;
 
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
@@ -96,5 +100,17 @@ public class GravidadeMulta extends Cadastro{
     @Override
     public String getColunaOrdenacao() {
         return "tipo";
+    }
+
+    public static GravidadeMulta valueOf(Integer id){
+        try {
+            return (GravidadeMulta) Banco.getById(new GravidadeMulta(), id);
+        } catch (SistemaMultasException e) {
+            e.printStackTrace();
+            Logger.log(e.getMessage());
+            Utils.mensagemErro("Ocorreu um erro ao recuperar o veículo!");
+            return null;
+        }
+
     }
 }

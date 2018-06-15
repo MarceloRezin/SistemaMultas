@@ -2,14 +2,14 @@ package cadastros.multa;
 
 import banco.Banco;
 import cadastros.cidade.Cidade;
+import cadastros.condutor.Condutor;
 import commons.cadastros.Cadastro;
 import cadastros.infracao.Infracao;
 import cadastros.orgao.Orgao;
 import cadastros.proprietario.Proprietario;
 import cadastros.veiculo.Veiculo;
-import commons.utils.Utils;
 import exception.SistemaMultasException;
-import log.Logger;
+import javafx.scene.input.KeyCode;
 
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Multa extends Cadastro{
@@ -33,33 +34,10 @@ public class Multa extends Cadastro{
     private FatorMultiplicador fatorMultiplicador;
     private Proprietario condutor;
     private BigDecimal valorFinal;
-    private Integer idVeiculo;
-    private Integer idInfracao;
 
-    public Multa(Veiculo veiculo, Infracao infracao, Orgao orgao, LocalDateTime dataHoraEmissao, LocalDate dataVencimento, String numero, String rua, String bairro, Cidade cidade, FatorMultiplicador fatorMultiplicador, Proprietario condutor, BigDecimal valorFinal) {
-        this.veiculo = veiculo;
-        this.infracao = infracao;
-        this.orgao = orgao;
-        this.dataHoraEmissao = dataHoraEmissao;
-        this.dataVencimento = dataVencimento;
-        this.numero = numero;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.fatorMultiplicador = fatorMultiplicador;
-        this.condutor = condutor;
-        this.valorFinal = valorFinal;
-    }
 
     public Veiculo getVeiculo() {
-        if(veiculo == null && idVeiculo != null){
-            try {
-                this.veiculo = (Veiculo)Banco.getById(new Veiculo(), idVeiculo);
-            }catch (SistemaMultasException e){
-                e.printStackTrace();
-                Logger.log(e.getMessage());
-                Utils.mensagemErro("Ocorreu um erro!");
-            }
-        }
+
         return veiculo;
     }
 
@@ -68,16 +46,6 @@ public class Multa extends Cadastro{
     }
 
     public Infracao getInfracao() {
-
-        if(infracao == null && idInfracao != null){
-            try {
-                this.infracao = (Infracao)Banco.getById(new Infracao(),idInfracao);
-            }catch (SistemaMultasException e){
-                e.printStackTrace();
-                Logger.log(e.getMessage());
-                Utils.mensagemErro("Ocorreu um erro!");
-            }
-        }
         return infracao;
     }
 
@@ -165,22 +133,6 @@ public class Multa extends Cadastro{
         this.valorFinal = valorFinal;
     }
 
-    public Integer getIdVeiculo() {
-        return idVeiculo;
-    }
-
-    public void setIdVeiculo(Integer idVeiculo) {
-        this.idVeiculo = idVeiculo;
-    }
-
-    public Integer getIdInfracao() {
-        return idInfracao;
-    }
-
-    public void setIdInfracao(Integer idInfracao) {
-        this.idInfracao = idInfracao;
-    }
-
     @Override
 	public String toString() {
 		return "Multa";
@@ -193,7 +145,7 @@ public class Multa extends Cadastro{
 
     @Override
     public String getColunas() {
-        return "veiculos_id,infracoes_id,orgaos_id,data_hora_emissao,data_vencimento,numero,rua,bairro,cidades_id,fator_multiplicador,id_condutor,valor_final";
+        return "veiculo_id,infracoes_id,orgao_id,data_hora_emissao,data_vencimento,numero,rua,bairro,cidade_id,fator_multiplicador,id_condutor,valor_final";
     }
 
     @Override
@@ -216,12 +168,39 @@ public class Multa extends Cadastro{
     }
 
     @Override
-    public List<Cadastro> resultSetToList(ResultSet rs) throws SQLException {
-        return null;
+    public List resultSetToList(ResultSet rs) throws SQLException {
+
+        List<Cadastro> listMulta = new ArrayList<>();
+
+        while (rs.next()){
+            Multa multa = new Multa();
+
+            multa.setId(rs.getInt("id"));
+            multa.setVeiculo(Veiculo.valueOf(rs.getInt("veiculo_id")));
+            multa.setInfracao(Infracao.valueOf(rs.getInt("infracoes_id")));
+            multa.setOrgao(Orgao.valueOf(rs.getInt("orgao_id")));
+            multa.setDataHoraEmissao(java.sql.Timestamp.valueOf(rs.getString("data_hora_emissao")).toLocalDateTime());
+            multa.setDataVencimento(java.sql.Date.valueOf(rs.getString("data_vencimento")).toLocalDate());
+            multa.setNumero(rs.getString("numero"));
+            multa.setRua(rs.getString("rua"));
+            multa.setBairro(rs.getString("bairro"));
+            multa.setCidade(Cidade.valueOf(rs.getInt("cidade_id")));
+            multa.setFatorMultiplicador(FatorMultiplicador.valueOf(rs.getString("fator_multiplicador")));
+            multa.setCondutor(Proprietario.valueOf(rs.getInt("id_condutor")));
+            multa.setValorFinal(rs.getBigDecimal("valor_final"));
+
+
+            listMulta.add(multa);
+        }
+        return listMulta;
     }
 
     @Override
     public String getColunaOrdenacao() {
-        return null;
+        return "id";
+    }
+
+    public static Multa valueOf(Integer id) throws SistemaMultasException{
+        return (Multa) Banco.getById(new Multa(), id);
     }
 }

@@ -1,6 +1,10 @@
 package cadastros.cidade;
 
+import banco.Banco;
 import commons.cadastros.Cadastro;
+import commons.utils.Utils;
+import exception.SistemaMultasException;
+import log.Logger;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -79,5 +83,16 @@ public class Cidade extends Cadastro {
         destino.setId(origem.getId());
         destino.setUf(origem.getUf());
         destino.setNome(origem.getNome());
+    }
+
+    public static Cidade valueOf(int id) {
+        try {
+            return (Cidade) Banco.getById(new Cidade(), id);
+        } catch (SistemaMultasException e) {
+            e.printStackTrace();
+            Logger.log(e.getMessage());
+            Utils.mensagemErro("Ocorreu um erro ao recuperar o veículo!");
+            return null;
+        }
     }
 }
