@@ -209,4 +209,14 @@ public class Pessoa extends Cadastro{
         destino.setEmail(origem.getEmail());
         destino.setTipoPessoa(origem.getTipoPessoa());
     }
+    public static Pessoa valueOf(int id){
+        try {
+            return (Pessoa) Banco.getById(new Pessoa(), id);
+        } catch (SistemaMultasException e) {
+            e.printStackTrace();
+            Logger.log(e.getMessage());
+            Utils.mensagemErro("Ocorreu um erro ao recuperar o veículo!");
+            return null;
+        }
+    }
 }
