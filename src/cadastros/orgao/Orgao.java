@@ -1,7 +1,11 @@
 package cadastros.orgao;
 
+import banco.Banco;
 import cadastros.cidade.Cidade;
 import commons.cadastros.Cadastro;
+import commons.utils.Utils;
+import exception.SistemaMultasException;
+import log.Logger;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -94,5 +98,16 @@ public class Orgao extends Cadastro	{
     @Override
     public String getColunaOrdenacao() {
         return null;
+    }
+
+    public static Orgao valueOf(int id) {
+        try {
+            return (Orgao) Banco.getById(new Orgao(), id);
+        } catch (SistemaMultasException e) {
+            e.printStackTrace();
+            Logger.log(e.getMessage());
+            Utils.mensagemErro("Ocorreu um erro ao recuperar o veículo!");
+            return null;
+        }
     }
 }
