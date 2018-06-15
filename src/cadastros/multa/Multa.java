@@ -2,12 +2,14 @@ package cadastros.multa;
 
 import banco.Banco;
 import cadastros.cidade.Cidade;
+import cadastros.condutor.Condutor;
 import commons.cadastros.Cadastro;
 import cadastros.infracao.Infracao;
 import cadastros.orgao.Orgao;
 import cadastros.proprietario.Proprietario;
 import cadastros.veiculo.Veiculo;
 import exception.SistemaMultasException;
+import javafx.scene.input.KeyCode;
 
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
@@ -131,7 +133,6 @@ public class Multa extends Cadastro{
         this.valorFinal = valorFinal;
     }
 
-
     @Override
 	public String toString() {
 		return "Multa";
@@ -176,6 +177,18 @@ public class Multa extends Cadastro{
 
             multa.setId(rs.getInt("id"));
             multa.setVeiculo(Veiculo.valueOf(rs.getInt("veiculo_id")));
+            multa.setInfracao(Infracao.valueOf(rs.getInt("infracoes_id")));
+            multa.setOrgao(Orgao.valueOf(rs.getInt("orgao_id")));
+            multa.setDataHoraEmissao(java.sql.Timestamp.valueOf(rs.getString("data_hora_emissao")).toLocalDateTime());
+            multa.setDataVencimento(java.sql.Date.valueOf(rs.getString("data_vencimento")).toLocalDate());
+            multa.setNumero(rs.getString("numero"));
+            multa.setRua(rs.getString("rua"));
+            multa.setBairro(rs.getString("bairro"));
+            multa.setCidade(Cidade.valueOf(rs.getInt("cidade_id")));
+            multa.setFatorMultiplicador(FatorMultiplicador.valueOf(rs.getString("fator_multiplicador")));
+            multa.setCondutor(Proprietario.valueOf(rs.getInt("id_condutor")));
+            multa.setValorFinal(rs.getBigDecimal("valor_final"));
+
 
             listMulta.add(multa);
         }
@@ -184,7 +197,7 @@ public class Multa extends Cadastro{
 
     @Override
     public String getColunaOrdenacao() {
-        return null;
+        return "id";
     }
 
     public static Multa valueOf(Integer id) throws SistemaMultasException{
