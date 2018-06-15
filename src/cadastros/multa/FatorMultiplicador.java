@@ -19,4 +19,6 @@ public enum FatorMultiplicador {
     public int getValor() {
         return valor;
     }
+
+
 }
