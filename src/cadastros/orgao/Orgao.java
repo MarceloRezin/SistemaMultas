@@ -1,7 +1,7 @@
 package cadastros.orgao;
 
+import cadastros.cidade.Cidade;
 import commons.cadastros.Cadastro;
-import commons.enuns.Estado;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,14 +13,14 @@ public class Orgao extends Cadastro	{
     private String nome;
     private String numero;
     private String rua;
-    private String bairro
+    private String bairro;
     private Cidade cidade;
 
     public Orgao(){}
 
     public Orgao(String nome, String numero, String rua, String bairro,Cidade cidade) {
         this.nome = nome;
-        this.nuemro = numero;
+        this.numero = numero;
         this.rua = rua;
         this.bairro = bairro;
         this.cidade = cidade;
