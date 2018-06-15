@@ -1,8 +1,8 @@
 package cadastros.multa;
 
 import banco.Banco;
+import cadastros.cidade.Cidade;
 import commons.cadastros.Cadastro;
-import commons.enuns.Estado;
 import cadastros.infracao.Infracao;
 import cadastros.orgao.Orgao;
 import cadastros.proprietario.Proprietario;
@@ -15,6 +15,7 @@ import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -201,6 +202,16 @@ public class Multa extends Cadastro{
         stmt.setInt(1,getVeiculo().getId());
         stmt.setInt(2,getInfracao().getId());
         stmt.setInt(3,getOrgao().getId());
+        stmt.setTimestamp(4, Timestamp.valueOf(getDataHoraEmissao()));
+        stmt.setDate(5,java.sql.Date.valueOf(getDataVencimento()));
+        stmt.setString(6,getNumero());
+        stmt.setString(7,getRua());
+        stmt.setString(8,getBairro());
+        stmt.setInt(9,getCidade().getId());
+        stmt.setString(10,getFatorMultiplicador().toString());
+        stmt.setInt(11,getCondutor().getId());
+        stmt.setBigDecimal(12,getValorFinal());
+
 
     }
 
