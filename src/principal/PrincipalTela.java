@@ -1,7 +1,13 @@
 package principal;
 
 import banco.Banco;
+import cadastros.cidade.telas.CidadeConsultaTela;
+import cadastros.condutor.Condutor;
+import cadastros.condutor.telas.CondutorConsultaTela;
 import cadastros.gravidademulta.telas.GravidadeMultaConsultaTela;
+import cadastros.pessoa.fisica.telas.PessoaFisicaConsultaTela;
+import cadastros.pessoa.juridica.telas.PessoaJuridicaConsultaTela;
+import cadastros.proprietario.telas.ProprietarioConsultaTela;
 import log.Logger;
 
 import javax.swing.*;
@@ -17,12 +23,60 @@ public class PrincipalTela extends JFrame {
 		setBounds(100, 100, 1000, 600);
 
 		desktopPane = new JDesktopPane();
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
+
 		JMenu mnCadastro = new JMenu("Cadastro");
 		menuBar.add(mnCadastro);
+
+        JMenuItem mntmCidade = new JMenuItem("Cidades");
+        mntmCidade.addActionListener(e -> {
+            CidadeConsultaTela cidadeConsultaTela = new CidadeConsultaTela(desktopPane);
+            cidadeConsultaTela.setVisible(true);
+            desktopPane.add(cidadeConsultaTela);
+        });
+        mnCadastro.add(mntmCidade);
+
+		JMenuItem mntmGravidadeMulta = new JMenuItem("Gravidade das Multas");
+		mntmGravidadeMulta.addActionListener(e -> {
+			GravidadeMultaConsultaTela gravidadeMultaConsultaTela = new GravidadeMultaConsultaTela(desktopPane);
+			gravidadeMultaConsultaTela.setVisible(true);
+			desktopPane.add(gravidadeMultaConsultaTela);
+		});
+		mnCadastro.add(mntmGravidadeMulta);
+
+        JMenuItem mntmPessoaFisica = new JMenuItem("Pessoas Físicas");
+        mntmPessoaFisica.addActionListener(e -> {
+            PessoaFisicaConsultaTela pessoaFisicaConsultaTela = new PessoaFisicaConsultaTela(desktopPane);
+            pessoaFisicaConsultaTela.setVisible(true);
+            desktopPane.add(pessoaFisicaConsultaTela);
+        });
+        mnCadastro.add(mntmPessoaFisica);
+
+        JMenuItem mntmPessoaJuridica = new JMenuItem("Pessoas Jurídicas");
+		mntmPessoaJuridica.addActionListener(e -> {
+            PessoaJuridicaConsultaTela pessoaJuridicaConsultaTela = new PessoaJuridicaConsultaTela(desktopPane);
+			pessoaJuridicaConsultaTela.setVisible(true);
+            desktopPane.add(pessoaJuridicaConsultaTela);
+        });
+        mnCadastro.add(mntmPessoaJuridica);
+
+        JMenuItem mntmCondutor = new JMenuItem("Condutores");
+        mntmCondutor.addActionListener(e -> {
+            CondutorConsultaTela condutorConsultaTela = new CondutorConsultaTela(desktopPane);
+            condutorConsultaTela.setVisible(true);
+            desktopPane.add(condutorConsultaTela);
+        });
+        mnCadastro.add(mntmCondutor);
+
+        JMenuItem mntmProprietario = new JMenuItem("Proprietários");
+        mntmProprietario.addActionListener(e -> {
+            ProprietarioConsultaTela proprietarioConsultaTela= new ProprietarioConsultaTela(desktopPane);
+            proprietarioConsultaTela.setVisible(true);
+            desktopPane.add(proprietarioConsultaTela);
+        });
+        mnCadastro.add(mntmProprietario);
 
 //		JMenuItem mntmProprietario = new JMenuItem("Proprietario");
 //		mntmProprietario.addActionListener( e -> {
@@ -48,13 +102,6 @@ public class PrincipalTela extends JFrame {
 //		});
 //		mnCadastro.add(mntmOrgo);
 
-		JMenuItem mntmGravidadeMulta = new JMenuItem("Gravidade das Multas");
-        mntmGravidadeMulta.addActionListener(e -> {
-            GravidadeMultaConsultaTela gravidadeMultaConsultaTela = new GravidadeMultaConsultaTela(desktopPane);
-            gravidadeMultaConsultaTela.setVisible(true);
-			desktopPane.add(gravidadeMultaConsultaTela);
-		});
-		mnCadastro.add(mntmGravidadeMulta);
 
 //		JMenuItem mntmInfracao = new JMenuItem("Infração");
 //		mntmInfracao.addActionListener(e -> {
