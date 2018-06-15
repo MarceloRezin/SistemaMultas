@@ -114,4 +114,15 @@ public class Proprietario extends Cadastro{
     public String getColunaOrdenacao() {
         return "id";
     }
+
+    public static Proprietario valueOf(int id) {
+        try {
+            return (Proprietario) Banco.getById(new Proprietario(), id);
+        } catch (SistemaMultasException e) {
+            e.printStackTrace();
+            Logger.log(e.getMessage());
+            Utils.mensagemErro("Ocorreu um erro ao recuperar o veículo!");
+            return null;
+        }
+    }
 }
