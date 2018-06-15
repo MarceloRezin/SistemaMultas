@@ -1,8 +1,13 @@
 package cadastros.condutor;
 
 
+import banco.Banco;
 import commons.cadastros.Cadastro;
 import cadastros.pessoa.Pessoa;
+import commons.utils.Utils;
+import exception.SistemaMultasException;
+import log.Logger;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -72,5 +77,16 @@ public class Condutor extends Cadastro{
     @Override
     public String getColunaOrdenacao() {
         return "codigo_hab";
+    }
+
+    public static Condutor valueOf(int id) {
+        try {
+            return (Condutor) Banco.getById(new Condutor(), id);
+        } catch (SistemaMultasException e) {
+            e.printStackTrace();
+            Logger.log(e.getMessage());
+            Utils.mensagemErro("Ocorreu um erro ao recuperar o veículo!");
+            return null;
+        }
     }
 }
