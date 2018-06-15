@@ -1,12 +1,8 @@
 package cadastros.condutor;
 
-import banco.Banco;
+
 import commons.cadastros.Cadastro;
 import cadastros.pessoa.Pessoa;
-import commons.utils.Utils;
-import exception.SistemaMultasException;
-import log.Logger;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,19 +13,9 @@ public class Condutor extends Cadastro{
 
     private Pessoa pessoa;
     private String codHabilitacao;
-    private Integer idPessoa;
 
     public Pessoa getPessoa() {
 
-        if(pessoa == null && idPessoa != null){
-            try {
-                this.pessoa = (Pessoa)Banco.getById(new Pessoa(), idPessoa);
-            }catch (SistemaMultasException e){
-                e.printStackTrace();
-                Logger.log(e.getMessage());
-                Utils.mensagemErro("Ocorreu um erro!");
-            }
-        }
         return pessoa;
     }
 
@@ -43,14 +29,6 @@ public class Condutor extends Cadastro{
 
     public void setCodHabilitacao(String codHabilitacao) {
         this.codHabilitacao = codHabilitacao;
-    }
-
-    public Integer getIdPessoa() {
-        return idPessoa;
-    }
-
-    public void setIdPessoa(Integer idPessoa) {
-        this.idPessoa = idPessoa;
     }
 
     @Override
@@ -84,7 +62,7 @@ public class Condutor extends Cadastro{
 
             condutor.setId(rs.getInt("id"));
             condutor.setCodHabilitacao(rs.getString("codigo_hab"));
-            condutor.setIdPessoa(rs.getInt("pessoa_id"));
+            condutor.setPessoa(Pessoa.valueOf(rs.getInt("pessoa_id")));
 
             listCondutor.add(condutor);
         }
