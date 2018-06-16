@@ -108,16 +108,27 @@ public class Veiculo extends Cadastro{
 
     @Override
     public String getNomeTabela() {
-        return null;
+        return "veiculos";
     }
 
     @Override
     public String getColunas() {
-        return null;
+        return "marca,modelo,ano,placa,cidade_id,renavam,cor_predominante,proprietario_id";
     }
 
     @Override
     public void setStatements(PreparedStatement stmt) throws SQLException {
+
+        stmt.setString(1,getMarca());
+        stmt.setString(2,getModelo());
+        stmt.setInt(3,getAno());
+        stmt.setString(4,getPlaca());
+        stmt.setInt(5,getCidade().getId());
+        stmt.setString(6,getRenavam());
+
+
+
+
 
     }
 
