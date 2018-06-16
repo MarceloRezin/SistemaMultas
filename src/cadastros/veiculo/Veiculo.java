@@ -12,6 +12,7 @@ import log.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Veiculo extends Cadastro {
@@ -125,16 +126,35 @@ public class Veiculo extends Cadastro {
         stmt.setString(4,getPlaca());
         stmt.setInt(5,getCidade().getId());
         stmt.setString(6,getRenavam());
+        stmt.setString(7,getCorPredominante());
+        stmt.setInt(8,getProprietario().getId());
     }
 
     @Override
     public List<Cadastro> resultSetToList(ResultSet rs) throws SQLException {
-        return null;
+        List<Cadastro> listVeiculo = new ArrayList<>();
+
+        while (rs.next()){
+            Veiculo veiculo = new Veiculo();
+
+            veiculo.setId(rs.getInt("id"));
+            veiculo.setMarca(rs.getString("marca"));
+            veiculo.setModelo(rs.getString("modelo"));
+            veiculo.setAno(rs.getInt("ano"));
+            veiculo.setPlaca(rs.getString("placa"));
+            veiculo.setCidade(Cidade.valueOf(rs.getInt("cidade_id")));
+            veiculo.setRenavam(rs.getString("renavam"));
+            veiculo.setCorPredominante(rs.getString("cor_predominante"));
+            veiculo.setProprietario(Proprietario.valueOf(rs.getInt("proprietario_id")));
+
+            listVeiculo.add(veiculo);
+        }
+        return listVeiculo;
     }
 
     @Override
     public String getColunaOrdenacao() {
-        return null;
+        return "placa";
     }
 
     public static Veiculo valueOf(int id){
