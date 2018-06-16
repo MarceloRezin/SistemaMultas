@@ -1,9 +1,13 @@
 package cadastros.veiculo;
 
+import banco.Banco;
 import cadastros.cidade.Cidade;
 import cadastros.cidade.Estado;
 import cadastros.proprietario.Proprietario;
 import commons.cadastros.Cadastro;
+import commons.utils.Utils;
+import exception.SistemaMultasException;
+import log.Logger;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -121,11 +125,6 @@ public class Veiculo extends Cadastro {
         stmt.setString(4,getPlaca());
         stmt.setInt(5,getCidade().getId());
         stmt.setString(6,getRenavam());
-
-
-
-
-
     }
 
     @Override
@@ -136,5 +135,16 @@ public class Veiculo extends Cadastro {
     @Override
     public String getColunaOrdenacao() {
         return null;
+    }
+
+    public static Veiculo valueOf(int id){
+        try {
+            return (Veiculo) Banco.getById(new Veiculo(), id);
+        } catch (SistemaMultasException e) {
+            e.printStackTrace();
+            Logger.log(e.getMessage());
+            Utils.mensagemErro("Ocorreu um erro ao recuperar o veículo!");
+            return null;
+        }
     }
 }
