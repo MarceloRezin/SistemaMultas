@@ -1,6 +1,5 @@
 package cadastros.condutor;
 
-
 import banco.Banco;
 import commons.cadastros.Cadastro;
 import cadastros.pessoa.Pessoa;
@@ -18,9 +17,19 @@ public class Condutor extends Cadastro{
 
     private Pessoa pessoa;
     private String codHabilitacao;
+    private Integer idPessoa;
 
     public Pessoa getPessoa() {
 
+        if(pessoa == null && idPessoa != null){
+            try {
+                this.pessoa = (Pessoa)Banco.getById(new Pessoa(), idPessoa);
+            }catch (SistemaMultasException e){
+                e.printStackTrace();
+                Logger.log(e.getMessage());
+                Utils.mensagemErro("Ocorreu um erro!");
+            }
+        }
         return pessoa;
     }
 
@@ -34,6 +43,14 @@ public class Condutor extends Cadastro{
 
     public void setCodHabilitacao(String codHabilitacao) {
         this.codHabilitacao = codHabilitacao;
+    }
+
+    public Integer getIdPessoa() {
+        return idPessoa;
+    }
+
+    public void setIdPessoa(Integer idPessoa) {
+        this.idPessoa = idPessoa;
     }
 
     @Override
@@ -67,7 +84,7 @@ public class Condutor extends Cadastro{
 
             condutor.setId(rs.getInt("id"));
             condutor.setCodHabilitacao(rs.getString("codigo_hab"));
-            condutor.setPessoa(Pessoa.valueOf(rs.getInt("pessoa_id")));
+            condutor.setIdPessoa(rs.getInt("pessoa_id"));
 
             listCondutor.add(condutor);
         }
@@ -79,14 +96,10 @@ public class Condutor extends Cadastro{
         return "codigo_hab";
     }
 
-    public static Condutor valueOf(int id) {
-        try {
-            return (Condutor) Banco.getById(new Condutor(), id);
-        } catch (SistemaMultasException e) {
-            e.printStackTrace();
-            Logger.log(e.getMessage());
-            Utils.mensagemErro("Ocorreu um erro ao recuperar o veículo!");
-            return null;
-        }
+    //Copia os estados da origem para o destino
+    public static void mesclar(Condutor origem, Condutor destino){
+        destino.setId(origem.getId());
+        destino.setPessoa(origem.getPessoa());
+        destino.setCodHabilitacao(origem.getCodHabilitacao());
     }
 }

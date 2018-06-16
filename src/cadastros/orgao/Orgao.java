@@ -1,16 +1,10 @@
 package cadastros.orgao;
 
-import banco.Banco;
 import cadastros.cidade.Cidade;
 import commons.cadastros.Cadastro;
-import commons.utils.Utils;
-import exception.SistemaMultasException;
-import log.Logger;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Orgao extends Cadastro	{
@@ -78,57 +72,26 @@ public class Orgao extends Cadastro	{
 
     @Override
     public String getNomeTabela() {
-        return "orgaos";
+        return null;
     }
 
     @Override
     public String getColunas() {
-        return "nome,numero,rua,bairro,cidade_id";
+        return null;
     }
 
     @Override
     public void setStatements(PreparedStatement stmt) throws SQLException {
-        stmt.setString(1,getNome());
-        stmt.setString(2,getNumero());
-        stmt.setString(3,getRua());
-        stmt.setString(4,getBairro());
-        stmt.setInt(5,getCidade().getId());
+
     }
 
     @Override
     public List<Cadastro> resultSetToList(ResultSet rs) throws SQLException {
-        List<Cadastro> listOrgaos = new ArrayList<>();
-
-        while (rs.next()){
-            Orgao orgao = new Orgao();
-
-            orgao.setId(rs.getInt("id"));
-            orgao.setNome(rs.getString("nome"));
-            orgao.setNumero(rs.getString("numero"));
-            orgao.setRua(rs.getString("rua"));
-            orgao.setBairro(rs.getString("bairro"));
-            orgao.setCidade(Cidade.valueOf(rs.getInt("cidade_id")));
-
-
-
-            listOrgaos.add(orgao);
-        }
-        return listOrgaos;
+        return null;
     }
 
     @Override
     public String getColunaOrdenacao() {
-        return "nome";
-    }
-
-    public static Orgao valueOf(int id) {
-        try {
-            return (Orgao) Banco.getById(new Orgao(), id);
-        } catch (SistemaMultasException e) {
-            e.printStackTrace();
-            Logger.log(e.getMessage());
-            Utils.mensagemErro("Ocorreu um erro ao recuperar o veículo!");
-            return null;
-        }
+        return null;
     }
 }
