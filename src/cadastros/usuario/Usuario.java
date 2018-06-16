@@ -86,6 +86,6 @@ public class Usuario extends Cadastro{
 
     @Override
     public String getColunaOrdenacao() {
-        return null;
+        return "nome_usuario";
     }
 }
