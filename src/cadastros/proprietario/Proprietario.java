@@ -18,20 +18,8 @@ public class Proprietario extends Cadastro{
 
     private Pessoa pessoa;
     private Condutor condutor;
-    private Integer idPessoa;
-    private Integer idCondutor;
 
     public Pessoa getPessoa() {
-
-        if(pessoa == null && idPessoa != null){
-            try {
-                this.pessoa = (Pessoa) Banco.getById(new Pessoa(), idPessoa);
-            }catch (SistemaMultasException e){
-                e.printStackTrace();
-                Logger.log(e.getMessage());
-                Utils.mensagemErro("Ocorreu um erro ao recuperar a pessoa");
-            }
-        }
         return pessoa;
     }
 
@@ -40,16 +28,6 @@ public class Proprietario extends Cadastro{
     }
 
     public Condutor getCondutor() {
-        if(condutor == null && idCondutor != null){
-            try {
-                this.condutor = (Condutor) Banco.getById(new Condutor(), idCondutor);
-            }catch (SistemaMultasException e){
-                e.printStackTrace();
-                Logger.log(e.getMessage());
-                Utils.mensagemErro("Ocorreu um erro ao recuperar o condutor");
-            }
-        }
-
         return condutor;
     }
 
@@ -57,21 +35,6 @@ public class Proprietario extends Cadastro{
         this.condutor = condutor;
     }
 
-    public Integer getIdPessoa() {
-        return idPessoa;
-    }
-
-    public void setIdPessoa(Integer idPessoa) {
-        this.idPessoa = idPessoa;
-    }
-
-    public Integer getIdCondutor() {
-        return idCondutor;
-    }
-
-    public void setIdCondutor(Integer idCondutor) {
-        this.idCondutor = idCondutor;
-    }
 
     @Override
 	public String toString() {
@@ -102,8 +65,8 @@ public class Proprietario extends Cadastro{
             Proprietario proprietario = new Proprietario();
 
             proprietario.setId(rs.getInt("id"));
-            proprietario.setIdCondutor(rs.getInt("id_condutor"));
-            proprietario.setIdPessoa(rs.getInt("pessoa_id"));
+            proprietario.setCondutor(Condutor.valueOf(rs.getInt("id_condutor")));
+            proprietario.setPessoa(Pessoa.valueOf(rs.getInt("pessoa_id")));
 
             listProprietario.add(proprietario);
         }
