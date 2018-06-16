@@ -26,7 +26,6 @@ public class Pessoa extends Cadastro{
     private String telefone;
     private String email;
     private TipoPessoa tipoPessoa;
-    private Integer idCidade;
 
     public String getCpfCnpj() {
         return cpfCnpj;
@@ -77,15 +76,6 @@ public class Pessoa extends Cadastro{
     }
 
     public Cidade getCidade(){
-        if(cidade == null && idCidade != null){
-            try {
-                this.cidade = (Cidade)Banco.getById(new Cidade(), idCidade);
-            }catch (SistemaMultasException e){
-                e.printStackTrace();
-                Logger.log(e.getMessage());
-                Utils.mensagemErro("Ocorreu um erro!");
-            }
-        }
         return cidade;
     }
 
@@ -123,14 +113,6 @@ public class Pessoa extends Cadastro{
 
     public void setTipoPessoa(TipoPessoa tipoPessoa) {
         this.tipoPessoa = tipoPessoa;
-    }
-
-    public Integer getIdCidade() {
-        return idCidade;
-    }
-
-    public void setIdCidade(Integer idCidade) {
-        this.idCidade = idCidade;
     }
 
     @Override
@@ -178,7 +160,7 @@ public class Pessoa extends Cadastro{
             pessoa.setNumero(rs.getString("numero"));
             pessoa.setRua(rs.getString("rua"));
             pessoa.setBairro(rs.getString("bairro"));
-            pessoa.setIdCidade(rs.getInt("cidade_id"));
+            pessoa.setCidade(Cidade.valueOf(rs.getInt("cidade_id")));
             pessoa.setCep(rs.getString("cep"));
             pessoa.setTelefone(rs.getString("telefone"));
             pessoa.setEmail(rs.getString("email"));
@@ -203,7 +185,7 @@ public class Pessoa extends Cadastro{
         destino.setNumero(origem.getNumero());
         destino.setRua(origem.getRua());
         destino.setBairro(origem.getBairro());
-        destino.setIdCidade(origem.getIdCidade());
+        destino.setCidade(origem.getCidade());
         destino.setCep(origem.getCep());
         destino.setTelefone(origem.getTelefone());
         destino.setEmail(origem.getEmail());
