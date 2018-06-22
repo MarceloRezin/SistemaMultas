@@ -98,7 +98,10 @@ public class Banco{
     }
 
     public static List selectComWhere(Cadastro cadastro, String where) throws SistemaMultasException{
-        String  sql = "SELECT * FROM " + cadastro.getNomeTabela() + (Utils.isNulaOuVazia(where) ? "" : " " + where) + " ORDER BY " + cadastro.getColunaOrdenacao() + " ASC";
+        //Em caso de select com join
+        String tabela = cadastro.getNomeTabela();
+        String colunas = tabela + ".id," + tabela + "." + cadastro.getColunas().replaceAll(",", "," + tabela + ".");
+        String  sql = "SELECT " + colunas + " FROM " + tabela + (Utils.isNulaOuVazia(where) ? "" : " " + where) + " ORDER BY " + cadastro.getColunaOrdenacao() + " ASC";
 
         try{
             Statement st = conexao.createStatement();
