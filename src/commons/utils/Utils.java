@@ -1,5 +1,7 @@
 package commons.utils;
 
+import commons.cadastros.Cadastro;
+
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 
@@ -42,6 +44,14 @@ public final class Utils {
             excecao.printStackTrace();
         }
         return F_Mascara;
+    }
+
+    public static boolean cadastroIsNull(Cadastro cadastro){
+        if(cadastro == null || cadastro.isNovo()){
+            return true;
+        }
+
+        return false;
     }
 
 }
