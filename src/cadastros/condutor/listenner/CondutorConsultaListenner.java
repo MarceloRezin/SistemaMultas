@@ -36,4 +36,9 @@ public class CondutorConsultaListenner extends ConsultaListenner<Condutor> {
 
         abrirCadastro(condutorCadastroTela);
 	}
+
+	@Override
+	public void setObjetoRetorno() {
+		Condutor.mesclar(getItemListSelecionado(), getConsultaTela().getObjetoRetorno());
+	}
 }

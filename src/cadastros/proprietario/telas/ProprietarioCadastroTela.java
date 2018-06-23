@@ -1,100 +1,211 @@
 package cadastros.proprietario.telas;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import cadastros.condutor.Condutor;
+import cadastros.pessoa.Pessoa;
 import cadastros.proprietario.Proprietario;
 import cadastros.proprietario.listenner.ProprietarioCadastroListenner;
+import commons.telas.CadastroTela;
+import commons.telas.ConsultaTela;
+import commons.utils.Utils;
+import exception.SistemaMultasException;
+
+import java.awt.*;
 
 @SuppressWarnings("serial")
-public class ProprietarioCadastroTela extends JInternalFrame {
+public class ProprietarioCadastroTela extends CadastroTela<Proprietario> {
 
     private JPanel contentPane;
-    private JTextField textField;
-    private JTextField textField_1;
-    private JTextField textField_2;
-    private JTextField textField_3;
-    private JTextField textField_5;
+    private JButton btnSelecionarPessoa;
+    private JButton btnSelecionarCondutor;
 
+    private Condutor condutor;
+    private JLabel lblCondutor;
 
-    public ProprietarioCadastroTela(Proprietario item) {
-        super("Cadastro de Prorpietário", false, true, true, false);
-        setBounds(100, 100, 256, 300);
+    private Pessoa pessoa;
+    private JLabel lblPessoa;
+
+    private JButton btnSalvar;
+    private JButton btnExcluir;
+    private JButton btnVoltar;
+
+    public ProprietarioCadastroTela(Proprietario objeto, ConsultaTela<Proprietario> consultaTela) {
+        super("Condutor", objeto, consultaTela);
+    }
+
+    @Override
+    public Proprietario telaToObjeto() throws SistemaMultasException {
+        Proprietario proprietario = getObjeto();
+
+        if(proprietario == null){
+            proprietario = new Proprietario();
+        }
+
+        if(pessoa == null || pessoa.getId() == null){
+            throw new SistemaMultasException("Você não informou a pessoa!");
+        }
+
+        proprietario.setPessoa(pessoa);
+        proprietario.setCondutor(condutor);
+
+        return proprietario;
+    }
+
+    @Override
+    public void objetoToTela() {
+        Proprietario proprietario = getObjeto();
+
+        if(proprietario != null){
+            setPessoa(proprietario.getPessoa());
+            setCondutor(proprietario.getCondutor());
+        }
+    }
+
+    @Override
+    public void initComponentes() {
+        setBounds(100, 100, 700, 180);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        contentPane.setLayout(new BorderLayout(0, 0));
         setContentPane(contentPane);
-        contentPane.setLayout(null);
 
-        JLabel lblNome = new JLabel("Nome:");
-        lblNome.setBounds(10, 11, 33, 14);
-        contentPane.add(lblNome);
+        JLabel lblCadastroDePessoas = new JLabel("Cadastro de Proprietários");
+        contentPane.add(lblCadastroDePessoas, BorderLayout.NORTH);
 
-        textField = new JTextField();
-        textField.setBounds(100, 8, 130, 20);
-        contentPane.add(textField);
-        textField.setColumns(10);
+        JPanel panelCentro = new JPanel();
+        contentPane.add(panelCentro, BorderLayout.CENTER);
+        panelCentro.setLayout(new GridLayout(2, 2, 0, 0));
 
-        JLabel lblCPF = new JLabel("CPF:");
-        lblCPF.setBounds(10, 42, 38, 14);
-        contentPane.add(lblCPF);
+        lblPessoa = new JLabel("Pessoa:");
+        lblPessoa.setHorizontalAlignment(SwingConstants.CENTER);
+        panelCentro.add(lblPessoa);
 
-        textField_1 = new JTextField();
-        textField_1.setBounds(100, 39, 130, 20);
-        contentPane.add(textField_1);
-        textField_1.setColumns(10);
+        btnSelecionarPessoa = new JButton("Selecionar");
+        panelCentro.add(btnSelecionarPessoa);
 
-        JLabel lblEndereco = new JLabel("Endereço:");
-        lblEndereco.setBounds(10, 73, 66, 14);
-        contentPane.add(lblEndereco);
+        lblCondutor = new JLabel("Condutor:");
+        lblCondutor.setHorizontalAlignment(SwingConstants.CENTER);
+        panelCentro.add(lblCondutor);
 
-        textField_2 = new JTextField();
-        textField_2.setBounds(100, 70, 130, 20);
-        contentPane.add(textField_2);
-        textField_2.setColumns(10);
+        btnSelecionarCondutor = new JButton("Selecionar");
+        panelCentro.add(btnSelecionarCondutor);
 
-        JLabel lblEstado = new JLabel("Estado");
-        lblEstado.setBounds(10, 101, 46, 14);
-        contentPane.add(lblEstado);
+        JPanel panelSul = new JPanel();
+        contentPane.add(panelSul, BorderLayout.SOUTH);
+        panelSul.setLayout(new GridLayout(1, 0, 0, 0));
 
-        JComboBox comboBox = new JComboBox();
-        comboBox.setBounds(99, 98, 131, 20);
-        contentPane.add(comboBox);
+        btnSalvar = new JButton("Salvar");
+        panelSul.add(btnSalvar);
 
-        JLabel lblCidade = new JLabel("Cidade:");
-        lblCidade.setBounds(10, 126, 38, 14);
-        contentPane.add(lblCidade);
+        btnExcluir = new JButton("Excluir");
+        panelSul.add(btnExcluir);
 
-        textField_3 = new JTextField();
-        textField_3.setBounds(100, 123, 130, 20);
-        contentPane.add(textField_3);
-        textField_3.setColumns(10);
+        btnVoltar = new JButton("Voltar");
+        panelSul.add(btnVoltar);
 
-        JLabel lblCodHabilitacao = new JLabel("Cod. Habilitação:");
-        lblCodHabilitacao.setBounds(10, 151, 115, 14);
-        contentPane.add(lblCodHabilitacao);
+        if(pessoa == null){
+            pessoa = new Pessoa();
+        }
 
-        textField_5 = new JTextField();
-        textField_5.setBounds(100, 148, 130, 20);
-        contentPane.add(textField_5);
-        textField_5.setColumns(10);
+        if(condutor == null){
+            condutor = new Condutor();
+        }
 
-        JButton btnSalvar = new JButton("Salvar");
-        btnSalvar.setBounds(10, 226, 68, 23);
-        contentPane.add(btnSalvar);
+        new ProprietarioCadastroListenner(this);
+    }
 
-        JButton btnExcluir = new JButton("Excluir");
-        btnExcluir.setBounds(88, 226, 68, 23);
-        contentPane.add(btnExcluir);
+    @Override
+    public void resetCampos() {
+        setPessoa();
+        setCondutor();
+    }
 
-        JButton btnVoltar = new JButton("Voltar");
-        btnVoltar.setBounds(166, 226, 68, 23);
-        contentPane.add(btnVoltar);
+    @Override
+    public JButton getBtnSalvar() {
+        return btnSalvar;
+    }
 
-        new ProprietarioCadastroListenner(null);
+    @Override
+    public JButton getBtnExcluir() {
+        return btnExcluir;
+    }
+
+    @Override
+    public JButton getBtnVoltar() {
+        return btnVoltar;
+    }
+
+    public JButton getBtnSelecionarPessoa() {
+        return btnSelecionarPessoa;
+    }
+
+    public void setBtnSelecionarPessoa(JButton btnSelecionarPessoa) {
+        this.btnSelecionarPessoa = btnSelecionarPessoa;
+    }
+
+    public JButton getBtnSelecionarCondutor() {
+        return btnSelecionarCondutor;
+    }
+
+    public void setBtnSelecionarCondutor(JButton btnSelecionarCondutor) {
+        this.btnSelecionarCondutor = btnSelecionarCondutor;
+    }
+
+    public Condutor getCondutor() {
+        return condutor;
+    }
+
+    private void setCondutor(Condutor condutor){
+        if(Utils.cadastroIsNull(condutor)){
+            setCondutor();
+        }else{
+            lblCondutor.setText("Condutor: " + condutor.getPessoa().getNomeRazaoSocial());
+            if(Utils.cadastroIsNull(this.condutor)){
+                this.condutor = condutor;
+            }else{
+                Condutor.mesclar(condutor, this.condutor);
+            }
+        }
+    }
+
+    private void setCondutor(){
+        lblCondutor.setText("Condutor:");
+        this.condutor = new Condutor();
+    }
+
+    private void setPessoa(Pessoa pessoa){
+        lblPessoa.setText("Pessoa: " + pessoa);
+        if(this.pessoa == null){
+            this.pessoa = pessoa;
+        }else{
+            Pessoa.mesclar(pessoa, this.pessoa);
+        }
+    }
+
+    private void setPessoa(){
+        lblPessoa.setText("Pessoa:");
+        this.pessoa = new Pessoa();
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public JLabel getLblCondutor() {
+        return lblCondutor;
+    }
+
+    public void setLblCondutor(JLabel lblCondutor) {
+        this.lblCondutor = lblCondutor;
+    }
+
+    public JLabel getLblPessoa() {
+        return lblPessoa;
+    }
+
+    public void setLblPessoa(JLabel lblPessoa) {
+        this.lblPessoa = lblPessoa;
     }
 }

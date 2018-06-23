@@ -91,7 +91,7 @@ public class Cidade extends Cadastro {
         } catch (SistemaMultasException e) {
             e.printStackTrace();
             Logger.log(e.getMessage());
-            Utils.mensagemErro("Ocorreu um erro ao recuperar o veículo!");
+            Utils.mensagemErro("Ocorreu um erro ao recuperar a cidade!");
             return null;
         }
     }

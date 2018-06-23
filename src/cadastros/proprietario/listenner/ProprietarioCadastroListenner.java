@@ -1,31 +1,53 @@
 package cadastros.proprietario.listenner;
 
+import cadastros.condutor.telas.CondutorConsultaTela;
+import cadastros.pessoa.consulta.tela.PessoaConsultaTela;
+import cadastros.proprietario.telas.ProprietarioCadastroTela;
 import commons.listenners.CadastroListenner;
-import commons.telas.CadastroTela;
-import log.Logger;
 
-public class ProprietarioCadastroListenner extends CadastroListenner {
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-    public ProprietarioCadastroListenner(CadastroTela cadastroTela) {
+public class ProprietarioCadastroListenner extends CadastroListenner  implements ActionListener {
+
+    private JButton btnSelecionarPessoa;
+    private JButton btnSelecionarCondutor;
+    private ProprietarioCadastroTela proprietarioCadastroTela;
+
+    public ProprietarioCadastroListenner(ProprietarioCadastroTela cadastroTela) {
         super(cadastroTela);
+        this.proprietarioCadastroTela = cadastroTela;
+        this.btnSelecionarPessoa = cadastroTela.getBtnSelecionarPessoa();
+        this.btnSelecionarCondutor = cadastroTela.getBtnSelecionarCondutor();
+
+        this.btnSelecionarPessoa.addActionListener(this);
+        this.btnSelecionarCondutor.addActionListener(this);
     }
 
     @Override
-    public void eventoSalvar() {
-
-        System.out.println("Proprietário -> Savar");
-        Logger.log("Proprietario, Salvou");
+    public void actionPerformed(ActionEvent evento) {
+        if(evento.getSource() == btnSelecionarPessoa){
+            eventoSelecionarPessoa();
+        }else if(evento.getSource() == btnSelecionarCondutor){
+            eventoSelecionarCondutor();
+        }else{
+            super.actionPerformed(evento);
+        }
     }
 
-    @Override
-    public void eventoExcluir() {
-
-        System.out.println("Proprietário -> Excluir");
-        Logger.log("Proprietario, Excluiu");
+    private void eventoSelecionarPessoa(){
+        JDesktopPane desktopPane = getCadastroTela().getConsultaTela().getjDesktopPane();
+        PessoaConsultaTela pessoaConsultaTela = new PessoaConsultaTela(getCadastroTela(), proprietarioCadastroTela.getPessoa(), proprietarioCadastroTela.getLblPessoa());
+        desktopPane.add(pessoaConsultaTela);
+        pessoaConsultaTela.setVisible(true);
     }
 
-    @Override
-    public void eventoVoltar() {
-        System.out.println("Proprietário -> Voltar");
+    private void eventoSelecionarCondutor(){
+        JDesktopPane desktopPane = getCadastroTela().getConsultaTela().getjDesktopPane();
+        CondutorConsultaTela cidadeConsultaTela = new CondutorConsultaTela(getCadastroTela(), proprietarioCadastroTela.getCondutor(), proprietarioCadastroTela.getLblCondutor());
+        desktopPane.add(cidadeConsultaTela);
+        cidadeConsultaTela.setVisible(true);
+
     }
 }

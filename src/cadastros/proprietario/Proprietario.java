@@ -11,6 +11,7 @@ import log.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +54,11 @@ public class Proprietario extends Cadastro{
 
     @Override
     public void setStatements(PreparedStatement stmt) throws SQLException {
-        stmt.setInt(1,getCondutor().getId());
+        if(Utils.cadastroIsNull(getCondutor())){
+            stmt.setNull(1, Types.INTEGER);
+        }else{
+            stmt.setInt(1, getCondutor().getId());
+        }
         stmt.setInt(2, getPessoa().getId());
     }
 
@@ -65,7 +70,12 @@ public class Proprietario extends Cadastro{
             Proprietario proprietario = new Proprietario();
 
             proprietario.setId(rs.getInt("id"));
-            proprietario.setCondutor(Condutor.valueOf(rs.getInt("id_condutor")));
+            int idCondutor = rs.getInt("id_condutor");
+            if (idCondutor == 0){ //Condutor pode ser nulo
+                proprietario.setCondutor(null);
+            }else{
+                proprietario.setCondutor(Condutor.valueOf(idCondutor));
+            }
             proprietario.setPessoa(Pessoa.valueOf(rs.getInt("pessoa_id")));
 
             listProprietario.add(proprietario);

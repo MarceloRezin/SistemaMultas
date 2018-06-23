@@ -4,6 +4,7 @@ import commons.listenners.ConsultaListenner;
 import commons.telas.ConsultaTela;
 import cadastros.proprietario.Proprietario;
 import cadastros.proprietario.telas.ProprietarioCadastroTela;
+import log.Logger;
 
 public class ProprietarioConsultaListenner extends ConsultaListenner<Proprietario>{
 
@@ -13,14 +14,15 @@ public class ProprietarioConsultaListenner extends ConsultaListenner<Proprietari
 
 	@Override
     public void eventoConsultar() {
-        System.out.println("Proprietário -> Listar");
+		Logger.log("Proprietário Listar");
+		getConsultaTela().listarTodosItens();
 	}
 
 	@Override
 	public void eventoNovo() {
-		System.out.println("Proprietario -> Novo");
+		Logger.log("Proprietário Novo");
 		getTela().dispose();
-		ProprietarioCadastroTela proprietarioCadastroTela = new ProprietarioCadastroTela(null);
+		ProprietarioCadastroTela proprietarioCadastroTela = new ProprietarioCadastroTela(null, getConsultaTela());
 		getConsultaTela().getjDesktopPane().add(proprietarioCadastroTela);
 		
 		proprietarioCadastroTela.setVisible(true);
@@ -28,6 +30,10 @@ public class ProprietarioConsultaListenner extends ConsultaListenner<Proprietari
 
 	@Override
 	public void eventoItemSelecionado() {
-		System.out.println("Proprietário -> Item Selecionado:" + getItemListSelecionado());
+		Logger.log("Proprietário Item Selecionado");
+
+        ProprietarioCadastroTela proprietarioCadastroTela = new ProprietarioCadastroTela(getItemListSelecionado(), getConsultaTela());
+
+		abrirCadastro(proprietarioCadastroTela);
 	}
 }
