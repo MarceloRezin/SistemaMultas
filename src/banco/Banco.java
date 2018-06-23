@@ -142,7 +142,13 @@ public class Banco{
 
             ResultSet rs = st.executeQuery(sql);
 
-            return (Cadastro)cadastro.resultSetToList(rs).get(0);
+            List lista = cadastro.resultSetToList(rs);
+
+            if(lista.size() == 0){
+                return null;
+            }
+
+            return (Cadastro)lista.get(0);
 
         }catch(Exception e1){
             e1.printStackTrace();
