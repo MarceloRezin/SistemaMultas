@@ -83,7 +83,7 @@ public class Condutor extends Cadastro{
         } catch (SistemaMultasException e) {
             e.printStackTrace();
             Logger.log(e.getMessage());
-            Utils.mensagemErro("Ocorreu um erro ao recuperar o veículo!");
+            Utils.mensagemErro("Ocorreu um erro ao recuperar o condutor!");
             return null;
         }
     }
