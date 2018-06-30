@@ -43,7 +43,7 @@ public class ProprietarioCadastroTela extends CadastroTela<Proprietario> {
             proprietario = new Proprietario();
         }
 
-        if(pessoa == null || pessoa.getId() == null){
+        if(Utils.cadastroIsNull(pessoa)){
             throw new SistemaMultasException("Você não informou a pessoa!");
         }
 

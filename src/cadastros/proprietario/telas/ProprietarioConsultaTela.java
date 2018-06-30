@@ -1,9 +1,7 @@
 package cadastros.proprietario.telas;
 
 import java.util.List;
-
 import javax.swing.JDesktopPane;
-
 import banco.Banco;
 import commons.telas.ConsultaTela;
 import commons.telas.TipoConsulta;
