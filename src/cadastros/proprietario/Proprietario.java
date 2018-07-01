@@ -98,4 +98,11 @@ public class Proprietario extends Cadastro{
             return null;
         }
     }
+
+    //Copia os estados da origem para o destino
+    public static void mesclar(Proprietario origem, Proprietario destino){
+        destino.setId(origem.getId());
+        destino.setCondutor(origem.getCondutor());
+        destino.setPessoa(origem.getPessoa());
+    }
 }

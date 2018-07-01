@@ -36,4 +36,9 @@ public class ProprietarioConsultaListenner extends ConsultaListenner<Proprietari
 
 		abrirCadastro(proprietarioCadastroTela);
 	}
+
+	@Override
+	public void setObjetoRetorno() {
+		Proprietario.mesclar(getItemListSelecionado(), getConsultaTela().getObjetoRetorno());
+	}
 }

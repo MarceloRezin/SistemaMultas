@@ -1,8 +1,10 @@
 package cadastros.proprietario.telas;
 
 import java.util.List;
-import javax.swing.JDesktopPane;
+import javax.swing.*;
+
 import banco.Banco;
+import commons.telas.CadastroTela;
 import commons.telas.ConsultaTela;
 import commons.telas.TipoConsulta;
 import cadastros.proprietario.Proprietario;
@@ -15,6 +17,11 @@ public class ProprietarioConsultaTela extends ConsultaTela<Proprietario> {
 
 	public ProprietarioConsultaTela(JDesktopPane jDesktopPane) {
 		super(jDesktopPane, "Listagem cadastros.proprietario", TipoConsulta.CONSULTA_PARA_CADASTRO);
+		new ProprietarioConsultaListenner(this);
+	}
+
+	public ProprietarioConsultaTela(CadastroTela<Proprietario> cadastroTela, Proprietario objetoRetorno, JLabel campoRetorno) {
+		super("Consulta de Cidades", TipoConsulta.CADASTRO_PARA_CONSULTA, cadastroTela, objetoRetorno, campoRetorno);
 		new ProprietarioConsultaListenner(this);
 	}
 

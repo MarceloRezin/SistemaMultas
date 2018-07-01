@@ -8,6 +8,7 @@ import cadastros.gravidademulta.telas.GravidadeMultaConsultaTela;
 import cadastros.pessoa.fisica.telas.PessoaFisicaConsultaTela;
 import cadastros.pessoa.juridica.telas.PessoaJuridicaConsultaTela;
 import cadastros.proprietario.telas.ProprietarioConsultaTela;
+import cadastros.veiculo.telas.VeiculoConsultaTela;
 import log.Logger;
 
 import javax.swing.*;
@@ -78,21 +79,14 @@ public class PrincipalTela extends JFrame {
         });
         mnCadastro.add(mntmProprietario);
 
-//		JMenuItem mntmProprietario = new JMenuItem("Proprietario");
-//		mntmProprietario.addActionListener( e -> {
-//			ProprietarioConsultaTela proprietarioConsultaTela = new ProprietarioConsultaTela(desktopPane);
-//			proprietarioConsultaTela.setVisible(true);
-//			desktopPane.add(proprietarioConsultaTela);
-//		});
-//		mnCadastro.add(mntmProprietario);
+        JMenuItem mntmVeiculo = new JMenuItem("Veiculo");
+        mntmVeiculo.addActionListener( e -> {
+            VeiculoConsultaTela veiculoConsultaTela = new VeiculoConsultaTela(desktopPane);
+            veiculoConsultaTela.setVisible(true);
+            desktopPane.add(veiculoConsultaTela);
+        });
+        mnCadastro.add(mntmVeiculo);
 
-//		JMenuItem mntmVeiculo = new JMenuItem("Veiculo");
-//		mntmVeiculo.addActionListener( e -> {
-//			VeiculoConsultaTela veiculoConsultaTela = new VeiculoConsultaTela(desktopPane);
-//			veiculoConsultaTela.setVisible(true);
-//			desktopPane.add(veiculoConsultaTela);
-//		});
-//		mnCadastro.add(mntmVeiculo);
 
 //		JMenuItem mntmOrgo = new JMenuItem("Orgão");
 //		mntmOrgo.addActionListener( e -> {

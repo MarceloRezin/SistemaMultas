@@ -62,6 +62,10 @@ public class Veiculo extends Cadastro {
         this.ano = ano;
     }
 
+    public void setAno(String ano) {
+        this.ano = Integer.parseInt(ano);
+    }
+
     public Cidade getCidade() {
         return cidade;
     }
@@ -104,7 +108,7 @@ public class Veiculo extends Cadastro {
 
     @Override
 	public String toString() {
-		return getMarca();
+		return getPlaca();
 	}
 
     @Override
@@ -166,5 +170,10 @@ public class Veiculo extends Cadastro {
             Utils.mensagemErro("Ocorreu um erro ao recuperar o veículo!");
             return null;
         }
+    }
+
+    @Override
+    public String getColunaPesquisa() {
+        return "placa";
     }
 }

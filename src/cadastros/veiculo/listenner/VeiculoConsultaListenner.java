@@ -4,6 +4,7 @@ import commons.listenners.ConsultaListenner;
 import commons.telas.ConsultaTela;
 import cadastros.veiculo.Veiculo;
 import cadastros.veiculo.telas.VeiculoCadastroTela;
+import log.Logger;
 
 public class VeiculoConsultaListenner extends ConsultaListenner<Veiculo> {
 
@@ -13,22 +14,26 @@ public class VeiculoConsultaListenner extends ConsultaListenner<Veiculo> {
 
 	@Override
     public void eventoConsultar() {
-        System.out.println("Veículo -> Listar");
+		Logger.log("Veículo Listar");
+		getConsultaTela().listarTodosItens();
     }
 
 	@Override
 	public void eventoNovo() {
-		System.out.println("Multa -> Novo");
+		Logger.log("Veículo Novo");
 		getTela().dispose();
-		VeiculoCadastroTela veiculoTelaCadastro = new VeiculoCadastroTela(null);
+		VeiculoCadastroTela veiculoTelaCadastro = new VeiculoCadastroTela(null, getConsultaTela());
 		getConsultaTela().getjDesktopPane().add(veiculoTelaCadastro);
 		
 		veiculoTelaCadastro.setVisible(true);
-		
 	}
 
 	@Override
 	public void eventoItemSelecionado() {
-		System.out.println("Veiculo -> Item Selecionado:" + getItemListSelecionado());
+		Logger.log("Veículo Item Selecionado");
+
+		VeiculoCadastroTela veiculoCadastroTela = new VeiculoCadastroTela(getItemListSelecionado(), getConsultaTela());
+
+		abrirCadastro(veiculoCadastroTela);
 	}
 }
