@@ -1,77 +1,213 @@
 package cadastros.orgao.telas;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import cadastros.cidade.Cidade;
 import cadastros.orgao.Orgao;
+import cadastros.orgao.listenner.OrgaoCadastroListenner;
+import commons.telas.CadastroTela;
+import commons.telas.ConsultaTela;
+import commons.utils.Utils;
+import exception.SistemaMultasException;
+
+import java.awt.*;
 
 @SuppressWarnings("serial")
-public class OrgaoCadastroTela extends JInternalFrame {
+public class OrgaoCadastroTela extends CadastroTela<Orgao> {
 
     private JPanel contentPane;
-    private JTextField txtNome;
-    private JTextField txtCidade;
-    private JTextField txtEndereco;
+    private JTextField campoNome;
+    private JTextField campoBairro;
+    private JTextField campoRua;
+    private JTextField campoNumero;
 
+    private JLabel lblCidade;
+    private Cidade cidade;
+    private JButton btnSelecionarCidade;
 
-    public OrgaoCadastroTela(Orgao item) {
-        super("Cadastro de Orgão", false, true, true, false);
-        setBounds(100, 100, 256, 300);
+    private JButton btnSalvar;
+    private JButton btnExcluir;
+    private JButton btnVoltar;
+
+    public OrgaoCadastroTela(Orgao objeto, ConsultaTela<Orgao> consultaTela) {
+        super("Orgão", objeto, consultaTela);
+    }
+
+    @Override
+    public Orgao telaToObjeto() throws SistemaMultasException {
+        Orgao orgao = getObjeto();
+
+        if(orgao == null){
+            orgao = new Orgao();
+        }
+
+        String nome = campoNome.getText();
+        if(Utils.isNulaOuVazia(nome)){
+            throw new SistemaMultasException("Você não informou o nome!");
+        }
+        orgao.setNome(nome);
+
+        String bairro = campoBairro.getText();
+        if(Utils.isNulaOuVazia(bairro)){
+            throw new SistemaMultasException("Você não informou o bairro!");
+        }
+        orgao.setBairro(bairro);
+
+        String rua = campoRua.getText();
+        if(Utils.isNulaOuVazia(rua)){
+            throw new SistemaMultasException("Você não informou a rua!");
+        }
+        orgao.setRua(rua);
+
+        String numero = campoNumero.getText();
+        if(Utils.isNulaOuVazia(numero)){
+            throw new SistemaMultasException("Você não informou o número!");
+        }
+        orgao.setNumero(numero);
+
+        if(cidade == null || cidade.getId() == null){
+            throw new SistemaMultasException("Você não informou a cidade!");
+        }
+        orgao.setCidade(cidade);
+
+        return orgao;
+    }
+
+    @Override
+    public void objetoToTela() {
+        Orgao orgao = getObjeto();
+
+        if(orgao != null){
+            campoNome.setText(orgao.getNome());
+            campoBairro.setText(orgao.getBairro());
+            campoRua.setText(orgao.getRua());
+            campoNumero.setText(orgao.getNumero());
+            setCidade(orgao.getCidade());
+        }
+    }
+
+    @Override
+    public void initComponentes(){
+        setBounds(100, 100, 500, 400);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        contentPane.setLayout(new BorderLayout(0, 0));
         setContentPane(contentPane);
-        contentPane.setLayout(null);
+
+        JLabel lblCadastroOrgaos = new JLabel("Cadastro de Orgãos");
+        contentPane.add(lblCadastroOrgaos, BorderLayout.NORTH);
+
+        JPanel panelCentro = new JPanel();
+        contentPane.add(panelCentro, BorderLayout.CENTER);
+        panelCentro.setLayout(new GridLayout(5, 2, 0, 0));
 
         JLabel lblNome = new JLabel("Nome:");
-        lblNome.setBounds(10, 11, 33, 14);
-        contentPane.add(lblNome);
+        lblNome.setHorizontalAlignment(SwingConstants.CENTER);
+        panelCentro.add(lblNome);
 
-        txtNome = new JTextField();
-        txtNome.setBounds(100, 8, 130, 20);
-        contentPane.add(txtNome);
-        txtNome.setColumns(10);
+        campoNome = new JTextField();
+        panelCentro.add(campoNome);
+        campoNome.setColumns(10);
 
-        JLabel lblEndereco = new JLabel("Endereço:");
-        lblEndereco.setBounds(10, 42, 58, 14);
-        contentPane.add(lblEndereco);
+        JLabel lblBairro = new JLabel("Bairro:");
+        lblBairro.setHorizontalAlignment(SwingConstants.CENTER);
+        panelCentro.add(lblBairro);
 
-        JLabel lblCidade = new JLabel("Cidade:");
-        lblCidade.setBounds(9, 70, 38, 14);
-        contentPane.add(lblCidade);
+        campoBairro = new JTextField();
+        panelCentro.add(campoBairro);
+        campoBairro.setColumns(10);
 
-        txtCidade = new JTextField();
-        txtCidade.setBounds(99, 67, 130, 20);
-        contentPane.add(txtCidade);
-        txtCidade.setColumns(10);
+        JLabel lblRua = new JLabel("Rua:");
+        lblRua.setHorizontalAlignment(SwingConstants.CENTER);
+        panelCentro.add(lblRua);
 
-        JLabel lblEstado = new JLabel("Estado:");
-        lblEstado.setBounds(10, 101, 46, 14);
-        contentPane.add(lblEstado);
+        campoRua = new JTextField();
+        panelCentro.add(campoRua);
+        campoRua.setColumns(10);
 
-        JComboBox<Object> boxEstado = new JComboBox<Object>();
-        boxEstado.setBounds(100, 98, 131, 20);
-        contentPane.add(boxEstado);
+        JLabel lblNumero = new JLabel("Número:");
+        lblNumero.setHorizontalAlignment(SwingConstants.CENTER);
+        panelCentro.add(lblNumero);
 
-        txtEndereco = new JTextField();
-        txtEndereco.setBounds(100, 39, 130, 20);
-        contentPane.add(txtEndereco);
-        txtEndereco.setColumns(10);
+        campoNumero = new JTextField();
+        panelCentro.add(campoNumero);
+        campoNumero.setColumns(10);
 
-        JButton btnSalvar = new JButton("Salvar");
-        btnSalvar.setBounds(10, 226, 68, 23);
-        contentPane.add(btnSalvar);
+        lblCidade = new JLabel("Cidade:");
+        lblCidade.setHorizontalAlignment(SwingConstants.CENTER);
+        panelCentro.add(lblCidade);
 
-        JButton btnExcluir = new JButton("Excluir");
-        btnExcluir.setBounds(88, 226, 68, 23);
-        contentPane.add(btnExcluir);
+        btnSelecionarCidade = new JButton("Selecionar");
+        panelCentro.add(btnSelecionarCidade);
 
-        JButton btnSair = new JButton("Sair");
-        btnSair.setBounds(166, 226, 68, 23);
-        contentPane.add(btnSair);
+        JPanel panelSul = new JPanel();
+        contentPane.add(panelSul, BorderLayout.SOUTH);
+        panelSul.setLayout(new GridLayout(1, 0, 0, 0));
+
+        btnSalvar = new JButton("Salvar");
+        panelSul.add(btnSalvar);
+
+        btnExcluir = new JButton("Excluir");
+        panelSul.add(btnExcluir);
+
+        btnVoltar = new JButton("Voltar");
+        panelSul.add(btnVoltar);
+
+        if(cidade == null){
+            cidade = new Cidade();
+        }
+
+        new OrgaoCadastroListenner(this);
+    }
+
+    private void setCidade(){
+        lblCidade.setText("Cidade:");
+        this.cidade = new Cidade();
+    }
+
+    @Override
+    public void resetCampos() {
+        campoNome.setText("");
+        campoBairro.setText("");
+        campoRua.setText("");
+        campoNumero.setText("");
+        setCidade();
+    }
+
+    @Override
+    public JButton getBtnSalvar() {
+        return btnSalvar;
+    }
+
+    @Override
+    public JButton getBtnExcluir() {
+        return btnExcluir;
+    }
+
+    @Override
+    public JButton getBtnVoltar() {
+        return btnVoltar;
+    }
+
+    public JButton getBtnSelecionarCidade() {
+        return btnSelecionarCidade;
+    }
+
+    public JLabel getLblCidade() {
+        return lblCidade;
+    }
+
+    public Cidade getCidade() {
+        return cidade;
+    }
+
+    private void setCidade(Cidade cidade){
+        lblCidade.setText("Cidade: " + cidade.getNome());
+        if(this.cidade == null){
+            this.cidade = cidade;
+        }else{
+            Cidade.mesclar(cidade, this.cidade);
+        }
     }
 }

@@ -1,31 +1,38 @@
 package cadastros.orgao.listenner;
 
+import cadastros.cidade.telas.CidadeConsultaTela;
+import cadastros.orgao.telas.OrgaoCadastroTela;
 import commons.listenners.CadastroListenner;
-import commons.telas.CadastroTela;
-import log.Logger;
 
-public class OrgaoCadastroListenner extends CadastroListenner{
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-    public OrgaoCadastroListenner(CadastroTela cadastroTela) {
+public class OrgaoCadastroListenner extends CadastroListenner implements ActionListener{
+
+    private JButton btnSelecionarCidade;
+    private OrgaoCadastroTela orgaoCadastroTela;
+
+    public OrgaoCadastroListenner(OrgaoCadastroTela cadastroTela) {
         super(cadastroTela);
+        this.orgaoCadastroTela = cadastroTela;
+        this.btnSelecionarCidade = cadastroTela.getBtnSelecionarCidade();
+        btnSelecionarCidade.addActionListener(this);
     }
 
     @Override
-    public void eventoSalvar() {
-
-        System.out.println("Orgão -> Salvar");
-        Logger.log("Orgão, Salvou");
+    public void actionPerformed(ActionEvent evento) {
+        if(evento.getSource() == btnSelecionarCidade){
+            eventoSelecionarCidade();
+        }else{
+            super.actionPerformed(evento);
+        }
     }
 
-    @Override
-    public void eventoExcluir() {
-
-        System.out.println("Orgão -> Excluir");
-        Logger.log("Orgão, Excluiu");
-    }
-
-    @Override
-    public void eventoVoltar() {
-        System.out.println("Orgão -> Voltar");
+    private void eventoSelecionarCidade(){
+        JDesktopPane desktopPane = getCadastroTela().getConsultaTela().getjDesktopPane();
+        CidadeConsultaTela cidadeConsultaTela = new CidadeConsultaTela(getCadastroTela(), orgaoCadastroTela.getCidade(), orgaoCadastroTela.getLblCidade());
+        desktopPane.add(cidadeConsultaTela);
+        cidadeConsultaTela.setVisible(true);
     }
 }

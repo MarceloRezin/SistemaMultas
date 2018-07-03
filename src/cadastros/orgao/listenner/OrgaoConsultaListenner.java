@@ -4,6 +4,7 @@ import commons.listenners.ConsultaListenner;
 import commons.telas.ConsultaTela;
 import cadastros.orgao.Orgao;
 import cadastros.orgao.telas.OrgaoCadastroTela;
+import log.Logger;
 
 public class OrgaoConsultaListenner extends ConsultaListenner<Orgao> {
 
@@ -12,22 +13,26 @@ public class OrgaoConsultaListenner extends ConsultaListenner<Orgao> {
 	}
 
 	@Override
-    public void eventoConsultar() {
-        System.out.println("Orgão -> Listar");
-    }
+	public void eventoConsultar() {
+		Logger.log("Orgão Listar");
+		getConsultaTela().listarTodosItens();
+	}
 
 	@Override
 	public void eventoNovo() {
-		System.out.println("Orgao -> Novo");
-		getTela().dispose();
-		OrgaoCadastroTela orgaoCadastroTela = new OrgaoCadastroTela(null);
-		getConsultaTela().getjDesktopPane().add(orgaoCadastroTela);
-		
-		orgaoCadastroTela.setVisible(true);
+		Logger.log("Orgão Novo");
+
+		OrgaoCadastroTela orgaoCadastroTela = new OrgaoCadastroTela(null, getConsultaTela());
+
+		abrirCadastro(orgaoCadastroTela);
 	}
 
 	@Override
 	public void eventoItemSelecionado() {
-		System.out.println("Orgao -> Item Selecionado:" + getItemListSelecionado());
+		Logger.log("Orgão Item Selecionado");
+
+		OrgaoCadastroTela orgaoCadastroTela = new OrgaoCadastroTela(getItemListSelecionado(), getConsultaTela());
+
+		abrirCadastro(orgaoCadastroTela);
 	}
 }

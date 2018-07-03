@@ -2,9 +2,9 @@ package principal;
 
 import banco.Banco;
 import cadastros.cidade.telas.CidadeConsultaTela;
-import cadastros.condutor.Condutor;
 import cadastros.condutor.telas.CondutorConsultaTela;
 import cadastros.gravidademulta.telas.GravidadeMultaConsultaTela;
+import cadastros.orgao.telas.OrgaoConsultaTela;
 import cadastros.pessoa.fisica.telas.PessoaFisicaConsultaTela;
 import cadastros.pessoa.juridica.telas.PessoaJuridicaConsultaTela;
 import cadastros.proprietario.telas.ProprietarioConsultaTela;
@@ -88,13 +88,13 @@ public class PrincipalTela extends JFrame {
         mnCadastro.add(mntmVeiculo);
 
 
-//		JMenuItem mntmOrgo = new JMenuItem("Orgão");
-//		mntmOrgo.addActionListener( e -> {
-//			OrgaoConsultaTela orgaoConsultaTela = new OrgaoConsultaTela(desktopPane);
-//			orgaoConsultaTela.setVisible(true);
-//			desktopPane.add(orgaoConsultaTela);
-//		});
-//		mnCadastro.add(mntmOrgo);
+		JMenuItem mntmOrgao = new JMenuItem("Orgão");
+		mntmOrgao.addActionListener( e -> {
+			OrgaoConsultaTela orgaoConsultaTela = new OrgaoConsultaTela(desktopPane);
+			orgaoConsultaTela.setVisible(true);
+			desktopPane.add(orgaoConsultaTela);
+		});
+		mnCadastro.add(mntmOrgao);
 
 
 //		JMenuItem mntmInfracao = new JMenuItem("Infração");
