@@ -4,6 +4,7 @@ import commons.listenners.ConsultaListenner;
 import commons.telas.ConsultaTela;
 import cadastros.infracao.Infracao;
 import cadastros.infracao.telas.InfracaoCadastroTela;
+import log.Logger;
 
 public class InfracaoConsultaListenner extends ConsultaListenner<Infracao> {
 	
@@ -13,26 +14,25 @@ public class InfracaoConsultaListenner extends ConsultaListenner<Infracao> {
 	
 	@Override
     public void eventoConsultar() {
-        System.out.println("Infracao -> Listar");
+        Logger.log("Infração Listar");
+        getConsultaTela().listarTodosItens();
     }
 
 	@Override
-	public void eventoItemSelecionado() {
-		System.out.println("Infracao -> Item Selecionado:" + getItemListSelecionado());
+	public void eventoNovo() {
+        Logger.log("Infração Novo");
+
+        InfracaoCadastroTela infracaoCadastroTela = new InfracaoCadastroTela(null, getConsultaTela());
+
+        abrirCadastro(infracaoCadastroTela);
 	}
 
-
-
 	@Override
-	public void eventoNovo() {
-		System.out.println("Infracao -> Novo");
-		
-		getTela().dispose();
-		
-		InfracaoCadastroTela telaCadastroInfracao = new InfracaoCadastroTela(null);
-		
-		getConsultaTela().getjDesktopPane().add(telaCadastroInfracao);
-		
-		telaCadastroInfracao.setVisible(true);
+	public void eventoItemSelecionado() {
+        Logger.log("Infração Item Selecionado");
+
+        InfracaoCadastroTela infracaoCadastroTela = new InfracaoCadastroTela(getItemListSelecionado(), getConsultaTela());
+
+        abrirCadastro(infracaoCadastroTela);
 	}
 }

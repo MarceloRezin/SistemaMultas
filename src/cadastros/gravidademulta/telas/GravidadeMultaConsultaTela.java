@@ -1,6 +1,7 @@
 package cadastros.gravidademulta.telas;
 
 import banco.Banco;
+import commons.telas.CadastroTela;
 import commons.telas.ConsultaTela;
 import commons.telas.TipoConsulta;
 import commons.utils.Utils;
@@ -15,6 +16,11 @@ public class GravidadeMultaConsultaTela extends ConsultaTela<GravidadeMulta>{
 
 	public GravidadeMultaConsultaTela(JDesktopPane jDesktopPane) {
 		super(jDesktopPane, "Consulta de Gravidade de Multas", TipoConsulta.CONSULTA_PARA_CADASTRO);
+		new GravidadeMultaConsultaListenner(this);
+	}
+
+	public GravidadeMultaConsultaTela(CadastroTela<GravidadeMulta> cadastroTela, GravidadeMulta objetoRetorno, JLabel campoRetorno) {
+		super("Consulta de Gravidade de Multas", TipoConsulta.CADASTRO_PARA_CONSULTA, cadastroTela, objetoRetorno, campoRetorno);
 		new GravidadeMultaConsultaListenner(this);
 	}
 

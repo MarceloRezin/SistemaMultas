@@ -1,29 +1,39 @@
 package cadastros.infracao.listenner;
 
+import cadastros.gravidademulta.telas.GravidadeMultaConsultaTela;
+import cadastros.infracao.telas.InfracaoCadastroTela;
 import commons.listenners.CadastroListenner;
-import commons.telas.CadastroTela;
-import log.Logger;
 
-public class InfracaoCadastroListenner extends CadastroListenner {
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-    public InfracaoCadastroListenner(CadastroTela cadastroTela) {
+public class InfracaoCadastroListenner extends CadastroListenner implements ActionListener{
+
+    private JButton btnSelecionarGravidadeMulta;
+    private InfracaoCadastroTela cadastroTela;
+
+    public InfracaoCadastroListenner(InfracaoCadastroTela cadastroTela) {
         super(cadastroTela);
+        this.cadastroTela = cadastroTela;
+        this.btnSelecionarGravidadeMulta = cadastroTela.getBtnGravidadeMulta();
+
+        btnSelecionarGravidadeMulta.addActionListener(this);
     }
 
     @Override
-    public void eventoSalvar() {
-        System.out.println("Infracao -> Salvar");
-        Logger.log("Infração, Salvou");
+    public void actionPerformed(ActionEvent evento) {
+        if(evento.getSource() == btnSelecionarGravidadeMulta){
+            eventoSelecionarGravidadeMulta();
+        }else{
+            super.actionPerformed(evento);
+        }
     }
 
-    @Override
-    public void eventoExcluir() {
-        System.out.println("Infracao -> Excluir");
-        Logger.log("Infração, Excluiu");
-    }
-
-    @Override
-    public void eventoVoltar() {
-        System.out.println("Infracao -> Voltar");
+    private void eventoSelecionarGravidadeMulta(){
+        JDesktopPane desktopPane = getCadastroTela().getConsultaTela().getjDesktopPane();
+        GravidadeMultaConsultaTela gravidadeMultaConsultaTela = new GravidadeMultaConsultaTela(getCadastroTela(), cadastroTela.getGravidadeMulta(), cadastroTela.getLblGravidadeMulta());
+        desktopPane.add(gravidadeMultaConsultaTela);
+        gravidadeMultaConsultaTela.setVisible(true);
     }
 }

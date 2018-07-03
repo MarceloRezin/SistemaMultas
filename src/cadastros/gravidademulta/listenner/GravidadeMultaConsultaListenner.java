@@ -54,4 +54,9 @@ public class GravidadeMultaConsultaListenner extends ConsultaListenner<Gravidade
 		
 		abrirCadastro(gravidadeMultaCadastroTela);
 	}
+
+	@Override
+	public void setObjetoRetorno() {
+		GravidadeMulta.mesclar(getItemListSelecionado(), getConsultaTela().getObjetoRetorno());
+	}
 }

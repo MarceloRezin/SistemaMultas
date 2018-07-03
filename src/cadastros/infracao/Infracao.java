@@ -17,13 +17,6 @@ public class Infracao extends Cadastro{
     private String descricao;
     private GravidadeMulta gravidadeMulta;
 
-    public Infracao(){}
-
-    public Infracao(String descricao, GravidadeMulta gravidadeMulta) {
-        this.descricao = descricao;
-        this.gravidadeMulta = gravidadeMulta;
-    }
-
     public String getDescricao() {
         return descricao;
     }
@@ -52,15 +45,13 @@ public class Infracao extends Cadastro{
 
     @Override
     public String getColunas() {
-        return "descricao,gravidade_multas_id";
+        return "descricao,gravidade_multa_id";
     }
 
     @Override
     public void setStatements(PreparedStatement stmt) throws SQLException {
-
         stmt.setString(1,getDescricao());
         stmt.setInt(2,getGravidadeMulta().getId());
-
     }
 
     @Override
@@ -73,7 +64,7 @@ public class Infracao extends Cadastro{
 
             infracao.setId(rs.getInt("id"));
             infracao.setDescricao(rs.getString("descricao"));
-            infracao.setGravidadeMulta(GravidadeMulta.valueOf((rs.getInt("gravidade_multas_id"))));
+            infracao.setGravidadeMulta(GravidadeMulta.valueOf((rs.getInt("gravidade_multa_id"))));
 
             listInfracao.add(infracao);
         }

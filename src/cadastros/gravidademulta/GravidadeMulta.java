@@ -113,4 +113,12 @@ public class GravidadeMulta extends Cadastro{
         }
 
     }
+
+    //Copia os estados da origem para o destino
+    public static void mesclar(GravidadeMulta origem, GravidadeMulta destino){
+        destino.setId(origem.getId());
+        destino.setTipoMulta(origem.getTipoMulta());
+        destino.setValor(origem.getValor());
+        destino.setPontos(origem.getPontos());
+    }
 }

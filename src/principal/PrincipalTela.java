@@ -4,6 +4,7 @@ import banco.Banco;
 import cadastros.cidade.telas.CidadeConsultaTela;
 import cadastros.condutor.telas.CondutorConsultaTela;
 import cadastros.gravidademulta.telas.GravidadeMultaConsultaTela;
+import cadastros.infracao.telas.InfracaoConsultaTela;
 import cadastros.orgao.telas.OrgaoConsultaTela;
 import cadastros.pessoa.fisica.telas.PessoaFisicaConsultaTela;
 import cadastros.pessoa.juridica.telas.PessoaJuridicaConsultaTela;
@@ -96,14 +97,13 @@ public class PrincipalTela extends JFrame {
 		});
 		mnCadastro.add(mntmOrgao);
 
-
-//		JMenuItem mntmInfracao = new JMenuItem("Infração");
-//		mntmInfracao.addActionListener(e -> {
-//			InfracaoConsultaTela telaConsultaInfracao = new InfracaoConsultaTela(desktopPane);
-//			telaConsultaInfracao.setVisible(true);
-//			desktopPane.add(telaConsultaInfracao);
-//		});
-//		mnCadastro.add(mntmInfracao);
+		JMenuItem mntmInfracao = new JMenuItem("Infração");
+		mntmInfracao.addActionListener(e -> {
+			InfracaoConsultaTela telaConsultaInfracao = new InfracaoConsultaTela(desktopPane);
+			telaConsultaInfracao.setVisible(true);
+			desktopPane.add(telaConsultaInfracao);
+		});
+		mnCadastro.add(mntmInfracao);
 //
 //		JMenuItem mntmMulta = new JMenuItem("Multa");
 //		mntmMulta.addActionListener(e -> {
