@@ -172,8 +172,16 @@ public class Veiculo extends Cadastro {
         }
     }
 
-    @Override
-    public String getColunaPesquisa() {
-        return "placa";
+    //Copia os estados da origem para o destino
+    public static void mesclar(Veiculo origem, Veiculo destino){
+        destino.setId(origem.getId());
+        destino.setMarca(origem.getMarca());
+        destino.setModelo(origem.getModelo());
+        destino.setAno(origem.getAno());
+        destino.setPlaca(origem.getPlaca());
+        destino.setCidade(origem.getCidade());
+        destino.setRenavam(origem.getRenavam());
+        destino.setCorPredominante(origem.getCorPredominante());
+        destino.setProprietario(origem.getProprietario());
     }
 }

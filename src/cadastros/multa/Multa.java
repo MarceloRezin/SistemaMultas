@@ -8,14 +8,12 @@ import cadastros.infracao.Infracao;
 import cadastros.orgao.Orgao;
 import cadastros.proprietario.Proprietario;
 import cadastros.veiculo.Veiculo;
+import commons.utils.Utils;
 import exception.SistemaMultasException;
 import javafx.scene.input.KeyCode;
 
 import java.math.BigDecimal;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -32,7 +30,7 @@ public class Multa extends Cadastro{
     private String bairro;
     private Cidade cidade;
     private FatorMultiplicador fatorMultiplicador;
-    private Proprietario condutor;
+    private Condutor condutor;
     private BigDecimal valorFinal;
 
 
@@ -117,11 +115,11 @@ public class Multa extends Cadastro{
         this.fatorMultiplicador = fatorMultiplicador;
     }
 
-    public Proprietario getCondutor() {
+    public Condutor getCondutor() {
         return condutor;
     }
 
-    public void setCondutor(Proprietario condutor) {
+    public void setCondutor(Condutor condutor) {
         this.condutor = condutor;
     }
 
@@ -135,7 +133,7 @@ public class Multa extends Cadastro{
 
     @Override
 	public String toString() {
-		return "Multa";
+		return getVeiculo().getPlaca();
 	}
 
     @Override
@@ -145,7 +143,7 @@ public class Multa extends Cadastro{
 
     @Override
     public String getColunas() {
-        return "veiculo_id,infracoes_id,orgao_id,data_hora_emissao,data_vencimento,numero,rua,bairro,cidade_id,fator_multiplicador,id_condutor,valor_final";
+        return "veiculo_id,infracao_id,orgao_id,data_hora_emissao,data_vencimento,numero,rua,bairro,cidade_id,fator_multiplicador,condutor_id,valor_final";
     }
 
     @Override
@@ -161,10 +159,12 @@ public class Multa extends Cadastro{
         stmt.setString(8,getBairro());
         stmt.setInt(9,getCidade().getId());
         stmt.setString(10,getFatorMultiplicador().toString());
-        stmt.setInt(11,getCondutor().getId());
+        if(Utils.cadastroIsNull(getCondutor())){
+            stmt.setNull(11, Types.INTEGER);
+        }else{
+            stmt.setInt(11, getCondutor().getId());
+        }
         stmt.setBigDecimal(12,getValorFinal());
-
-
     }
 
     @Override
@@ -177,16 +177,21 @@ public class Multa extends Cadastro{
 
             multa.setId(rs.getInt("id"));
             multa.setVeiculo(Veiculo.valueOf(rs.getInt("veiculo_id")));
-            multa.setInfracao(Infracao.valueOf(rs.getInt("infracoes_id")));
+            multa.setInfracao(Infracao.valueOf(rs.getInt("infracao_id")));
             multa.setOrgao(Orgao.valueOf(rs.getInt("orgao_id")));
-            multa.setDataHoraEmissao(java.sql.Timestamp.valueOf(rs.getString("data_hora_emissao")).toLocalDateTime());
-            multa.setDataVencimento(java.sql.Date.valueOf(rs.getString("data_vencimento")).toLocalDate());
+            multa.setDataHoraEmissao(java.sql.Timestamp.valueOf(rs.getString("data_hora_emissao")).toLocalDateTime().minusHours(3));
+            multa.setDataVencimento(java.sql.Timestamp.valueOf(rs.getString("data_vencimento")).toLocalDateTime().toLocalDate());
             multa.setNumero(rs.getString("numero"));
             multa.setRua(rs.getString("rua"));
             multa.setBairro(rs.getString("bairro"));
             multa.setCidade(Cidade.valueOf(rs.getInt("cidade_id")));
             multa.setFatorMultiplicador(FatorMultiplicador.valueOf(rs.getString("fator_multiplicador")));
-            multa.setCondutor(Proprietario.valueOf(rs.getInt("id_condutor")));
+            int condutorId = rs.getInt("condutor_id");
+            if(condutorId == 0){ //Pode ser nulo
+                multa.setCondutor(null);
+            }else{
+                multa.setCondutor(Condutor.valueOf(condutorId));
+            }
             multa.setValorFinal(rs.getBigDecimal("valor_final"));
 
 

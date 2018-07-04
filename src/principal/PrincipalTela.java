@@ -5,6 +5,7 @@ import cadastros.cidade.telas.CidadeConsultaTela;
 import cadastros.condutor.telas.CondutorConsultaTela;
 import cadastros.gravidademulta.telas.GravidadeMultaConsultaTela;
 import cadastros.infracao.telas.InfracaoConsultaTela;
+import cadastros.multa.telas.MultaConsultaTela;
 import cadastros.orgao.telas.OrgaoConsultaTela;
 import cadastros.pessoa.fisica.telas.PessoaFisicaConsultaTela;
 import cadastros.pessoa.juridica.telas.PessoaJuridicaConsultaTela;
@@ -104,14 +105,14 @@ public class PrincipalTela extends JFrame {
 			desktopPane.add(telaConsultaInfracao);
 		});
 		mnCadastro.add(mntmInfracao);
-//
-//		JMenuItem mntmMulta = new JMenuItem("Multa");
-//		mntmMulta.addActionListener(e -> {
-//			MultaConsultaTela telaConsultaMulta = new MultaConsultaTela(desktopPane);
-//		    telaConsultaMulta.setVisible(true);
-//		    desktopPane.add(telaConsultaMulta);
-//        });
-//		mnCadastro.add(mntmMulta);
+
+		JMenuItem mntmMulta = new JMenuItem("Multa");
+		mntmMulta.addActionListener(e -> {
+			MultaConsultaTela telaConsultaMulta = new MultaConsultaTela(desktopPane);
+		    telaConsultaMulta.setVisible(true);
+		    desktopPane.add(telaConsultaMulta);
+        });
+		mnCadastro.add(mntmMulta);
 
 //		JMenu mnUsuario = new JMenu("Usuarios");
 //		JMenuItem gerenciarUsuarios = new JMenuItem("Gerenciar Usuários");
@@ -129,7 +130,7 @@ public class PrincipalTela extends JFrame {
 		mnSobre.add(mntSobre);
 		menuBar.add(mnSobre);
 		mntSobre.addActionListener(e->{
-			JOptionPane.showMessageDialog(null,"Desenvolvedores: Lucas Claro e Marcelo Rezin \n Versão: 0.2","Sobre",JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null,"Desenvolvedores: Lucas Claro e Marcelo Rezin \n Versão: 2.0","Sobre",JOptionPane.INFORMATION_MESSAGE);
 			Logger.log("Menu Sobre");
 		});
 

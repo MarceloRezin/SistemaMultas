@@ -60,7 +60,7 @@ public class CadastroListenner<T extends Cadastro> implements ActionListener {
         } catch (SistemaMultasException e) {
             Utils.mensagemErro(e.getMessage());
         } catch (Exception e2){
-            Utils.mensagemErro("Ocorreu um erro!");
+            Utils.mensagemErro("Ocorreu um erro ao salvar o registro");
         }
     }
 

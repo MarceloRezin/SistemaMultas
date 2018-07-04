@@ -35,4 +35,9 @@ public class InfracaoConsultaListenner extends ConsultaListenner<Infracao> {
 
         abrirCadastro(infracaoCadastroTela);
 	}
+
+    @Override
+    public void setObjetoRetorno() {
+        Infracao.mesclar(getItemListSelecionado(), getConsultaTela().getObjetoRetorno());
+    }
 }

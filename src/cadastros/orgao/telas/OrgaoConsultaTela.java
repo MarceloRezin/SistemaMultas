@@ -1,9 +1,10 @@
 package cadastros.orgao.telas;
 
 import java.util.List;
-import javax.swing.JDesktopPane;
+import javax.swing.*;
 
 import banco.Banco;
+import commons.telas.CadastroTela;
 import commons.telas.ConsultaTela;
 import commons.telas.TipoConsulta;
 import cadastros.orgao.Orgao;
@@ -19,7 +20,12 @@ public class OrgaoConsultaTela extends ConsultaTela<Orgao> {
 		new OrgaoConsultaListenner(this);
 	}
 
-	@Override
+    public OrgaoConsultaTela(CadastroTela<Orgao> cadastroTela, Orgao objetoRetorno, JLabel campoRetorno) {
+        super("Listagem de Orgãos", TipoConsulta.CADASTRO_PARA_CONSULTA, cadastroTela, objetoRetorno, campoRetorno);
+        new OrgaoConsultaListenner(this);
+    }
+
+    @Override
 	public List<Orgao> getItensBanco() throws SistemaMultasException {
 		String pesquisa = getCampoPesquisa().getText();
 

@@ -131,4 +131,14 @@ public class Orgao extends Cadastro	{
             return null;
         }
     }
+
+    //Copia os estados da origem para o destino
+    public static void mesclar(Orgao origem, Orgao destino){
+        destino.setId(origem.getId());
+        destino.setNome(origem.getNome());
+        destino.setNumero(origem.getNumero());
+        destino.setRua(origem.getRua());
+        destino.setBairro(origem.getBairro());
+        destino.setCidade(origem.getCidade());
+    }
 }

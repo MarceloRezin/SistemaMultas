@@ -1,6 +1,7 @@
 package cadastros.infracao.telas;
 
 import banco.Banco;
+import commons.telas.CadastroTela;
 import commons.telas.TipoConsulta;
 import cadastros.infracao.Infracao;
 import cadastros.infracao.listenner.InfracaoConsultaListenner;
@@ -18,7 +19,12 @@ public class InfracaoConsultaTela extends ConsultaTela<Infracao>{
 		new InfracaoConsultaListenner(this);
 	}
 
-	@Override
+    public InfracaoConsultaTela(CadastroTela<Infracao> cadastroTela, Infracao objetoRetorno, JLabel campoRetorno) {
+        super("Consulta de Infrações", TipoConsulta.CADASTRO_PARA_CONSULTA, cadastroTela, objetoRetorno, campoRetorno);
+        new InfracaoConsultaListenner(this);
+    }
+
+    @Override
 	public List<Infracao> getItensBanco() throws SistemaMultasException {
 		String pesquisa = getCampoPesquisa().getText();
 

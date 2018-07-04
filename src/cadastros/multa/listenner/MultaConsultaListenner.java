@@ -4,6 +4,7 @@ import commons.listenners.ConsultaListenner;
 import commons.telas.ConsultaTela;
 import cadastros.multa.Multa;
 import cadastros.multa.telas.MultaCadastroTela;
+import log.Logger;
 
 public class MultaConsultaListenner extends ConsultaListenner<Multa> {
 
@@ -13,21 +14,26 @@ public class MultaConsultaListenner extends ConsultaListenner<Multa> {
 
 	@Override
     public void eventoConsultar() {
-        System.out.println("Multa -> Listar");
+		Logger.log("Multa Listar");
+		getConsultaTela().listarTodosItens();
     }
 
 	@Override
 	public void eventoItemSelecionado() {
-		System.out.println("Multa -> Item Selecionado:" + getItemListSelecionado());
+		Logger.log("Multa Item Selecionado");
+
+		MultaCadastroTela multaCadastroTela = new MultaCadastroTela(getItemListSelecionado(), getConsultaTela());
+
+		abrirCadastro(multaCadastroTela);
 	}
 
 	@Override
 	public void eventoNovo() {
-		System.out.println("Multa -> Novo");
+		Logger.log("Multa Novo");
 		getTela().dispose();
-		MultaCadastroTela multaCadastroTela = new MultaCadastroTela(null);
+		MultaCadastroTela multaCadastroTela = new MultaCadastroTela(null, getConsultaTela());
 		getConsultaTela().getjDesktopPane().add(multaCadastroTela);
-		
+
 		multaCadastroTela.setVisible(true);
 	}
 }

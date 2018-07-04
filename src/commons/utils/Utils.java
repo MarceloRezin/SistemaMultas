@@ -4,8 +4,13 @@ import commons.cadastros.Cadastro;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public final class Utils {
+
+    public static final DateTimeFormatter FMT_DD_MM_YYYY = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public static final DateTimeFormatter FMT_DD_MM_YYYY_HH_MM_SS = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss", new Locale("pt", "BR"));
 
     public static boolean isNulaOuVazia(String string){
         if(string == null){

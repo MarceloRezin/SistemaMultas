@@ -20,5 +20,15 @@ public enum FatorMultiplicador {
         return valor;
     }
 
+    public int getIndice(){
+        FatorMultiplicador[] fatorMultiplicadors = FatorMultiplicador.values();
 
+        for(int i=0; i<fatorMultiplicadors.length; i++){
+            if(this == fatorMultiplicadors[i]){
+                return i;
+            }
+        }
+
+        return -1;
+    }
 }

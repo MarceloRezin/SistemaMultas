@@ -35,4 +35,9 @@ public class OrgaoConsultaListenner extends ConsultaListenner<Orgao> {
 
 		abrirCadastro(orgaoCadastroTela);
 	}
+
+	@Override
+	public void setObjetoRetorno() {
+		Orgao.mesclar(getItemListSelecionado(), getConsultaTela().getObjetoRetorno());
+	}
 }

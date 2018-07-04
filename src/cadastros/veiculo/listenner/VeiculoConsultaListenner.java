@@ -36,4 +36,9 @@ public class VeiculoConsultaListenner extends ConsultaListenner<Veiculo> {
 
 		abrirCadastro(veiculoCadastroTela);
 	}
+
+	@Override
+	public void setObjetoRetorno() {
+		Veiculo.mesclar(getItemListSelecionado(), getConsultaTela().getObjetoRetorno());
+	}
 }

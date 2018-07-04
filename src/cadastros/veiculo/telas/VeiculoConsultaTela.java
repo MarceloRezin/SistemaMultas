@@ -1,9 +1,10 @@
 package cadastros.veiculo.telas;
 
 import java.util.List;
-import javax.swing.JDesktopPane;
+import javax.swing.*;
 
 import banco.Banco;
+import commons.telas.CadastroTela;
 import commons.telas.ConsultaTela;
 import commons.telas.TipoConsulta;
 import cadastros.veiculo.Veiculo;
@@ -16,6 +17,11 @@ public class VeiculoConsultaTela extends ConsultaTela<Veiculo> {
 
 	public VeiculoConsultaTela(JDesktopPane jDesktopPane) {
 		super(jDesktopPane, "Listagem veiculos", TipoConsulta.CONSULTA_PARA_CADASTRO);
+		new VeiculoConsultaListenner(this);
+	}
+
+	public VeiculoConsultaTela(CadastroTela<Veiculo> cadastroTela, Veiculo objetoRetorno, JLabel campoRetorno) {
+		super("Listagem veiculos", TipoConsulta.CADASTRO_PARA_CONSULTA, cadastroTela, objetoRetorno, campoRetorno);
 		new VeiculoConsultaListenner(this);
 	}
 

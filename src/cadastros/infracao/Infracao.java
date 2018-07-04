@@ -86,4 +86,11 @@ public class Infracao extends Cadastro{
             return null;
         }
     }
+
+    //Copia os estados da origem para o destino
+    public static void mesclar(Infracao origem, Infracao destino){
+        destino.setId(origem.getId());
+        destino.setDescricao(origem.getDescricao());
+        destino.setGravidadeMulta(origem.getGravidadeMulta());
+    }
 }
