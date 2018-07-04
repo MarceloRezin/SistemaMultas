@@ -260,7 +260,7 @@ public class MultaCadastroTela extends CadastroTela<Multa> {
         panelCentro.add(campoDataHoraEmissao);
         campoDataHoraEmissao.setColumns(10);
 
-        JLabel lblDataVencimento = new JLabel("Data de Vencimento:");
+        JLabel lblDataVencimento = new JLabel("Data de Vencimento*:");
         lblDataVencimento.setHorizontalAlignment(SwingConstants.CENTER);
         panelCentro.add(lblDataVencimento);
 
