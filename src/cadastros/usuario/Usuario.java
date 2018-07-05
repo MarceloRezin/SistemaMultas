@@ -1,6 +1,9 @@
 package cadastros.usuario;
 
+import banco.Banco;
 import commons.cadastros.Cadastro;
+import exception.SistemaMultasException;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -87,5 +90,16 @@ public class Usuario extends Cadastro{
     @Override
     public String getColunaOrdenacao() {
         return "nome_usuario";
+    }
+
+    //Caso seja um usário válido seta no contexto e entra no sistema, caso não lança exceção
+    public void logar() throws SistemaMultasException{
+        Usuario u = Banco.checkUsuarioValido(this);
+
+        if(u == null){
+            throw new SistemaMultasException("Usuário ou senha inválidos!");
+        }
+
+        this.setAdmin(u.isAdmin());
     }
 }

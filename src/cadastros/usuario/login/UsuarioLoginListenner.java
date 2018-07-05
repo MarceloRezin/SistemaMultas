@@ -1,5 +1,7 @@
 package cadastros.usuario.login;
 
+import commons.utils.Utils;
+import exception.SistemaMultasException;
 import log.Logger;
 import principal.PrincipalTela;
 
@@ -30,18 +32,20 @@ public class UsuarioLoginListenner implements ActionListener{
         if(evento.getSource() == btnEntrar){
         	try {
                 Usuario u = new Usuario(telaLogin.getCampoUsuario().getText(), telaLogin.getCampoSenha().getText(), false);
+                u.logar();
 				log.SalvarUsuario(u.getUsuario());
                 UsuarioContexto.setUsuarioLogado(u);
-
                 Logger.log("Usuário Logou");
+
+                new PrincipalTela().setVisible(true);
+                telaLogin.dispose();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				 e.printStackTrace();
 				 Logger.log(e.getStackTrace().toString());
-			}
-            new PrincipalTela().setVisible(true);
-
-            telaLogin.dispose();
+			}catch (SistemaMultasException e2){
+                Utils.mensagemErro(e2.getMessage());
+            }
         }
     }
 }

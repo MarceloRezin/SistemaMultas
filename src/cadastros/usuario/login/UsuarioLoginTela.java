@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import log.LogUsuario;
+import log.Logger;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -104,6 +105,7 @@ public class UsuarioLoginTela extends JFrame {
 		addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
+				Logger.log("Fechar");
                 Banco.fecharConexao();
                 super.windowClosing(e);
             }

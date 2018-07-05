@@ -9,6 +9,9 @@ public class UsuarioContexto {
     }
 
     public static String getNomeUsuarioLogado() {
+        if(usuarioLogado == null){
+            return "Usuário não logado";
+        }
         return usuarioLogado.getUsuario();
     }
 

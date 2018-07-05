@@ -1,5 +1,6 @@
 package banco;
 
+import cadastros.usuario.Usuario;
 import commons.utils.Utils;
 import commons.cadastros.Cadastro;
 import exception.SistemaMultasException;
@@ -154,6 +155,36 @@ public class Banco{
             e1.printStackTrace();
             Logger.log(e1.getMessage());
             throw new SistemaMultasException();
+        }
+    }
+
+    //Verifica se o usuario informado existe no banco
+    public static Usuario checkUsuarioValido(Usuario usuario) throws SistemaMultasException{
+        String nomeUsuario = usuario.getUsuario();
+        String senha = usuario.getSenha();
+        if(Utils.isNulaOuVazia(nomeUsuario) || Utils.isNulaOuVazia(senha)){
+            return null;
+        }
+
+        String  sql = "SELECT * FROM " + usuario.getNomeTabela() + " WHERE nome_usuario = '" + nomeUsuario + "' AND senha = '" + senha + "' LIMIT 1";
+
+        try{
+            Statement st = conexao.createStatement();
+
+            ResultSet rs = st.executeQuery(sql);
+
+            List<Usuario> lista = usuario.resultSetToList(rs);
+
+            if(lista.size() == 0){
+                return null;
+            }
+
+            return lista.get(0);
+
+        }catch(Exception e1){
+            e1.printStackTrace();
+            Logger.log(e1.getMessage());
+            throw new SistemaMultasException("Ocorreu um erro ao autenticar o usuário!");
         }
     }
 }
