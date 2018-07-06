@@ -32,7 +32,7 @@ public class ProprietarioCadastroTela extends CadastroTela<Proprietario> {
     private JButton btnVoltar;
 
     public ProprietarioCadastroTela(Proprietario objeto, ConsultaTela<Proprietario> consultaTela) {
-        super("Condutor", objeto, consultaTela);
+        super("Proprietário", objeto, consultaTela);
     }
 
     @Override
